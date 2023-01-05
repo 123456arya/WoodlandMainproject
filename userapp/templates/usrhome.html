@@ -1,0 +1,137 @@
+
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>WoodCraft</title>
+<link href="/static/usr/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary JavaScript plugins) -->
+<script type='text/javascript' src="../static/usr/js/jquery-1.11.1.min.js"></script>
+<!-- Custom Theme files -->
+<link href="/static/usr/css/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+<!-- start menu -->
+<link href='/static/usr/images/144_vitamin-D.png' rel='icon'/>
+<link href="../static/usr/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="../static/usr/js/megamenu.js"></script>
+<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+<script src="../static/usr/js/menu_jquery.js"></script>
+<script src="../static/usr/js/simpleCart.min.js"> </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<script>
+		$(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");;
+	});
+</script>
+
+</head>
+<body background="/static/usr/images/GHSe.gif">
+	<div class="se-pre-con"></div>
+	<!-- header_top -->
+	<div class="top_bg">
+	<div class="container">
+		<div class="header_top">
+			<div class="top_right">
+					
+			</div>
+			<div class="top_left">
+				<div class="reg">
+				Welcome	<a href="/myaccount"><b>{{uname}}</b></a>
+			   </div>
+			</div>
+				<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!-- header -->
+ <div class="header_bg">
+<div class="container">
+	<div class="header">
+	<div class="head-t">
+		<div class="logo">
+		<h1>WoodCraft</a></h1>
+		</div> 
+		<!-- start header_right -->
+	  <!-- <div class="box"> -->
+		<div class="header_right">
+			<div class="rgt-bottom">
+				<div class="cart box_1"> 
+									
+					
+					<p><a href="/usrhommenu" class="simpleCart_empty"><b>Home</b><span class="badge bg-theme"style="color: white;"></span></a></p>
+					<h3><img src="" alt=""></h3>
+					<p><a href="/viewcart" class="simpleCart_empty"><b>See Cart</b><span class="badge bg-theme"style="color: white;">{{data3}}</span></a></p>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="cart box_1">
+									
+				<!-- <h3><img src="/static/usr/images/bag.png" alt=""></h3> -->
+			
+			 <p><a href="/vieworder" class="simpleCart_empty"><b>Vieworder</b><span class="badge bg-theme"style="color: white;">{{data3}}</span></a></p>
+			<div class="clearfix"> </div>
+		</div>
+			<div class="log">
+					<div class="logout" >
+						<div id="loginContainer">
+							<a href="/">
+								<img src="" alt="">
+							
+							 
+								<p><b>Logout</b></p>
+						    <div id="logoinBox">                
+							</div>
+							
+						</div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		<div class="search">
+		    <form method="POST">
+				{% csrf_token %} 
+		    	<input type="text" placeholder="search..." name="search">
+				<input type="submit"name="b1">
+			</form>
+		</div>
+		<div class="clearfix"> </div>
+		</div>
+		<div class="clearfix">
+		 </div>
+	</div>
+	</div>
+	
+	<div class="si">
+	</div>
+	</div>
+	{% block hommenu %}
+	{% endblock %}
+	{% block cart %}
+	{% endblock %}
+	
+ {% block myaccount %}
+	{% endblock %} 
+</div>
+</div>
+</body>
+<script src="/static/user/js/validate.js"></script>
+<script>
+	if(window.history.replaceState) {
+		window.history.replaceState( null, null, window.location.href);
+	}
+</script>
+</html>

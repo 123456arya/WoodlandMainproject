@@ -1,0 +1,82 @@
+{% extends 'Adminpage.Html' %}
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if msg %}
+    <script>
+      alert('{{msg}}')
+    window.location="/Adminviewemployee";
+    </script>
+    {% endif %}
+    <table class="table">
+        <tr>
+            <td colspan="2"><h1>Employee</h1></td>
+        </tr>
+        
+       
+        <tr><th>First Name</th><td><input type="text" pattern="[A-Za-z]+" value="{{data1.1}}"  name="t1" id=""></td></tr>
+        <tr><th>Last Name</th><td><input type="text" pattern="[A-Za-z ]+" value="{{data1.2}}" name="t2" id=""></td></tr>
+        <tr><th>House Name</th><td><input type="text" value="{{data1.3}}" name="t3" id=""></td></tr>
+        <tr><th>Street </th><td><input type="text" value="{{data1.4}}" name="t4" id=""></td></tr>
+        <tr><th>District </th><td><input type="text" pattern="[A-Za-z]+" value="{{data1.5}}" name="t5" id=""></td></tr>
+        <tr><th>State </th><td><input type="text" pattern="[A-Za-z]+" value="{{data1.6}}" name="t6" id=""></td></tr>
+        <tr><th>Pin Code </th><td><input type="text" pattern="[0-9]{6}" maxlength="6" value="{{data1.7}}" name="t7" id=""></td></tr>
+        <tr><th>Email </th><td><input type="email" readonly value="{{data1.8}}" name="t8" id=""></td></tr>
+        <tr><th>Mobile </th><td><input type="text" readonly value="{{data1.13}}" name="t9" id=""></td></tr>
+        <tr><th>Alternative No </th><td><input type="text" pattern="[789][0-9]{9}"  value="{{data1.14}}" name="t10" id=""></td></tr>
+        <tr><th>Salary </th><td><input type="text" value="{{data1.11}}" name="t11" id=""></td></tr>
+        <tr><th>Designation </th><td><input type="text" pattern="[A-Za-z]+" value="{{data1.12}}" name="t12" id=""></td></tr>
+        <tr><th>Username </th><td><input type="text" readonly  value="{{data1.9}}" name="t13" id=""></td></tr>
+        <tr><th>Password </th><td><input type="text" readonly value="{{data1.10}}" name="t14" id=""></td></tr>
+       
+        <tr>
+            <!-- <td colspan="2"><input type="submit" value="Submit"></td> -->
+        </tr>
+        
+        </tr>
+    </table>
+<table class="table">
+    <tr>
+        <td colspan="2"><h1>Education</h1></td>
+    </tr>
+    
+   
+    <tr><th>Tenth School</th><td><input type="text" readonly name="t15" value="{{data2.2}}" id=""></td></tr>
+    <tr><th>Tenth Percentage</th><td><input type="text" readonly name="t16" value="{{data2.3}}" id=""></td></tr>
+    <tr><th>Tenth Certificate</th><td><input type="file "  name="t17" value="{{data2.4}}" id=""></td></tr>
+    <tr><th>Plustwo School </th><td><input type="text" readonly value="{{data2.5}}" name="t18" id=""></td></tr>
+    <tr><th>Plustwo Percentage </th><td><input type="text" readonly value="{{data2.6}}" name="t19" id=""></td></tr>
+    <tr><th>Plustwo Certificate</th><td><input type="file " name="t6" value="{{data2.7}}" id=""></td></tr>
+    <tr><th>Degree / Diploma School </th><td><input type="text" readonly value="{{data2.8}}" name="t21" id=""></td></tr>
+    <tr><th>Degree / Diploma Percentage </th><td><input type="text" readonly value="{{data2.9}}" name="t22" id=""></td></tr>
+    <tr><th>Degree / Diploma  Certificate</th><td><input type="file " name="t9" value="{{data2.10}}" id=""></td></tr>
+    <tr><th>Other Name </th><td><input type="text" value="{{data2.11}}" readonly name="t10" id=""></td></tr>
+    <tr><th>Other School </th><td><input type="text" readonly value="{{data2.12}}" name="t24" id=""></td></tr>
+    <tr><th>Other Percentage </th><td><input type="text" readonly name="t25" value="{{data2.13}}" id=""></td></tr>
+    <tr><th>Other  Certificate</th><td><input type="file " name="t12" value="{{data2.14}}" id=""></td></tr>
+    <!-- <tr><th>User </th><td><input type="text" name="t13" id=""></td></tr>
+    <tr><th>Password </th><td><input type="text" name="t14" id=""></td></tr> -->
+   
+    <tr>
+        <!-- <td colspan="2"><input type="submit" value="Submit"></td> -->
+    </tr>
+    
+    </tr>
+</table>
+<table class="table">
+    <tr>
+        <td colspan="2"><h1>Experiance</h1></td>
+    </tr>
+    
+   
+    <tr><th> Company Name</th><td><input type="text" readonly value="{{data3.2}}" name="7" id=""></td></tr>
+    <tr><th>Year Of Experiance</th><td><input type="text"  readonly value="{{data3.3}}" name="t28" id=""></td></tr>
+    <tr><th>Job Type</th><td><input type="text"  readonly value="{{data3.4}}" name="t29" id=""></td></tr>
+    
+        <td colspan="2"><input type="submit" name="b1" value="Update"></td>
+    </tr>
+    
+    </tr>
+</table>
+</form>
+{% endblock %}

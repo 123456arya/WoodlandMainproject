@@ -1,0 +1,43 @@
+{% extends 'Employeepage.Html' %}
+{% block content %}     
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<table class="table">
+    <tr>
+        <td colspan="2"><h1>Add Product</h1></td>
+    </tr>
+    {% if msg %}
+        <script>alert('{{msg}}')</script>
+    {% endif %}
+   
+    <tr><th> Name</th><td><input type="text" name="t1" id=""></td></tr>
+    <!--<tr><th>Category Name</th><td><select name="t2">
+        <option value="0">---select---</option>
+        {% for d in data %}
+        <option value="{{d.0}}">{{d.1}}</option>
+        {% endfor %}
+    </select></td></tr>-->
+    <tr><th>Sub Category Name</th><td>
+        <select name="t3">
+            <option value="0">---select---</option>
+            {% for d in data1 %}
+            <option value="{{d.0}}">{{d.2}}</option>
+            {% endfor %}
+        </select>
+    </td></tr>
+    <tr><th>Price Not </th><td><input type="text" name="t5" id=""></td></tr>
+    <tr><th>Price </th><td><input type="text" name="t4" id=""></td></tr>
+    <tr><th>Description </th><td><input type="text" name="t8" id=""></td></tr>
+    <tr><th>Image1 </th><td><input type="file" name="t9" id=""></td></tr>
+    <tr><th>Image2 </th><td><input type="file" name="t10" id=""></td></tr>
+    <tr><th>Image3 </th><td><input type="file" name="t11" id=""></td></tr>
+    <tr><th>Image4 </th><td><input type="file" name="t12" id=""></td></tr>
+    <tr><th>Image5 </th><td><input type="file" name="t13" id=""></td></tr>
+    <tr>
+        <td colspan="2"><input type="submit" name="b1" value="Add Product"></td>
+    </tr>
+    
+    </tr>
+</table>
+</form>
+{% endblock %}

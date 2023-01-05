@@ -1,0 +1,61 @@
+{% extends 'usrhome.html' %}
+{% block hommenu %}
+<link href="/static/usr/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary JavaScript plugins) -->
+<script type='text/javascript' src="/static/usr/js/jquery-1.11.1.min.js"></script>
+<!-- Custom Theme files -->
+<link href="/static/usr/css/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+<!-- start menu -->
+<link href="/static/usr/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="/static/usr/js/megamenu.js"></script>
+<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+<script src="/static/usr/js/menu_jquery.js"></script>
+<script src="/static/usr/js/simpleCart.min.js"> </script>
+<section id="main-content">
+    <div class="container">
+        <div class="women_main">
+            
+        <!-- start content -->
+        <div class="col-md-9 w_content">
+            <form method="post">
+                {% csrf_token %}
+            <table >
+<tr>
+    <td><img src=../../static{{data.0.6}} width="230px"></td>
+    <td><img src=../../static{{data.0.7}} width="230px"></td>
+    <td><img src=../../static{{data.0.8}} width="230px"></td>
+    <td><img src=../../static{{data.0.9}} width="230px"></td>
+    <td><img src=../../static{{data.0.10}} width="230px"></td>
+</tr>
+<tr><td colspan="5"><center><h3><b>{{data.0.1}}</b></h3></center></td></tr>
+<tr><td colspan="5"><center><h3><b>Rs.{{data.0.3}}/-</b></h3></center></td></tr>
+<tr><td colspan="5"><center><h4>{{data.0.5}}</h4></center></td></tr>
+<tr><td colspan="5"><center><h4>Quantity : <input type="number" required min="1" name="t1" id=""></h4></center></td></tr>
+<tr><td colspan="5"><center><h4><input type="submit" value="Add to Cart" style="background: #00405d;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2em;"></h4></center></td></tr>
+            </table>
+        </form>
+            </div>
+        </div>  
+      <!-- end grids_of_4 -->
+    <div class="clearfix"></div>
+        
+   
+{% endblock %}
+    

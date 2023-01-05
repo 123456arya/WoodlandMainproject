@@ -1,0 +1,36 @@
+{% extends 'Adminpage.Html' %}
+{% block content %}
+<form action="" method="post">
+    {% if msg %}
+    <script>
+      alert('{{msg}}')
+    
+    </script>
+    {% endif %}
+    {% csrf_token %}
+<table class="table">
+    <tr>
+        <td>
+            <a href="/AdminAddsubcategory"><button type="button">Sub Category</button></a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"><h1>Add Category</h1></td>
+    </tr>
+    <tr><th>Category Name</th><td><input type="text" name="t1" required id=""></td></tr>
+    <tr>
+        <td colspan="2"><input type="submit" value="Add Category"></td>
+    </tr>
+</table>
+<table class="table">
+    <tr>
+        <th>ID</th><th>Name</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+<td>{{d.0}}</td><td>{{d.1}}</td></tr>
+    {% endfor %}
+</table>
+
+</form>
+{% endblock %}

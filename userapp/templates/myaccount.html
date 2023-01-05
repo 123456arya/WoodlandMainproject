@@ -1,0 +1,120 @@
+{% extends 'usrhome.html' %}
+{% block myaccount %}
+<link href="/static/usr/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary JavaScript plugins) -->
+<script type='text/javascript' src="/static/usr//static/usr/js/jquery-1.11.1.min.js"></script>
+<!-- Custom Theme files -->
+<link href="/static/usr/css/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+<!-- start menu -->
+<link href="/static/usr/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="/static/usr/js/megamenu.js"></script>
+<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+<script src="/static/usr/js/menu_jquery.js"></script>
+<!-- content -->
+<section id="main-content">
+    <div class="container">
+    <div class="main">
+        <!-- start registration -->
+        <div class="registration">
+            <div class="registration_left">
+            <h2>MY<span> ACCOUNT </span></h2>
+            <!-- [if IE] 
+                < link rel='stylesheet' type='text/css' href='ie.css'/>  
+             [endif] -->  
+              
+            <!-- [if lt IE 7]>  
+                < link rel='stylesheet' type='text/css' href='ie6.css'/>  
+            <! [endif] -->  
+            <script>
+                (function() {
+            
+                // Create input element for testing
+                var inputs = document.createElement('input');
+                
+                // Create the supports object
+                var supports = {};
+                
+                supports.autofocus   = 'autofocus' in inputs;
+                supports.required    = 'required' in inputs;
+                supports.placeholder = 'placeholder' in inputs;
+            
+                // Fallback for autofocus attribute
+                if(!supports.autofocus) {
+                    
+                }
+                
+                // Fallback for required attribute
+                if(!supports.required) {
+                    
+                }
+            
+                // Fallback for placeholder attribute
+                if(!supports.placeholder) {
+                    
+                }
+                
+                // Change text inside send button on submit
+                var send = document.getElementById('register-submit');
+                if(send) {
+                    send.onclick = function () {
+                        this.innerHTML = '...Sending';
+                    }
+                }
+            
+            })();
+            </script>
+             <div class="registration_form">
+              <!-- Form -->
+              <form action="" method="post">
+                {% csrf_token %}
+                {% if msg %}
+                    <script>
+                        alert('{{msg}}')
+                    </script>
+                {% endif %}
+            <table class="table">
+                <tr>
+                    <td colspan="2"><h1>View Customer</h1></td>
+                </tr>
+                
+               
+                <tr><th>First Name</th><td><input name="t1" pattern="[A-Za-z]+" type="text" value="{{data.0.1}}" /></td></tr>
+                <tr><th>Last Name</th><td><input type="text" pattern="[A-Za-z ]+" name="t2" value="{{data.0.2}}" /></td></tr>
+                <tr><th>House Name</th><td><input type="text" name="t3" value="{{data.0.3}}" /></td></tr>
+                <tr><th>Street </th><td><input type="text" name="t4" value="{{data.0.4}}" /></td></tr>
+                <tr><th>District </th><td><input type="text" pattern="[A-Za-z]+" name="t5" value="{{data.0.5}}" /></td></tr>
+                <tr><th>State </th><td><input type="text" pattern="[A-Za-z]+" name="t6" value="{{data.0.6}}" /></td></tr>
+                <tr><th>Pin Code </th><td><input type="text" pattern="[0-9]{6}" maxlength="6" name="t7" value="{{data.0.7}}" /></td></tr>
+                <tr><th>Email </th><td><input type="email" name="t8" value="{{data.0.8}}" /></td></tr>
+                <tr><th>Mobile </th><td><input type="text" name="t9" pattern="[789][0-9]{9}" maxlength="10" value="{{data.0.11}}" /></td></tr>
+                <tr><th>Alternative No. </th><td><input type="text" name="t10" pattern="[789][0-9]{9}" maxlength="10" value="{{data.0.12}}" /></td></tr>
+               
+                <tr><th>Username </th><td><input type="text" readonly name="t11" value="{{data.0.9}}" /></td></tr>
+                <tr><th>Password </th><td><input type="text" name="t12" value="{{data.0.10}}" /></td></tr>
+               
+                <tr>
+                   <td colspan="2"><input type="submit" value="Submit"></td>
+                </tr>
+                
+                </tr>
+            </table>
+            </form>
+            </div>
+        </div>
+        
+        <div class="clearfix"></div>
+        </div>
+        <!-- end registration -->
+    </div>
+ </div>
+ </section>
+{% endblock %}

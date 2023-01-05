@@ -1,0 +1,26 @@
+{% extends 'Employeepage.Html' %}
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Productname</th>
+        <th>CustomerName</th>
+        <th>Image</th>
+        <th>Status</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{d.0}}</td>
+        <td>{{d.1}}</td>
+        <td>{{d.2}}</td>
+        <td><img src="static{{d.3}}" width="100px"></td>
+        <td>{{d.4}}</td>
+        <td><a href="/acceptorder?id={{d.0}}">Accept</a></td>
+        <td><a href="/deleveredorder?id={{d.0}}">Delivered</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</form>
+{% endblock %}

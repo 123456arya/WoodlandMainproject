@@ -1,0 +1,32 @@
+{% extends 'Adminpage.Html' %}
+{% block content  %}
+<form action="" method="post">
+    {% csrf_token %}
+<table class="table">
+    <tr>
+        <td colspan="2"><h1>Customer Details</h1></td>
+    </tr>
+    
+   
+    <tr><th>First Name</th><td>{{data.0.1}}</td></tr>
+    <tr><th>Last Name</th><td>{{data.0.2}}</td></tr>
+    <tr><th>House Name</th><td>{{data.0.3}}</td></tr>
+    <tr><th>Street </th><td>{{data.0.4}}</td></tr>
+    <tr><th>District </th><td>{{data.0.5}}</td></tr>
+    <tr><th>State </th><td>{{data.0.6}}</td></tr>
+    <tr><th>Pin Code </th><td>{{data.0.7}}</td></tr>
+    <tr><th>Email </th><td>{{data.0.8}}</td></tr>
+    <tr><th>Mobile </th><td>{{data.0.11}}</td></tr>
+    <tr><th>Alternative No. </th><td>{{data.0.12}}</td></tr>
+   
+    <tr><th>Username </th><td>{{data.0.9}}</td></tr>
+    <tr><th>Password </th><td>{{data.0.10}}</td></tr>
+   
+    <tr>
+        <!-- -<td colspan="2"><input type="submit" value="Submit"></td> -->
+    </tr>
+    
+    </tr>
+</table>
+</form>
+{% endblock %}

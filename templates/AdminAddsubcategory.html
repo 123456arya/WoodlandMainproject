@@ -1,0 +1,46 @@
+{% extends 'Adminpage.Html' %}
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+<table class="table">
+    <tr>
+        <td colspan="2"><h1>Add SubCategory</h1></td>
+    </tr>
+    
+    <tr><th>Category Name</th><td>
+<select name="t1">
+    <option>--SELECT Category--</option>
+    {% for d in data %}
+    <option value="{{d.0}}">{{d.1}}</option>
+    {% endfor %}
+</select>
+
+    </td></tr>
+    <tr><th>Subcategory Name</th><td><input type="text" name="t2" id=""></td></tr>
+    <tr>
+        <td colspan="2"><input type="submit" value="Add Subcategory"></td>
+    </tr>
+    
+    </tr>
+</table>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    {% for d in data1 %}
+    <tr>
+        <td>{{d.0}}</td>
+        <td>{{d.2}}</td>
+        <td><a href="\AdminAddsubcategory?id={{d.0}}">DELETE</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% if msg %}
+<script>
+  alert('{{msg}}')
+
+</script>
+{% endif %}
+</form>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'Adminpage.Html' %}
+{% block content %}
+<form action="" method="post">
+    {% if msg %}
+    <script>
+      alert('{{msg}}')
+    
+    </script>
+    {% endif %}
+    {% csrf_token %}
+<table  class="table">
+    <tr>
+        <td><a href="/Adminviewemployee"><button type="button">View Employee</button></a></td>
+    </tr>
+    <tr>
+        <td colspan="2"><center><h1>Add Employee </h1></center></td>
+    </tr>
+    
+   
+    <tr><th><center>First Name</center></th><td><input type="text" pattern="[A-Za-z]+" name="t1" id=""></td></tr>
+    <tr><th><center>Last Name</center></th><td><input type="text" pattern="[A-Za-z ]+" name="t2" id=""></td></tr>
+    <tr><th><center>House Name</center></th><td><input type="text" required name="t3" id=""></td></tr>
+    <tr><th><center>Street </center></th><td><input type="text" name="t4" id=""></td></tr>
+    <tr><th><center>District </center></th><td><input type="text" pattern="[A-Za-z]+" name="t5" id=""></td></tr>
+    <tr><th><center>State</center> </th><td><input type="text" pattern="[A-Za-z]+" name="t6" id=""></td></tr>
+    <tr><th><center>Pin Code</center></th><td><input type="text" patern="[0-9]{6}" maxlength="6" required name="t7" id=""></td></tr>
+    <tr><th><center>Email </center></th><td><input type="email" name="t8" id=""></td></tr>
+    <tr><th><center>Mobile </center></th><td><input type="text" pattern="[789][0-9]{9}" maxlength="10" required name="t9" id=""></td></tr>
+    <tr><th><center>Alternative No. </center></th><td><input type="text" pattern="[789][0-9]{9}" maxlength="10" required name="t10" id=""></td></tr>
+    <tr><th><center>Salary </center></th><td><input type="text" required name="t11" id=""></td></tr>
+    <tr><th><center>Designation </center></th><td><input type="text" required name="t12" id=""></td></tr>
+    <tr><th><center>Username</center> </th><td><input type="text" required name="t13" id=""></td></tr>
+    <tr><th><center>Password</center> </th><td><input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required name="t14" id=""></td></tr>
+   
+    <tr>
+        <td colspan="2"><input type="submit" value="Add Employee"></td>
+    </tr>
+    
+    </tr>
+</table>
+</form>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'usrhome.html' %}
+{% block cart %}
+<link href="/static/usr/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary JavaScript plugins) -->
+<script type='text/javascript' src="/static/usr/js/jquery-1.11.1.min.js"></script>
+<!-- Custom Theme files -->
+<link href="/static/usr/css/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+<!-- start menu -->
+<link href="/static/usr/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="/static/usr/js/megamenu.js"></script>
+<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+<script src="/static/usr/js/menu_jquery.js"></script>
+<script src="/static/usr/js/simpleCart.min.js"> </script>
+<section id="main-content"></section>
+    <div class="container">
+	    <div class="check" style="width: 100%;">	 
+			<div class="col-lg-3 cart-total">
+			 <a class="continue" href="/usrhommenu">Continue to basket</a>
+			 <div class="price-details">
+				 <h3>Price Details</h3>
+				 <span>Total</span>
+				 <span class="total1">{{data2.0}}</span>
+				 <span>Delivery Charges</span>
+				 <span class="total1">0.00</span>
+				 <div class="clearfix"></div>				 
+			 </div>	
+			 <ul class="total_price">
+			   <li class="last_price"> <h4>TOTAL</h4></li>	
+			   <li class="last_price"><span>{{data2.0}}</span></li>
+			   <div class="clearfix"> </div>
+			 </ul>
+			
+			 <br>
+			 <div class="clearfix"></div>
+			<a href="/payment1?amount={{data2.0}}"><input type="submit" value="Place Order" id="register-submit" name="order" style="background: #00405d;
+			 padding: 10px 20px;
+			 font-size: 1em;
+			 color: #fff;
+			 text-decoration: none;
+			 display: block;
+			 font-weight: 600;
+			 text-align: center;
+			 margin-bottom: 2em;"></a>
+			 
+			</div>
+		 <div class="col-lg-9 cart-items"  style="float: right;"  >
+			 <h1>My Shopping Bag</h1>
+				<script>$(document).ready(function(c) {
+					$('.close1').on('click', function(c){
+						$('.cart-header').fadeOut('slow', function(c){
+							$('.cart-header').remove();
+						});
+						});	  
+					});
+			   </script>
+			 
+			 
+			 <script>$(document).ready(function(c) {
+					$('.close2').on('click', function(c){
+							$('.cart-header2').fadeOut('slow', function(c){
+						$('.cart-header2').remove();
+					});
+					});	  
+					});
+			 </script>
+			
+			
+				<div class="cart-header" style="width:100%" >
+					<div class="cart-sec simpleCart_shelfItem "  style="width:100%">
+							{% for e in data %}
+							<span>___________________________________________________________________________</span>
+								<div class="cart-item-info col-lg-4"  style="float:left; width:50%; height:150px;">
+									<tr><b>Name : {{e.0}}</b></tr><br>
+									<tr><b>Description : {{e.5}}</b></tr><br>																		
+									<tr><b>Price : {{e.3}}</b></tr>	
+									<tr></tr>
+								</div>
+								<div class="cart-item cyc col-lg-8" style="float:left;">
+									<a href="/cusviewmore?id={{e.1}}"><img src="../../static{{e.2}} "  class="img-responsive" alt=""/></a>
+								</div>
+								<div class="cart-item cyc col-lg-8" style="float:left;">
+									<a href="/deletecart?cid={{e.4}}"><button style="background-color: red;color: aliceblue;" type="button">DELETE</button></a>
+								</div>
+							{% endfor %}
+							
+					</div>
+				</div>	
+			</div>	  
+				<div class="clearfix"></div>
+									   
+					 </div>
+				</div>
+				<script>$(document).ready(function(c) {
+					   $('.close2').on('click', function(c){
+							   $('.cart-header2').fadeOut('slow', function(c){
+						   $('.cart-header2').remove();
+					   });
+					   });	  
+					   });
+				</script>
+		 		
+		
+			<div class="clearfix"> </div>
+	 </div>
+	 </div>
+</section>
+{% endblock %}

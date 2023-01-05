@@ -1,0 +1,16 @@
+{% extends 'Adminpage.Html' %}
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+<table class="table">
+    <tr>
+        <th>Customer ID</th><th>Customer Name</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+<td>{{d.0}}</td><td>{{d.1}}</td><td><a href="/viewcustomer?id={{d.0}}">View</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</form>
+{% endblock %}
