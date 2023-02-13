@@ -2,15 +2,45 @@
 {% block content %}
 <form action="" method="post">
     {% csrf_token %}
-<table class="table">
-    <tr>
-        <th> Name</th>
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Action</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{d.1}}</td>
+                <td><a href="/viewproduct?id={{d.0}}">View</a></td>
+               
+            </tr>
+   <!--  <tr>
+        <th>ID</th><th> Name</th><th>Action</th>
     </tr>
     {% for d in data %}
     <tr>
-<td>{{d.1}}</td><td><a href="/viewproduct?id={{d.0}}">View</a></td></td>
-    </tr>
+        <td>{{forloop.counter}}</td><td>{{d.1}}</td><td><a href="/viewproduct?id={{d.0}}">View</a></td></td>
+    </tr> -->
     {% endfor %}
 </table>
 </form>
 {% endblock %}
+
+<script>
+    $(document).ready(function() {
+    var table = $('#example').DataTable( {
+        lengthChange: false,
+        buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+    } );
+ 
+    table.buttons().container()
+        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+} );
+</script>
+
+

@@ -8,12 +8,12 @@
     </script>
     {% endif %}
     {% csrf_token %}
-<table  class="table">
+<table  class="table" cellpadding="10px" cellspacing="10px" width="100%" border="2">
+    <!-- <tr>
+        <td><a href="/Adminviewemployee"><button type="button">View Seller</button></a></td>
+    </tr> -->
     <tr>
-        <td><a href="/Adminviewemployee"><button type="button">View Employee</button></a></td>
-    </tr>
-    <tr>
-        <td colspan="2"><center><h1>Add Employee </h1></center></td>
+        <td colspan="2"><center><h1>Add Seller </h1></center></td>
     </tr>
     
    
@@ -33,7 +33,7 @@
     <tr><th><center>Password</center> </th><td><input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required name="t14" id=""></td></tr>
    
     <tr>
-        <td colspan="2"><input type="submit" value="Add Employee"></td>
+        <td colspan="2"><input type="submit" value="Add Seller"></td>
     </tr>
     
     </tr>

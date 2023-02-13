@@ -2,13 +2,13 @@
 {% block content %}
 <form action="" method="post">
     {% csrf_token %}
-<table class="table">
+<table class="table" cellpadding="10px" cellspacing="10px"  width="100%" border="2">
     <tr>
-        <th>Employee ID</th><th>Employee Name</th>
+        <th>ID</th><th> Name</th><th>Action</th><th>Action</th>
     </tr>
     {% for d in data %}
     <tr>
-<td>{{d.0}}</td><td>{{d.1}}</td><td><a href="/Viewemploye?id={{d.0}}">View</a></td><td><a href="/Deleteemploye?id={{d.0}}">Delete</a></td>
+<td>{{forloop.counter}}</td><td>{{d.1}}</td><td><a href="/Viewemploye?id={{d.0}}">View</a></td><td><a href="/Deleteemploye?id={{d.0}}">Delete</a></td>
     </tr>
     {% endfor %}
     {% if msg %}

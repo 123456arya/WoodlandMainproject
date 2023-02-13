@@ -8,12 +8,12 @@
     </script>
     {% endif %}
     {% csrf_token %}
-<table class="table">
-    <tr>
+<table class="table" cellpadding="10px" width="100%" cellspacing="10px" border="2">
+   <!--  <tr>
         <td>
             <a href="/AdminAddsubcategory"><button type="button">Sub Category</button></a>
         </td>
-    </tr>
+    </tr> -->
     <tr>
         <td colspan="2"><h1>Add Category</h1></td>
     </tr>
@@ -22,13 +22,18 @@
         <td colspan="2"><input type="submit" value="Add Category"></td>
     </tr>
 </table>
-<table class="table">
+<table class="table"  cellpadding="10px" cellspacing="10px" width="100%" border="2">
     <tr>
-        <th>ID</th><th>Name</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Action</th>
     </tr>
     {% for d in data %}
     <tr>
-<td>{{d.0}}</td><td>{{d.1}}</td></tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{d.1}}</td>
+        <td><a href="\AdminAddcategory?id={{d.0}}">DELETE</a></td>
+    </tr>
     {% endfor %}
 </table>
 

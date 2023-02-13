@@ -2,19 +2,19 @@
 {% block content %}
 <form action="" method="post">
     {% csrf_token %}
-<table class="table">
+<table class="table" cellpadding="10px" cellspacing="10px" border="2">
     <tr><td></td><td></td><td rowspan="7">
         <table>
             <tr>
-                <td><img width="100px" src="static{{data.0.6}}"></td>
                 <td><img width="100px" src="static{{data.0.7}}"></td>
-            </tr>
-            <tr>
                 <td><img width="100px" src="static{{data.0.8}}"></td>
-                <td><img width="100px" src="static{{data.0.9}}"></td>
             </tr>
             <tr>
+                <td><img width="100px" src="static{{data.0.9}}"></td>
                 <td><img width="100px" src="static{{data.0.10}}"></td>
+            </tr>
+            <tr>
+                <td><img width="100px" src="static{{data.0.11}}"></td>
                 <!-- <td><img width="100px" src="static{{data.0.9}}"></td> -->
             </tr>
         </table>
@@ -33,7 +33,7 @@
     <td>Price</td><td><input type="text" value="{{data.0.3}}" name="t4" id=""></td>
 </tr>
 <tr>
-    <td>Desription</td><td><input type="text" value="{{data.0.5}}" name="t5" id=""></td>
+    <td>Description</td><td><input type="text" value="{{data.0.5}}" name="t5" id=""></td>
 </tr>
 <tr><td><input type="submit" value="Update" name="b1"> </td><td><a href="/deleteproduct?id={{data.0.0}}">DELETE</a></td></tr>
 </table>

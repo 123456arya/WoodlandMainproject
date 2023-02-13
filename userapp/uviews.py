@@ -31,10 +31,25 @@ def cusviewmore(request):
   d=datetime.datetime.now()
   if request.POST:
     cid=request.session["cid"]
-    qty=request.POST.get("t1")
-    c.execute("insert into cart(`ProductID`,`CustomerID`,`count`,date) values(%s,%s,%s,%s)",[id,cid,qty,d])
-    con.commit()
-  return render(request,"cusviewmore.html",{"data":data})
+    qty=request.POST.get("qty")
+    tqty=data[0][6]
+    c.execute("select count from cart where ProductID='"+str(id)+"' and status<>'paid' and CustomerID='"+str(cid)+"' ")
+    print("select count from cart where ProductID='"+str(id)+"' and CustomerID='"+str(cid)+"' ")
+    cnnt=c.fetchone()
+    print(cnnt)
+    ccount=0
+    if cnnt:
+      ccount=cnnt[0]
+    if(int(ccount)< int(tqty)):
+      print("********************************************************")
+      c.execute("insert into cart(`ProductID`,`CustomerID`,`count`,date) values(%s,%s,%s,%s)",[id,cid,qty,d])
+      con.commit()
+    
+    qty=int(tqty)-int(qty)
+    # c.execute("update products set qty='"+str(qty)+"' where ProductID='"+str(id)+"' ")
+    # con.commit()
+  cn=0
+  return render(request,"cusviewmore.html",{"data":data,"cn":cn})
 def myaccount(request):
   msg=""
   uname=request.session["uname"]
@@ -74,6 +89,7 @@ def usrhommenu(request):
   s = "select * from  products "
   c.execute(s)
   data = c.fetchall()
+  print(data)
   if request.GET:
     id=request.GET.get("id")
     s="select * from products where SubcategoryID='"+str(id)+"' "
@@ -93,31 +109,37 @@ def usrhommenu(request):
 def deletecart(request):
   cid=request.GET.get("cid")
   c.execute("delete from cart where cartID='"+str(cid)+"'")
+  print("delete from cart where cartID='"+str(cid)+"'")
   con.commit()
   return HttpResponseRedirect("/viewcart")
 def viewcart(request):
-  cid=request.session["cid"]
-  c.execute("select p.Pname,p.ProductID,p.image1,p.price*c.count as price ,c.cartID,p.Description from products p join cart c on p.ProductID=c.ProductID where c.CustomerID='"+str(cid)+"'")
-  data=c.fetchall()
-  c.execute("select sum(p.price*c.count) as total  from products p join cart c on p.ProductID=c.ProductID where c.CustomerID='"+str(cid)+"'")
-  data2=c.fetchone()
-  return render(request,"cart.html",{"data":data,"data2":data2})
-def payment1(request):
   
   cid=request.session["cid"]
-  paid="paid"
-  amount=request.GET.get("amount")
-  request.session["pay"]=amount
-  dd=datetime.datetime.now()
-  c.execute("select * from cart where CustomerID='"+str(cid)+"'")
-  dataa=c.fetchall()
-  for d in dataa:
+  c.execute("select p.Pname,p.ProductID,p.image1,p.price*c.count as price ,c.cartID,p.Description,c.count,p.price from products p join cart c on p.ProductID=c.ProductID where c.CustomerID='"+str(cid)+"' and c.status='notpaid'")
+  data=c.fetchall()
+  c.execute("select sum(p.price*c.count) as total  from products p join cart c on p.ProductID=c.ProductID where c.CustomerID='"+str(cid)+"' and c.status='notpaid'")
+  data2=c.fetchone()
+  return render(request,"shop-shopping-cart.html",{"data":data,"data2":data2})
+  
+def payment1(request):
+  if request.POST:
+   cid=request.session["cid"]
+   paid="paid"
+   amount=request.GET.get("amount")
+   request.session["pay"]=amount
+   dd=datetime.datetime.now()
+   c.execute("select * from cart where CustomerID='"+str(cid)+"'")
+   dataa=c.fetchall()
+   for d in dataa:
     print("######################################")
     print(d[1])
     print("insert into orders (`ProductID`,`CustomerID`,`Status`,date) values('"+str(d[1])+"','"+str(cid)+"','"+str(paid)+"','"+str(dd)+"')")
     c.execute("insert into orders (`ProductID`,`CustomerID`,`Status`,date) values('"+str(d[1])+"','"+str(cid)+"','"+str(paid)+"','"+str(dd)+"')")
+    # c.execute("update products set qty=qty-"+int(d[3])+" where ProductID='"+str(d[1])+"'")
     print("######################################")
+    
   con.commit()
+
   if request.POST:
       card=request.POST.get("test")
       cardno=request.POST.get("cardno")
@@ -145,11 +167,33 @@ def payment3(request):
     return render(request,"payment3.html")
 
 def payment4(request):
+    cid=request.session["cid"]
+    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+    d="select * from cart where CustomerID='"+str(cid)+"'"
+    c.execute(d)
+    data=c.fetchall()
+    print(d)
+    for d in data:
+      u="update products set qty=qty-"+int(d[3])+" where ProductID='"+str(d[1])+"'"
+      print(u)
+      c.execute(u)
+      con.commit()
     return render(request,"payment4.html")
 
 def payment5(request):
     cno=request.session["card_no"]
     today = date.today()
+    cid=request.session["cid"]
+    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    d="select * from cart where CustomerID='"+str(cid)+"'"
+    c.execute(d)
+    data=c.fetchall()
+    print(d)
+    for d in data:
+      u="update products set qty=qty-"+int(d[3])+" where ProductID='"+str(d[1])+"'"
+      print(u)
+      c.execute(u)
+      con.commit()
     # n="select * from delivery where card='"+str(cno)+"'"
     # c.execute(n)
     # data=c.fetchall()

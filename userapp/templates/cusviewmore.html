@@ -1,61 +1,537 @@
-{% extends 'usrhome.html' %}
-{% block hommenu %}
-<link href="/static/usr/css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- jQuery (necessary JavaScript plugins) -->
-<script type='text/javascript' src="/static/usr/js/jquery-1.11.1.min.js"></script>
-<!-- Custom Theme files -->
-<link href="/static/usr/css/style.css" rel='stylesheet' type='text/css' />
-<!-- Custom Theme files -->
-<!--//theme-style-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
-<!-- start menu -->
-<link href="/static/usr/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="/static/usr/js/megamenu.js"></script>
-<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
-<script src="/static/usr/js/menu_jquery.js"></script>
-<script src="/static/usr/js/simpleCart.min.js"> </script>
-<section id="main-content">
-    <div class="container">
-        <div class="women_main">
-            
-        <!-- start content -->
-        <div class="col-md-9 w_content">
-            <form method="post">
-                {% csrf_token %}
-            <table >
-<tr>
-    <td><img src=../../static{{data.0.6}} width="230px"></td>
-    <td><img src=../../static{{data.0.7}} width="230px"></td>
-    <td><img src=../../static{{data.0.8}} width="230px"></td>
-    <td><img src=../../static{{data.0.9}} width="230px"></td>
-    <td><img src=../../static{{data.0.10}} width="230px"></td>
-</tr>
-<tr><td colspan="5"><center><h3><b>{{data.0.1}}</b></h3></center></td></tr>
-<tr><td colspan="5"><center><h3><b>Rs.{{data.0.3}}/-</b></h3></center></td></tr>
-<tr><td colspan="5"><center><h4>{{data.0.5}}</h4></center></td></tr>
-<tr><td colspan="5"><center><h4>Quantity : <input type="number" required min="1" name="t1" id=""></h4></center></td></tr>
-<tr><td colspan="5"><center><h4><input type="submit" value="Add to Cart" style="background: #00405d;
-    padding: 10px 20px;
-    font-size: 1em;
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 2em;"></h4></center></td></tr>
-            </table>
-        </form>
-            </div>
-        </div>  
-      <!-- end grids_of_4 -->
-    <div class="clearfix"></div>
-        
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<!-- Head BEGIN -->
+<head>
+  <meta charset="utf-8">
+  <title>WoodCraft</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <meta content="Metronic Shop UI description" name="description">
+  <meta content="Metronic Shop UI keywords" name="keywords">
+  <meta content="keenthemes" name="author">
+
+  <meta property="og:site_name" content="-CUSTOMER VALUE-">
+  <meta property="og:title" content="-CUSTOMER VALUE-">
+  <meta property="og:description" content="-CUSTOMER VALUE-">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+  <meta property="og:url" content="-CUSTOMER VALUE-">
+
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Fonts START -->
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css"> 
+  <!-- Fonts END -->
+
+  <!-- Global styles START -->          
+  <link href="../static/usr/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/usr/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+ 
+                                          <style>
+                                            body{background-color: #ecedee}.card{border: none;overflow: hidden}.thumbnail_images ul{list-style: none;justify-content: center;display: flex;align-items: center;margin-top:10px}.thumbnail_images ul li{margin: 5px;padding: 10px;border: 2px solid #eee;cursor: pointer;transition: all 0.5s}.thumbnail_images ul li:hover{border: 2px solid #000}.main_image{display: flex;justify-content: center;align-items: center;border-bottom: 1px solid #eee;height: 400px;width: 100%;overflow: hidden}.heart{height: 29px;width: 29px;background-color: #eaeaea;border-radius: 50%;display: flex;justify-content: center;align-items: center}.content p{font-size: 12px}.ratings span{font-size: 14px;margin-left: 12px}.colors{margin-top: 5px}.colors ul{list-style: none;display: flex;padding-left: 0px}.colors ul li{height: 20px;width: 20px;display: flex;border-radius: 50%;margin-right: 10px;cursor: pointer}.colors ul li:nth-child(1){background-color: #6c704d}.colors ul li:nth-child(2){background-color: #96918b}.colors ul li:nth-child(3){background-color: #68778e}.colors ul li:nth-child(4){background-color: #263f55}.colors ul li:nth-child(5){background-color: black}.right-side{position: relative}.search-option{position: absolute;background-color: #000;overflow: hidden;align-items: center;color: #fff;width: 200px;height: 200px;border-radius: 49% 51% 50% 50% / 68% 69% 31% 32%;left: 30%;bottom: -250px;transition: all 0.5s;cursor: pointer}.search-option .first-search{position: absolute;top: 20px;left: 90px;font-size: 20px;opacity: 1000}.search-option .inputs{opacity: 0;transition: all 0.5s ease;transition-delay: 0.5s;position: relative}.search-option .inputs input{position: absolute;top: 200px;left: 30px;padding-left: 20px;background-color: transparent;width: 300px;border: none;color: #fff;border-bottom: 1px solid #eee;transition: all 0.5s;z-index: 10}.search-option .inputs input:focus{box-shadow: none;outline: none;z-index: 10}.search-option:hover{border-radius: 0px;width: 100%;left: 0px}.search-option:hover .inputs{opacity: 1}.search-option:hover .first-search{left: 27px;top: 25px;font-size: 15px}.search-option:hover .inputs input{top: 20px}.search-option .share{position: absolute;right: 20px;top: 22px}.buttons .btn{height: 50px;width: 150px;border-radius: 0px !important}
+                                          </style>
+
+
+  <!-- Global styles END --> 
    
-{% endblock %}
+  <!-- Page level plugin styles START -->
+  <link href="../static/usr/assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+  <link href="../static/usr/assets/plugins/owl.carousel/../static/usr/assets/owl.carousel.css" rel="stylesheet">
+  <link href="../static/usr/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+  <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"><!-- for slider-range -->
+  <link href="../static/usr/assets/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin styles END -->
+
+  <!-- Theme styles START -->
+  <link href="../static/usr/assets/pages/css/components.css" rel="stylesheet">
+  <link href="../static/usr/assets/corporate/css/style.css" rel="stylesheet">
+  <link href="../static/usr/assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
+  <link href="../static/usr/assets/corporate/css/style-responsive.css" rel="stylesheet">
+  <link href="../static/usr/assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+  <link href="../static/usr/assets/corporate/css/custom.css" rel="stylesheet">
+  <!-- Theme styles END -->
+  
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"> 
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"> 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500"> 
+
+
+
+
+
+
+  <!-- Table Style -->
+  <style>
+    th, td {
+  padding: 15px;
+}
+  </style>
+  <style>
+    .navbar .nav .nav-item .nav-link{ 
+    color: #fafafa;
+    font-size: 18px;   
+    font-weight: bold;
+  }
+  </style>
+
+</head>
+<!-- Head END -->
+
+<!-- Body BEGIN -->
+<body class="ecommerce">
+  <nav class="navbar navbar-expand-sm  navbar-light justify-content-between p-3" style="background-color: #020508;">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-header" href="index.php">
+        <a class="dropdown-item text-white"  href="?userprofile">Hey! <b>{{uname}}</b></a>
+      </a>
+      
+     <!--  <ul class="nav  ">
+        <li>
+         
+          <div class="search-box">
+            <div class="input-group">
+              <div class="form-outline form" method="post" action="search.php">
+               <input type="search" autocomplete="off" class="form-control" placeholder="Search Services" name="attribute" />
+              </div>
+              <button type="button" class="btn btn-primary" name="submit">
+              <i class="fas fa-search"></i>
+              </button>
+            </div>
+            <drop class="result">
+          </div>
+        </li>
+      </ul>  -->
     
+      
+      <ul class="navbar-nav mt-2 mt-lg-0">
+        <li class="nav-item mx-3">
+          <!-- <
+            $name=mysqli_fetch_assoc(mysqli_query($con,"SELECT reg_name FROM tbl_register WHERE login_id={$_SESSION['lid']}"));
+          ?> -->
+         <!--  <a class="nav-link active text-white fw-bold" aria-current="page" href="index1.php">Home</a> -->
+        </li>
+  
+          
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown text-white fs-1" id="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+          <div class="dropdown-menu dropdown-menu-end fs-4" aria-labelledby="navbarDropdown">
+            <ul>
+              {% for d in subcat %}
+              <li><a href="/usrhommenu/?id={{d.0}}">{{d.2}}</a></li>
+              {% endfor %}
+          </ul>
+            <a class="dropdown-item" href="?userprofile"><!-- <?php echo $row['category_title'];?> --></a>
+            
+          </div>
+        </li>   
+          
+          
+        <li class="nav-item">
+          <a class="nav-link active text-white  fa-2x  viewprop" aria-current="page" href="/wishlist"><i class="fa-solid fa-heart"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white  fa-2x  viewprop" aria-current="page" href="/vieworder"><i class="fab fa-first-order"></i></a>
+        </li>
+        
+  
+        <li class="nav-item">
+          <a class="nav-link active text-white  fa-2x  viewprop" aria-current="page" href="/viewcart"><i class="fas fa-shopping-cart"><sup></sup></i></a>
+        </li>
+  
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown text-white text-lg  fa-2x " id="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi fa-lg bi-person-circle mx-2"></i></a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"  href="?userprofile">Hey! <b>{{uname}}</b></a>
+            <a class="dropdown-item" href="userprofile.php">Profile</a>
+            <a class="dropdown-item" href="?change_password">Change Password</a>
+            <a class="dropdown-item" href="/">Log Out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+    <!-- BEGIN STYLE CUSTOMIZER -->
+    <div class="color-panel hidden-sm">
+      <div class="color-mode-icons icon-color"></div>
+      <div class="color-mode-icons icon-color-close"></div>
+      <div class="color-mode">
+        <p>THEME COLOR</p>
+        <ul class="inline">
+          <li class="color-red current color-default" data-style="red"></li>
+          <li class="color-blue" data-style="blue"></li>
+          <li class="color-green" data-style="green"></li>
+          <li class="color-orange" data-style="orange"></li>
+          <li class="color-gray" data-style="gray"></li>
+          <li class="color-turquoise" data-style="turquoise"></li>
+        </ul>
+      </div>
+    </div>
+    <!-- END BEGIN STYLE CUSTOMIZER --> 
+
+    <!-- BEGIN TOP BAR -->
+    <div class="pre-header">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN TOP BAR LEFT PART -->
+              
+                       
+                    
+                <!-- END TOP BAR LEFT PART -->
+                <!-- BEGIN TOP BAR MENU -->
+                
+                      <!--   <li><a href="shop-checkout.html">Checkout</a></li> -->
+                       
+                <!-- END TOP BAR MENU -->
+            </div>
+        </div>        
+    </div>
+    <!-- END TOP BAR -->
+
+    <!-- BEGIN HEADER -->
+    <div class="header">
+      <div class="container">
+        <!-- <a class="site-logo" href="shop-index.html"><img src="../static/usr/assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a> -->
+
+        <!-- <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a> -->
+
+        <!-- BEGIN CART -->
+        <!-- <div class="top-cart-block">
+          <div class="top-cart-info"> -->
+         <!--    <a href="javascript:void(0);" class="top-cart-info-count">3 items</a>
+            <a href="javascript:void(0);" class="top-cart-info-value">$1260</a> -->
+         <!--  </div>
+          <a href="/viewcart"><i class="fa fa-shopping-cart"></i> </a> -->
+                        
+          <div class="top-cart-content-wrapper">
+            <div class="top-cart-content">
+             
+              <div class="text-right">
+                <!-- <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
+                <a href="shop-checkout.html" class="btn btn-primary">Checkout</a> -->
+              </div>
+            </div>
+          </div>            
+        </div>
+        <!--END CART -->
+
+       
+         
+
+          </ul>
+        </div>
+        <!-- END NAVIGATION -->
+      </div>
+    </div>
+    <!-- Header END -->
+    
+    <div class="main">
+      <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/usrhommenu">Home</a></li>
+            <li><a href="">Store</a></li>
+            <li class="active"></li>
+        </ul>
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+         
+
+
+
+
+
+          <div class="container mt-5 mb-5">	
+            <div class="card">	
+              <div class="row g-0">
+                  <div class="col-md-6 border-end">
+                      <div class="d-flex flex-column justify-content-center">	
+                        <div class="main_image">	<img src="../static{{data.0.7}}" id="main_product_image" width="350">	
+                        </div>	<div class="thumbnail_images">	<ul id="thumbnail">	<li><img onclick="changeImage(this)" src="../static{{data.0.8}}" width="70"></li>	
+                          <li><img onclick="changeImage(this)" src="../static{{data.0.9}}" width="70"></li>	<li><img onclick="changeImage(this)" src="../static{{data.0.10}}" width="70"></li>
+
+                          </ul>	
+                        </div>	
+                      </div>	
+                    </div>	
+                    <div class="col-md-6">
+                        <div class="p-3 right-side">	
+                          <div class="d-flex justify-content-between align-items-center">	
+                            <h3>{{data.0.1}}</h3>	<span class="heart"><i class='bx bx-heart'></i></span>
+                            </div>	<div class="mt-2 pr-3 content">	
+                              <p>{{data.0.5}}</div>
+                              <div class="price-availability-block clearfix">
+                                <div class="price">
+                                  <strong><span>INR</span>{{data.0.3}}</strong>
+                                  <em>INR<span>{{data.0.4}}</span></em>
+                                </div>
+                              
+                                <div class="ratings d-flex flex-row align-items-center">	
+                                  <div class="d-flex flex-row">	<i class='bx bxs-star' ></i>	
+                                    <i class='bx bxs-star' ></i>	<i class='bx bxs-star' ></i>
+                                      <i class='bx bxs-star' ></i>	<i class='bx bx-star' ></i>	</div>
+                                       <!--  <span>441 reviews</span> -->	</div>	<div class="mt-5">	
+                                        <br><br><br>
+                                        <!--   <span class="fw-bold">Color</span>	<div class="colors">	
+                                            <ul id="marker">	
+                                              <li id="marker-1"></li>
+                                                <li id="marker-2"></li>	<li id="marker-3"></li>	<li id="marker-4"></li>	<li id="marker-5"></li>
+                                                </ul>	</div>	</div> -->
+                   <form method="POST">
+                    {% csrf_token %}
+                  <div class="product-page-cart">
+                    <div class="product-quantity">
+                        <input id="product-quantity" name="qty" type="number" value="1" min="0" max="{{data.0.6}}">
+                        {% if data.0.6 == cn %}
+                        <p>Out Of stock </p>
+                        {% endif %}
+                    </div>
+                    <br><br><br>
+                    <div class="buttons d-flex flex-row mt-5 gap-3">	
+                      <button class="btn btn-primary">Buy Now</button> 
+                     
+                    <button class="btn btn-primary" type="submit">Add to cart</button>
+                  </div>
+                  <br><br>
+                  
+                <!-- <table style="width:100%;  height:200px; margin-bottom: 10px;" border="" cellpadding="10px" >                    
+                  <tr>
+                      <td rowspan="3">Details</td>
+                      <td><table>
+                        <tr>
+                          <td colspan="3">Description</td> 
+                      <td colspan="3" width="200px">{{data.0.5}}</td>
+                        </tr>
+                        <tr>
+                          <td colspan="3">Materials</td> 
+                      <td colspan="3" width="200px">{{data.0.5}}</td>
+                        </tr>
+                        <tr>
+                          <td colspan="3">Description</td> 
+                      <td colspan="3" width="200px">{{data.0.5}}</td>
+                        </tr>
+
+                      </table></td>
+                        -->
+                  </tr>
+                  
+                  <!-- <tr>
+                      <td rowspan="3">6</td>
+                      <td colspan="3" width="200px">10</td>
+                  </tr> -->
+                  
+             <!--  </table>  -->
+                    
+                </form>
+                              <!--   <div class="search-option"> --><!-- 	<i class='bx bx-search-alt-2 first-search'></i>	<div class="inputs">	
+                                                  <input type="text" name="">	</div>	 -->
+                <i class='bx bx-share-alt share'></i>	</div>	</div>	</div>	</div>	</div> </div>
+        
+          <!-- BEGIN CONTENT -->
+          <!-- <div class="col-md-9 col-sm-7">
+            <div class="product-page">
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="product-main-image">
+                    <img src="../static{{data.0.7}}" alt="" class="img-responsive" data-BigImgsrc="../static{{data.0.7}}">
+                  </div>
+                  <div class="product-other-images">
+                    <a href="../static{{data.0.8}}" class="fancybox-button" rel="photos-lib"><img alt="" src="../static{{data.0.8}}"></a>
+                    <a href="../static{{data.0.9}}" class="fancybox-button" rel="photos-lib"><img alt="" src="../static{{data.0.9}}"></a>
+                    <a href="../static{{data.0.10}}" class="fancybox-button" rel="photos-lib"><img alt="" src="../static{{data.0.10}}"></a>
+                  </div>
+                </div> -->
+              <!--   <div class="col-md-6 col-sm-6">
+                  <h1>{{data.0.1}}</h1>
+                  <div class="price-availability-block clearfix">
+                    <div class="price">
+                      <strong><span>$</span>{{data.0.3}}</strong>
+                      <em>$<span>{{data.0.4}}</span></em>
+                    </div>
+                    <div class="availability">
+                      Availability: <strong>In Stock</strong>
+                    </div>
+                  </div>
+                  <div class="description">
+                    <p>{{data.0.5}}</p>
+                  </div>  -->
+                <!--   <table style="width:100%;  height:200px; margin-bottom: 10px;" border="4px" cellpadding="10px" >                    
+                    <tr>
+                        <td rowspan="3">Description</td>
+                         <td colspan="3">Description</td> -->
+                      <!--   <td colspan="3" width="200px">{{data.0.5}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td rowspan="3">6</td>
+                        <td colspan="3" width="200px">10</td>
+                    </tr>
+                    
+                </table> --> 
+              
+                    
+               
+                  <!-- <form method="POST">
+                    {% csrf_token %}
+                  <div class="product-page-cart">
+                    <div class="product-quantity">
+                        <input id="product-quantity" name="qty" type="number" value="1" min="1" max="{{data.0.6}}">
+                    </div>
+                    
+                    <button class="btn btn-primary" type="submit">Add to cart</button>
+                  </div>
+                </form> -->
+                 <!--  <div class="review">
+                    <input type="range" value="4" step="0.25" id="backing4">
+                    <div class="rateit" data-rateit-backingfld="#backing4" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
+                    </div> -->
+                   <!--  <a href="javascript:;">7 reviews</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;">Write a review</a> -->
+                 <!--  </div>
+                  
+                </div> -->
+
+                
+                   
+                   <!--  <div class="tab-pane fade in active" id="Reviews"> -->
+                      <!--<p>There are no reviews for this product.</p>-->
+                     
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="sticker sticker-sale"></div>
+              </div>
+            </div>
+          </div>
+          <!-- END CONTENT -->
+        </div>
+        
+
+      
+      </div>
+    </div>
+
+  ]
+
+  
+
+    
+    <!-- BEGIN fast view of a product -->
+    <div id="product-pop-up" style="display: none; width: 700px;">
+            <div class="product-page product-pop-up">
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-3">
+                  <div class="product-main-image">
+                    <img src="../static/usr/assets/pages/img/products/model7.jpg" alt="" class="img-responsive">
+                  </div>
+                  <!-- <div class="product-other-images">
+                    <a href="javascript:;" class="active"><img alt="Berry Lace Dress" src="../static/usr/assets/pages/img/products/model3.jpg"></a>
+                    <a href="javascript:;"><img alt="Berry Lace Dress" src="../static/usr/assets/pages/img/products/model4.jpg"></a>
+                    <a href="javascript:;"><img alt="Berry Lace Dress" src="../static/usr/assets/pages/img/products/model5.jpg"></a>
+                  </div> -->
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-9">
+                  <h2></h2>
+                  <div class="price-availability-block clearfix">
+                    <div class="price">
+                      <!-- <strong><span>$</span>47.00</strong>
+                      <em>$<span>62.00</span></em>
+                    </div> -->
+                    <div class="availability">
+                      Availability: <strong>In Stock</strong>
+                    </div>
+                  </div>
+                  <div class="description">
+                    
+                  </div>
+                 
+                      <input name="qty" type="number"  min="1" max="{{data.0.6}}" >
+                    </div>
+                  </div>
+                  <div class="product-page-cart">
+                    
+                    <div class="product-quantity">
+                        
+                    </div>
+                    <button class="btn btn-primary" type="submit">Add to cart</button>
+                    <a href="shop-item.html" class="btn btn-default">More details</a>
+                  </div>
+                </div>
+
+                <div class="sticker sticker-sale"></div>
+              </div>
+            </div>
+    </div>
+    <!-- END fast view of a product -->
+
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="../static/usr/assets/plugins/respond.min.js"></script>  
+    <![endif]-->  
+    <script src="../static/usr/assets/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="../static/usr/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="../static/usr/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
+    <script src="../static/usr/assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+    <script src="../static/usr/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script src="../static/usr/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+    <script src="../static/usr/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+    <script src='../static/usr/assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
+    <script src="../static/usr/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
+    <script src="../static/usr/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="../static/usr/assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
+
+    <script src="../static/usr/assets/corporate/scripts/layout.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            Layout.init();    
+            Layout.initOWL();
+            Layout.initTwitter();
+            Layout.initImageZoom();
+            Layout.initTouchspin();
+            Layout.initUniform();
+        });
+    </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+
+    <script>
+      function changeImage(element) {
+
+var main_prodcut_image = document.getElementById('main_product_image');
+main_prodcut_image.src = element.src;
+
+
+}
+    </script>
+
+    
+      
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--boostrap js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+      crossorigin="anonymous">
+    </script>
+
+
+    
+</body>
+<!-- END BODY -->
+</html>

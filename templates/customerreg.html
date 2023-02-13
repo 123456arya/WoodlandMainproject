@@ -121,41 +121,53 @@
           <form action="" method="POST">
             {% csrf_token %}
             <div>
-              <input type="text" name="t1" pattern="[A-Za-z]+" required placeholder="First Name" />
+              <input type="text" name="t1" pattern="[A-Za-z]+" onchange="textValidator(this)" required="" placeholder="First Name" alert="Only Alphabets are Allowed" />
+              <span class="error-msg" id="error"></span>
             </div>
             <div>
-              <input type="text" name="t2" pattern="[A-Za-z ]+" required placeholder="Last Name" />
+              <input type="text" name="t2" pattern="[A-Za-z ]+" onchange="lastValidator(this)" required="" placeholder="Last Name" alert="Only Alphabets are Allowed" />
+              <span class="error-msg" id="error_last"></span>
             </div>
             <div>
-              <input type="text" name="t3" placeholder="House Name" />
+              <input type="text" name="t3" placeholder="House Name" onchange="houseValidator(this)" alert="Only Alphabets are Allowed" />
+              <span class="error-msg" id="error_address"></span>
             </div>
             <div>
-              <input type="text" name="t4" placeholder="Street" />
+              <input type="text" name="t4" onchange="streetValidator(this)" placeholder="Street" alert="Only Alphabets are Allowed"  />
+              <span class="error-msg" id="error_street"></span>
             </div>
             <div>
-              <input type="text" name="t5" pattern="[A-Za-z]+" required placeholder="District" />
+              <input type="text" name="t5" pattern="[A-Za-z]+"  onchange="districtValidator(this)" required placeholder="District" alert="Only Alphabets are Allowed" />
+              <span class="error-msg" id="error_district"></span>
             </div>
             <div>
-              <input type="text" name="t6" pattern="[A-Za-z]+" required placeholder="State" />
+              <input type="text" name="t6" pattern="[A-Za-z]+" onchange="stateValidator(this)"required placeholder="State" alert="Only Alphabets are Allowed" />
+              <span class="error-msg" id="error_state"></span>
             </div>
             <div>
-              <input type="text" patern="[0-9]{6}" required name="t7" maxlength="6" placeholder="Pin Code" />
+              <input type="text" pattern="[0-9]{6}" required name="t7" maxlength="6" onchange="pincodeValidator(this)" placeholder="Pin Code" />
+              <span class="error-msg" id="error_pincode"></span>
             </div>
 
             <div>
-              <input type="email" name="t8" required placeholder="Email" />
+              <input type="email" name="t8" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" onchange="emailValidator(this)" required placeholder="Email"  alert="Error Email"/>
+              <span class="error-msg" id="error_email"></span>
             </div>
             <div>
-              <input type="text" pattern="[789][0-9]{9}" maxlength="10" required name="t9" placeholder="Mobile" />
+              <input type="text" pattern="[789][0-9]{9}" maxlength="10" required name="t9" onchange="mobileValidator(this)" placeholder="Mobile" />
+              <span class="error-msg" id="error_mobile"></span>
             </div>
             <div>
-              <input type="text" name="t10" required pattern="[789][0-9]{9}" maxlength="10" placeholder="Alternate No." />
+              <input type="text" name="t10" required pattern="[789][0-9]{9}" maxlength="10" onchange="alternateValidator(this)" placeholder="Alternate No." />
+              <span class="error-msg" id="error_alternative"></span>
             </div>
             <div>
-              <input type="text" name="t11" required placeholder="Username" />
+              <input type="text" name="t11" onchange="usernameValidator(this)" required placeholder="Username" />
+              <span class="error-msg" id="error_username"></span>
             </div>
             <div>
-              <input type="password" required name="t12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" />
+              <input type="password" required name="t12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onchange="passwordValidator(this)" placeholder="Password" />
+              <span class="error-msg" id="error_password"></span>
             </div>
 
          
@@ -187,7 +199,179 @@
 
 
 
+  <script>
+    function textValidator(input) {
+      var re = /^[ a-zA-Z ]+$/;
+      if (!re.test(input.value)) {
+        document.getElementById("error").innerHTML = "Only Alphabets are Allowed";
+        document.getElementById("error").style.color = "red";
+        return false;
+      }
+      else {
+        document.getElementById("error").innerHTML = "";
+        document.getElementById("error").style.color = "";
+      }
+      return true;
+    }
+    function lastValidator(input) {
+		var re = /^[ a-zA-Z ]+$/;
+		if (!re.test(input.value)) {
+			document.getElementById("error_last").innerHTML = "Only Alphabets are Allowed";
+			document.getElementById("error_last").style.color = "red";
+			return false;
+		}
+		else {
+			document.getElementById("error_last").innerHTML = "";
+			document.getElementById("error_last").style.color = "";
+		}
+		return true;
+	}
+  function houseValidator(input) {
+		var re = /^[ a-zA-Z ]+$/;
+		if (!re.test(input.value)) {
+			document.getElementById("error_address").innerHTML = "Only Alphabets are Allowed";
+			document.getElementById("error_address").style.color = "red";
+			return false;
+		}
+		else {
+			document.getElementById("error_address").innerHTML = "";
+			document.getElementById("error_address").style.color = "";
+		}
+		return true;
+  }
+  function streetValidator(input) {
+		var re = /^[ a-zA-Z ]+$/;
+		if (!re.test(input.value)) {
+			document.getElementById("error_street").innerHTML = "Only Alphabets are Allowed";
+			document.getElementById("error_street").style.color = "red";
+			return false;
+		}
+		else {
+			document.getElementById("error_street").innerHTML = "";
+			document.getElementById("error_street").style.color = "";
+		}
+		return true;
+  }
+  function districtValidator(input) {
+		var re = /^[ a-zA-Z ]+$/;
+		if (!re.test(input.value)) {
+			document.getElementById("error_district").innerHTML = "Only Alphabets are Allowed";
+			document.getElementById("error_district").style.color = "red";
+			return false;
+		}
+		else {
+			document.getElementById("error_district").innerHTML = "";
+			document.getElementById("error_district").style.color = "";
+		}
+		return true;
+  }
+  function stateValidator(input) {
+		var re = /^[ a-zA-Z ]+$/;
+		if (!re.test(input.value)) {
+			document.getElementById("error_state").innerHTML = "Only Alphabets are Allowed";
+			document.getElementById("error_state").style.color = "red";
+			return false;
+		}
+		else {
+			document.getElementById("error_state").innerHTML = "";
+			document.getElementById("error_state").style.color = "";
+		}
+		return true;
+  }
+  function districtValidator(input) {
+		var re = /^[ a-zA-Z ]+$/;
+		if (!re.test(input.value)) {
+			document.getElementById("error_district").innerHTML = "Only Alphabets are Allowed";
+			document.getElementById("error_district").style.color = "red";
+			return false;
+		}
+		else {
+			document.getElementById("error_district").innerHTML = "";
+			document.getElementById("error_district").style.color = "";
+		}
+		return true;
+  }
+  function pincodeValidator(input) {
+		var re = /^[0-9]{6}$/
+		if (!re.test(input.value)) {
+			document.getElementById("error_pincode").innerHTML = "Error pincode ";
+			document.getElementById("error_pincode").style.color = "red";
+			return false;
+		}
+		else {
+			document.getElementById("error_pincode").innerHTML = "";
+			document.getElementById("error_pincode").style.color = "";
+		}
+		return true;
+	}
+  function emailValidator(input) {
+		var re = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+		if (!re.test(input.value)) {
+			document.getElementById("error_email").innerHTML = "message";
+			document.getElementById("error_email").style.color = "red";
+			return false;
+		}
+		else {
+			document.getElementById("error_email").innerHTML = "";
+			document.getElementById("error_email").style.color = "";
+		}
+		return true;
+	}
+  function mobileValidator(input) {
+		var re = /^\+?[1-9][0-9]{7,14}$/;
+		if (!re.test(input.value)) {
+			document.getElementById("error_mobile").innerHTML = "message";
+			document.getElementById("error_mobile").style.color = "red";
+			return false;
+		}
+		else {
+			document.getElementById("error_mobile").innerHTML = "";
+			document.getElementById("error_mobile").style.color = "";
+		}
+		return true;
+	}
   
+  function alternateValidator(input) {
+		var re = /^\+?[1-9][0-9]{7,14}$/;
+		if (!re.test(input.value)) {
+			document.getElementById("error_alternative").innerHTML = "message";
+			document.getElementById("error_alternative").style.color = "red";
+			return false;
+		}
+		else {
+			document.getElementById("error_alternative").innerHTML = "";
+			document.getElementById("error_alternative").style.color = "";
+		}
+		return true;
+	}
+  function usernameValidator(input) {
+		var re = /^[ a-zA-Z ]+$/;
+		if (!re.test(input.value)) {
+			document.getElementById("error_username").innerHTML = "Only Alphabets are Allowed";
+			document.getElementById("error_username").style.color = "red";
+			return false;
+		}
+		else {
+			document.getElementById("error_username").innerHTML = "";
+			document.getElementById("error_username").style.color = "";
+		}
+		return true;
+	}
+  function passwordValidator(input) {
+		var re = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$/;
+		if (!re.test(input.value)) {
+			document.getElementById("error_password").innerHTML = "message";
+			document.getElementById("error_password").style.color = "red";
+			return false;
+		}
+		else {
+			document.getElementById("error_password").innerHTML = "";
+			document.getElementById("error_password").style.color = "";
+		}
+		return true;
+	}z
+
+    </script>
 
   <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="../static/js/bootstrap.js"></script>

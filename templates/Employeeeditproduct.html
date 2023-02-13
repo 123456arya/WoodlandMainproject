@@ -1,0 +1,21 @@
+{% extends 'Employeepage.Html' %}
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<table class="table" cellpadding="10px" cellspacing="10px" width="100%" border="2">
+   <tr>
+    <th>ProductName</th>
+    <th>{{data.0.0}}</th>
+   </tr>
+<tr>
+   <th>Qty</th>
+   <td><input type="text" name="t1" id=""></td>
+</tr>
+<tr>
+    <tr>
+        <td><input type="submit" value="Submit"></td>
+    </tr>
+</tr>
+</table>
+</form>
+{% endblock %}

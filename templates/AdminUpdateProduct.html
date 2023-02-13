@@ -1,0 +1,40 @@
+{% extends 'AdminPage.html' %}
+{% block body %}
+<form method="POST" enctype="multipart/form-data">
+   {% csrf_token %} 
+   {% for d in data %}
+   <table align="center">
+    
+    
+    
+    <tr>
+    <td>
+        <label>New Price</label></td>
+        <td><input type="text" name="price" pattern="[0-9]+" value="{{d.7}}" class="textbox"></td>
+     </tr>
+     <tr>
+        <td><label>Description</label></td>
+        <td><input type="file" name="file" class="textbox"></td>
+    </tr>
+     <tr>
+        <td><label>New Quantity</label></td>
+        <td><input type="text" name="qty" value="{{d.8}}" class="textbox"></td>
+     </tr>
+     <tr>
+        <td><label>Image</label></td>
+        <td><input type="file" name="file" class="textbox"></td>
+    </tr>
+
+  <tr>
+   <td>
+       <label>Date</label></td>
+       <td><input type="text" name="date" value="{{cdate}}" class="textbox"></td>
+    </tr>
+     {% endfor %}
+<tr>
+<td>
+    <input type="submit" value="Add" name="Add" class="but" style="background-color: rgb(39, 36, 77); color:aliceblue";/></td></tr>
+</table>
+
+</form>
+{% endblock %}

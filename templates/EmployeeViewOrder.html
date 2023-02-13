@@ -2,13 +2,16 @@
 {% block content %}
 <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-<table class="table">
+    <br>
+<table class="table" cellpadding="10px" table-border="2" cellspacing="10px" style="width:100%;font-size: 200%;" >
     <tr>
         <th>ID</th>
         <th>Productname</th>
         <th>CustomerName</th>
         <th>Image</th>
         <th>Status</th>
+        <th>Action</th>
+        <th>Action</th>
     </tr>
     {% for d in data %}
     <tr>
