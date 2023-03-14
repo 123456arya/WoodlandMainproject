@@ -272,33 +272,27 @@
 <ul class="list">
 <li>
 <a class="active" href="#">
-<span>Category</span> : {{d.0}}</a>
+<span></span> : {{d.0}}</a>
 </li>
 
 <form method="POST">
-                    {% csrf_token %}
-                  <div class="product-page-cart">
-                    <div class="product-quantity" >
-                        <input id="product-quantity" name="qty" type="number"  value="1" min="0" max="{{data.0.6}}">
-                        {% if data.0.6 == cn %}
-                        <p>Out Of stock </p>
-                        {% endif %}
-                    </div>
-
-                    <p>
-  Description:&nbsp;  {{data.0.5}}
-</p>
-<h2>{{data.0.14}}</h2>
-<tr>
-            <th scope="col">Product Details</th>
-            <br><br>
-           
+  {% csrf_token %}
+    <div class="product-page-cart">
+        <div class="product-quantity" >
+            <span>Quantity:</span>
+         <input id="product-quantity" name="qty" type="number"  value="1" min="0" max="{{data.0.6}}">
+         {% if data.0.6 == cn %}
+          <p>Out Of stock </p>
+         {% endif %}
+        </div>
+        <p>
+         Description:&nbsp;  {{data.0.5}}
+        </p>
+        <tr>
+         <th scope="col">Product Details</th>
+         <br><br>
         </tr>
-<table >
-   
-    <thead>
-       
-    </thead>
+    <table>
     <tbody>
         <tr>
             <th scope="row">Material</th>
@@ -313,18 +307,16 @@
 
 
 <br><br>
-                    <input class="btn btn-primary" name="sub" type="submit" value="Add to cart" />
-   
+<input class="btn btn-primary" name="sub" type="submit" value="Add to cart" />
+<button class="btn btn-primary"><span class="item_price" style="margin-bottom: 0px;"><a href="/viewer?id={{d.0}}">3DView</a></span></button>
+</div>  
 </form>
 </ul>
 
 <div class="card_area">
-  
-    <div class="add_to_cart">
-     
-    </div>
-   
-    </div>
+  <div class="add_to_cart">
+     </div>
+   </div>
     </div>
     </div>
    </div>

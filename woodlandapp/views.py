@@ -698,3 +698,9 @@ def visual(request):
     data=c.fetchall() 
     print(data)
     return render (request,"visual.html",{"data":data})
+
+
+
+def viewer(request):
+   
+    return render (request,"viewer.html")
