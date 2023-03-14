@@ -1,10 +1,10 @@
 {% extends 'usrhome.html' %}
 {% block hommenu %}
-<link href="/static/usr/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="../static/usr/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary JavaScript plugins) -->
-<script type='text/javascript' src="/static/usr/js/jquery-1.11.1.min.js"></script>
+<script type='text/javascript' src="../static/usr/js/jquery-1.11.1.min.js"></script>
 <!-- Custom Theme files -->
-<link href="/static/usr/css/style.css" rel='stylesheet' type='text/css' />
+<link href="../static/usr/css/style.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,29 +16,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
 <!-- start menu -->
 <link href="/static/usr/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="/static/usr/js/megamenu.js"></script>
+<script type="text/javascript" src="../static/usr/js/megamenu.js"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
-<script src="/static/usr/js/menu_jquery.js"></script>
-<script src="/static/usr/js/simpleCart.min.js"> </script>
+<script src="../static/usr/js/menu_jquery.js"></script>
+<script src="../static/usr/js/simpleCart.min.js"> </script>
 <section id="main-content" style="background-color: white;">
     
     <div class="container">
         <div class="women_main">
             <!-- start sidebar -->
             <div class="col-md-3 s-d">  
-            <div class="w_sidebar">
-            <div class="w_nav1">
-                <h4>FILTER BY</h4>
-                <ul>
-                    {% for d in subcat %}
-                    <li><a href="/usrhommenu/?id={{d.0}}">{{d.2}}</a></li>
-                    {% endfor %}
-                </ul>	
+                <div class="w_sidebar">
+                <div class="w_nav1">
+                    <h4>FILTER BY</h4>
+                    <ul>
+                        {% for d in subcat %}
+                        <li><a href="/usrhommenu/?id={{d.0}}">{{d.2}}</a></li>
+                        {% endfor %}
+                    </ul>	
+                </div>
+                
+                
             </div>
-            
-            
-        </div>
-         </div>
+             </div>
         <!-- start content -->
         <div class="col-md-9 w_content">
             <div class="grids_of_4" >

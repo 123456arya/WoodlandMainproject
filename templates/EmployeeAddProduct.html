@@ -1,245 +1,287 @@
 {% extends 'Employeepage.Html' %}
-{% block content %}     
-<form action="" method="post" enctype="multipart/form-data">
+{% block content %}  
+<!-- <form action="" method="post">-->
     {% csrf_token %}
-<table class="table" cellpadding="10px" cellspacing="10px" width="100%" border="2" style="width:100%;font-size: 150%;">
-    <tr>
-        <td colspan="2"><h1>Add Product</h1></td>
-    </tr>
-    {% if msg %}
-        <script>alert('{{msg}}')</script>
-    {% endif %}
+    <nav aria-label="breadcrumb">
+        <!-- <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="admin_index.php?dashboard">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">House</li>
+        </ol> -->
+    </nav>
+    
+    <div class="col-lg-9">
+        <div class="card shadow mb-4">
+    
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Add Product</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                   <!--  <tr>
+                        <td colspan="2"><h1>Add Product</h1></td>
+                    </tr> -->
+                    {% if msg %}
+                        <script>alert('{{msg}}')</script>
+                        
+                    {% endif %}
+                   
+                    <tr><th> Name</th><td><input type="text"    name="t1" id="" class="form-control" id="inputName" title="Alphabets only" 
+                        pattern="[a-z A-Z]+" onchange="textValidator(this)" placeholder="Name" alert="Only Alhabets are Allowed"
+                        required=""> 
+                        
+                        <span class="error-msg" id="error"></span>
+                    </td></tr>
+                    <!--<tr><th>Category Name</th><td><select name="t2">
+                        <option value="0">---select---</option>
+                        {% for d in data %}
+                        <option value="{{d.0}}">{{d.1}}</option>
+                        {% endfor %}
+                    </select></td></tr>-->
+                    <tr><th>Sub Category Name</th><td><br>
+                        <select name="t3">
+                            <option value="0">SELECT</option>
+                            {% for d in data1 %}
+                            <option value="{{d.0}}">{{d.2}}</option>
+                            {% endfor %}
+                        </select>
+                    </td></tr>
+                    <br>
+                    <tr><th>Price Not </th><td><input type="number" id="pricenot"  class="form-control"  pattern="[789]{0-9}{9}"  minlength="10" maxlength="10"
+                        onchange="pricenotValidator(this)"   name="t5" placeholder="Price not" required="">
+                            <span class="error-msg" id="error_pricenot"></span>
+                
+                    </td></tr>
+                    <tr><th>Price </th><td><input type="number"  id="price"   class="form-control"  pattern="[789]{0-9}{9}"  minlength="10" maxlength="10"
+                        onchange="priceValidator(this)" name="t4" placeholder="price" required="">
+                        <span class="error-msg" id="error_price"></span>
+                    </td></tr>
+                    <tr><th>Quantity </th><td><input type="text" class="form-control"  name="t15" id="inputName"  pattern="[789]{0-9}{9}" onchange="QtyValidator(this)" placeholder="Quantity" required="">
+                        <span class="error-msg" id="error_qty"></span>
+                    </td></tr>
+                    <tr><th> Description </th><td><input type="text" class="form-control" name="t8" id=" placeholder="Description"  required="">
+                   
+                    </td></tr>
+                    <tr><th>Material </th><td><input type="text" class="form-control"  name="t16" id="inputName"  pattern="[a-z A-Z]+" onchange="materialValidator(this)" placeholder="Material" required="">
+                        <span class="error-msg" id="error_material"></span>
+                    </td></tr>
+                    <tr><th>Brand </th><td><input type="text" class="form-control"  name="t17" id="inputName"  pattern="[a-z A-Z]+" onchange="materialValidator(this)" placeholder="Material" required="">
+                        <span class="error-msg" id="error_material"></span>
+                    </td></tr><br>
+                    <tr><th>Image1 </th><td><input type="file" name="t9" id="file" onchange="return fileValidation()">
+                        <span id="error_img1"></span></td></tr>
+                    <tr><th>Image2 </th><td><input type="file" name="t10" id="file" onchange="return fileValidation()">
+                        <span id="error_img2"></span></td></tr><br><br>
+                    <tr><th>Image3 </th><td><input type="file" name="t11" id="file" onchange="return fileValidation()">
+                        <span id="error_img3"></span></td></tr>
+                    <tr><th>Image4 </th><td><input type="file" name="t12" id="file" onchange="return fileValidation()">
+                        <span id="error_img4"></span></td></tr><br><br>
+                    <tr><th>Image5 </th><td><input type="file" name="t13" id="file" onchange="return fileValidation()">
+                        <span id="error_img5"></span></td></tr><br><br>
+                    <tr>
+                        <td colspan="2"><input type="submit" name="b1" value="Add Product"></td>
+                    </tr>
+                    
+                    </tr>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+                 
+
+
+    <script>
+        function textValidator(input) {
+           var re = /^[ a-z A-Z ]+$/;
+           if (!re.test(input.value)) {
+               document.getElementById("error").innerHTML = "Only Alphabets are Allowed";
+               document.getElementById("error").style.color = "red";
+               return false;
+           }
+           else {
+               document.getElementById("error").innerHTML = "";
+               document.getElementById("error").style.color = "";
+           }
+           return true;
+       }
+       function pricenotValidator(input) {
+           var re = /^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/;
+           if (!re.test(input.value)) {
+               document.getElementById("error_pricenot").innerHTML = "Enter valid number";
+               document.getElementById("error_pricenot").style.color = "red";
+               return false;
+           }
+           else {
+               document.getElementById("error_pricenot").innerHTML = "";
+               document.getElementById("error_pricenot").style.color = "";
+           }
+           return true;
+       }
+       function priceValidator(input) {
+           var re = /^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/;
+           if (!re.test(input.value)) {
+               document.getElementById("error_price").innerHTML = "Enter valid number";
+               document.getElementById("error_price").style.color = "red";
+               return false;
+           }
+           else {
+               document.getElementById("error_price").innerHTML = "";
+               document.getElementById("error_price").style.color = "";
+           }
+           return true;
+       }
+       function QtyValidator(input) {
+           var re = /^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2}0-9.-_)?$/;
+           if (!re.test(input.value)) {
+               document.getElementById("error_qty").innerHTML = "Enter valid number";
+               document.getElementById("error_qty").style.color = "red";
+               return false;
+           }
+           else {
+               document.getElementById("error_qty").innerHTML = "";
+               document.getElementById("error_qty").style.color = "";
+           }
+           return true;
+       }
+      /*  function descValidator(input) {
+           var re =/^[a-zA-Z\s]*$/;;
+           if (!re.test(input.value)) {
+               document.getElementById("error_desc").innerHTML = "";
+               document.getElementById("error_desc").style.color = "red";
+               return false;
+           }
+           else {
+               document.getElementById("error_desc").innerHTML = "";
+               document.getElementById("error_desc").style.color = "";
+           }
+           return true;
+       }
+        */
    
-    <tr><th> Name</th><td><input type="text"   class="form-control" name="t1" id="" 
-		required="">
-		<span class="error-msg" id="error_text"></span>
-	</td></tr>
-    <!--<tr><th>Category Name</th><td><select name="t2">
-        <option value="0">---select---</option>
-        {% for d in data %}
-        <option value="{{d.0}}">{{d.1}}</option>
-        {% endfor %}
-    </select></td></tr>-->
-    <tr><th>Sub Category Name</th><td>
-        <select name="t3">
-            <option value="0">SELECT</option>
-            {% for d in data1 %}
-            <option value="{{d.0}}">{{d.2}}</option>
-            {% endfor %}
-        </select>
-    </td></tr>
-    <tr><th>Price Not </th><td><input type="number" id="pricenot"  class="form-control"  pattern="[789]{0-9}{9}"  minlength="10" maxlength="10"
-		onchange="pricenotValidator(this)"   name="t5" placeholder="Price not" required="">
-			<span class="error-msg" id="error_pricenot"></span>
-
-    </td></tr>
-    <tr><th>Price </th><td><input type="number"  id="price"   class="form-control"  pattern="[789]{0-9}{9}"  minlength="10" maxlength="10"
-		onchange="priceValidator(this)" name="t4" placeholder="price" required="">
-        <span class="error-msg" id="error_price"></span>
-    </td></tr>
-    <tr><th>Quantity </th><td><input type="text" class="form-control"  name="t15" id="inputName"  pattern="[789]{0-9}{9}" onchange="QtyValidator(this)" placeholder="Quantity" required="">
-        <span class="error-msg" id="error_qty"></span>
-    </td></tr>
-    <tr><th> Description </th><td><input type="text" class="form-control" name="t8" id="" onchange="descValidator(this)"  title="Alphabets only" placeholder="Description" alert="Only Alphabets are Allowed" required="">
-        <span class="error-msg" id="error_desc"></span>
-    </td></tr>
-    <tr><th>Image1 </th><td><input type="file" name="t9" id="file" onchange="return fileValidation()">
-		<span id="error_img1"></span></td></tr>
-    <tr><th>Image2 </th><td><input type="file" name="t10" id="file" onchange="return fileValidation()">
-		<span id="error_img2"></span></td></tr>
-    <tr><th>Image3 </th><td><input type="file" name="t11" id="file" onchange="return fileValidation()">
-		<span id="error_img3"></span></td></tr>
-    <tr><th>Image4 </th><td><input type="file" name="t12" id="file" onchange="return fileValidation()">
-		<span id="error_img4"></span></td></tr>
-    <tr><th>Image5 </th><td><input type="file" name="t13" id="file" onchange="return fileValidation()">
-		<span id="error_img5"></span></td></tr>
-    <tr>
-        <td colspan="2"><input type="submit" name="b1" value="Add Product"></td>
-    </tr>
-    
-    </tr>
-</table>
-</form>
-
-
-
-
-
-<script>
-	/* function textValidator(input) {
-		var re = /^[ a-zA-Z ]+$/;
-		if (!re.test(input.value)) {
-			document.getElementById("error_text").innerHTML = "";
-			document.getElementById("error_text").style.color = "red";
-			return false;
-		}
-		else {
-			document.getElementById("error_text").innerHTML = "";
-			document.getElementById("error_text").style.color = "";
-		}
-		return true;
-	} */
-    function pricenotValidator(input) {
-		var re = /^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/;
-		if (!re.test(input.value)) {
-			document.getElementById("error_pricenot").innerHTML = "Enter valid number";
-			document.getElementById("error_pricenot").style.color = "red";
-			return false;
-		}
-		else {
-			document.getElementById("error_pricenot").innerHTML = "";
-			document.getElementById("error_pricenot").style.color = "";
-		}
-		return true;
-	}
-	function priceValidator(input) {
-		var re = /^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/;
-		if (!re.test(input.value)) {
-			document.getElementById("error_price").innerHTML = "Enter valid number";
-			document.getElementById("error_price").style.color = "red";
-			return false;
-		}
-		else {
-			document.getElementById("error_price").innerHTML = "";
-			document.getElementById("error_price").style.color = "";
-		}
-		return true;
-	}
-    function QtyValidator(input) {
-		var re = /^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2}0-9.-_)?$/;
-		if (!re.test(input.value)) {
-			document.getElementById("error_qty").innerHTML = "Enter valid number";
-			document.getElementById("error_qty").style.color = "red";
-			return false;
-		}
-		else {
-			document.getElementById("error_qty").innerHTML = "";
-			document.getElementById("error_qty").style.color = "";
-		}
-		return true;
-	}
-    /* function descValidator(input) {
-		var re =/^[a-zA-Z\s]*$/;;
-		if (!re.test(input.value)) {
-			document.getElementById("error_desc").innerHTML = "";
-			document.getElementById("error_desc").style.color = "red";
-			return false;
-		}
-		else {
-			document.getElementById("error_desc").innerHTML = "";
-			document.getElementById("error_desc").style.color = "";
-		}
-		return true;
-	} */
-    
-
-	     
+            
+           
+       function fileValidation(){
+       var fileInput = document.getElementById('file');
+       var filePath = fileInput.value;
+       var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.webp)$/i;
+       if(!allowedExtensions.exec(filePath)){
+           document.getElementById("error_img1").innerHTML="Please upload file having extensions .jpeg/.jpg/.png/.gif only.";
+           document.getElementById("error_img1").style.color = "red";
+           fileInput.value = '';
+           return false;
+       }else{
+           //Image preview
+           if (fileInput.files && fileInput.files[0]) {
+               var reader = new FileReader();
+               reader.onload = function(e) {
+                   document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
+               };
+               reader.readAsDataURL(fileInput.files[0]);
+           }
+       }
+   }
         
-    function fileValidation(){
-    var fileInput = document.getElementById('file');
-    var filePath = fileInput.value;
-    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.webp)$/i;
-    if(!allowedExtensions.exec(filePath)){
-        document.getElementById("error_img1").innerHTML="Please upload file having extensions .jpeg/.jpg/.png/.gif only.";
-        document.getElementById("error_img1").style.color = "red";
-        fileInput.value = '';
-        return false;
-    }else{
-        //Image preview
-        if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-}
-     
+           
+   function fileValidation(){
+       var fileInput = document.getElementById('file');
+       var filePath = fileInput.value;
+       var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.webp)$/i;
+       if(!allowedExtensions.exec(filePath)){
+           document.getElementById("error_img2").innerHTML="Please upload file having extensions .jpeg/.jpg/.png/.gif only.";
+           document.getElementById("error_img2").style.color = "red";
+           fileInput.value = '';
+           return false;
+       }else{
+           //Image preview
+           if (fileInput.files && fileInput.files[0]) {
+               var reader = new FileReader();
+               reader.onload = function(e) {
+                   document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
+               };
+               reader.readAsDataURL(fileInput.files[0]);
+           }
+       }
+   }
         
-function fileValidation(){
-    var fileInput = document.getElementById('file');
-    var filePath = fileInput.value;
-    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.webp)$/i;
-    if(!allowedExtensions.exec(filePath)){
-        document.getElementById("error_img2").innerHTML="Please upload file having extensions .jpeg/.jpg/.png/.gif only.";
-        document.getElementById("error_img2").style.color = "red";
-        fileInput.value = '';
-        return false;
-    }else{
-        //Image preview
-        if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-}
-     
-        
-function fileValidation(){
-    var fileInput = document.getElementById('file');
-    var filePath = fileInput.value;
-    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.webp)$/i;
-    if(!allowedExtensions.exec(filePath)){
-        document.getElementById("error_img3").innerHTML="Please upload file having extensions .jpeg/.jpg/.png/.gif only.";
-        document.getElementById("error_img3").style.color = "red";
-        fileInput.value = '';
-        return false;
-    }else{
-        //Image preview
-        if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-}
-       
-function fileValidation(){
-    var fileInput = document.getElementById('file');
-    var filePath = fileInput.value;
-    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.webp)$/i;
-    if(!allowedExtensions.exec(filePath)){
-        document.getElementById("error_img4").innerHTML="Please upload file having extensions .jpeg/.jpg/.png/.gif only.";
-        document.getElementById("error_img4").style.color = "red";
-        fileInput.value = '';
-        return false;
-    }else{
-        //Image preview
-        if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-}       
-function fileValidation(){
-    var fileInput = document.getElementById('file');
-    var filePath = fileInput.value;
-    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.webp)$/i;
-    if(!allowedExtensions.exec(filePath)){
-        document.getElementById("error_img5").innerHTML="Please upload file having extensions .jpeg/.jpg/.png/.gif only.";
-        document.getElementById("error_img5").style.color = "red";
-        fileInput.value = '';
-        return false;
-    }else{
-        //Image preview
-        if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-}
+           
+   function fileValidation(){
+       var fileInput = document.getElementById('file');
+       var filePath = fileInput.value;
+       var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.webp)$/i;
+       if(!allowedExtensions.exec(filePath)){
+           document.getElementById("error_img3").innerHTML="Please upload file having extensions .jpeg/.jpg/.png/.gif only.";
+           document.getElementById("error_img3").style.color = "red";
+           fileInput.value = '';
+           return false;
+       }else{
+           //Image preview
+           if (fileInput.files && fileInput.files[0]) {
+               var reader = new FileReader();
+               reader.onload = function(e) {
+                   document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
+               };
+               reader.readAsDataURL(fileInput.files[0]);
+           }
+       }
+   }
+          
+   function fileValidation(){
+       var fileInput = document.getElementById('file');
+       var filePath = fileInput.value;
+       var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.webp)$/i;
+       if(!allowedExtensions.exec(filePath)){
+           document.getElementById("error_img4").innerHTML="Please upload file having extensions .jpeg/.jpg/.png/.gif only.";
+           document.getElementById("error_img4").style.color = "red";
+           fileInput.value = '';
+           return false;
+       }else{
+           //Image preview
+           if (fileInput.files && fileInput.files[0]) {
+               var reader = new FileReader();
+               reader.onload = function(e) {
+                   document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
+               };
+               reader.readAsDataURL(fileInput.files[0]);
+           }
+       }
+   }       
+   function fileValidation(){
+       var fileInput = document.getElementById('file');
+       var filePath = fileInput.value;
+       var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.webp)$/i;
+       if(!allowedExtensions.exec(filePath)){
+           document.getElementById("error_img5").innerHTML="Please upload file having extensions .jpeg/.jpg/.png/.gif only.";
+           document.getElementById("error_img5").style.color = "red";
+           fileInput.value = '';
+           return false;
+       }else{
+           //Image preview
+           if (fileInput.files && fileInput.files[0]) {
+               var reader = new FileReader();
+               reader.onload = function(e) {
+                   document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
+               };
+               reader.readAsDataURL(fileInput.files[0]);
+           }
+       }
+   }
+   
+   function materialValidator(input) {
+           var re = /^[ a-z A-Z ]+$/;
+           if (!re.test(input.value)) {
+               document.getElementById("error").innerHTML = "Only Alphabets are Allowed";
+               document.getElementById("error").style.color = "red";
+               return false;
+           }
+           else {
+               document.getElementById("error").innerHTML = "";
+               document.getElementById("error").style.color = "";
+           }
+           return true;
+       }
+       </script>
+   {% endblock %}
 
-    </script>
-{% endblock %}
+
+

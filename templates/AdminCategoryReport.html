@@ -1,0 +1,76 @@
+{% extends 'Adminpage.Html' %}
+{% block content %}
+<div class="container">
+   
+       
+            <form action="" method="post">
+                {% csrf_token %}
+            
+                <div class="col-lg-9">
+                    <div class="card shadow mb-4">
+                
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Customer</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                <div style="display:flex; width:100vh;padding: 40px;" >
+                    <div class="row" style=" display: flex;width: 100%;" >
+       
+        
+
+        <div id="printableArea">
+            <table id="example" class="table table-bordered" >
+        <thead>
+            <tr>
+                <th>sl.no</th>
+                <th>Category</th>
+                <th>Total Qty</th>
+                <th>Total Price</th> 
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for d in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{d.0}}</td>
+                <td>{{d.1}}</td>
+                <td>{{d.2}}</td>
+            </tr>
+            {% endfor %}
+           
+        <tfoot>
+          <!--   <tr>
+                <th>sl.no</th>
+                <th>Product Name</th>
+                <th>Total Price</th>
+                <th>Total Qty</th>
+                <th>Category</th>
+                <th>Sub Category</th>
+                <th>Sellers</th>
+        </tr> -->
+        </tfoot>
+    </table>
+    </
+</div>
+
+<script>
+    function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+<p>
+    <br>
+<input type="button" onclick="printDiv('printableArea')" value="  print Doc  " />
+    
+</p>
+
+{% endblock %}

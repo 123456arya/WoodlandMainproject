@@ -1,25 +1,245 @@
-{% extends 'usrhome.html' %}
-{% block myaccount %}
-<link href="/static/usr/css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- jQuery (necessary JavaScript plugins) -->
-<script type='text/javascript' src="/static/usr//static/usr/js/jquery-1.11.1.min.js"></script>
-<!-- Custom Theme files -->
-<link href="/static/usr/css/style.css" rel='stylesheet' type='text/css' />
-<!-- Custom Theme files -->
-<!--//theme-style-->
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<!-- Mirrored from preview.colorlib.com/theme/furn/product_details.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Mar 2023 04:29:37 GMT -->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>WoodCraft</title>
+<meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
-<!-- start menu -->
-<link href="/static/usr/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="/static/usr/js/megamenu.js"></script>
-<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
-<script src="/static/usr/js/menu_jquery.js"></script>
-<!-- content -->
+<link rel="manifest" href="site.html">
+
+
+<!-- Custom-Files -->
+<link rel="stylesheet" href="../static/rat/css/style.css ">
+<!-- Bootstrap-Core-CSS -->
+<!-- gallery  -->
+<link href="../static/rat/css/prettyPhoto.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../static/rat/css/style.css" type="text/css" media="all" />
+<!-- Style-CSS -->
+<link rel="stylesheet" href="../static/rat/css/fontawesome-all.css">
+<!-- Font-Awesome-Icons-CSS -->
+<!-- //Custom-Files -->
+
+<!-- Web-Fonts -->
+<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+    rel="stylesheet">
+<link
+    href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+<!-- //Web-Fonts -->
+
+<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+
+<link rel="shortcut icon" type="image/x-icon" href="../static/cusdash/assets/img/favicon.ico">
+
+<link rel="stylesheet" href="../static/cusdash/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/slicknav.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/flaticon.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/progressbar_barfiller.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/lightslider.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/price_rangs.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/gijgo.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/animate.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/animated-headline.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/magnific-popup.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/themify-icons.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/slick.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/nice-select.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/style.css">
+<script nonce="320ef954-69af-44a1-b37f-0d176570c7f8">(function(w,d){!function(bv,bw,bx,by){bv[bx]=bv[bx]||{};bv[bx].executed=[];bv.zaraz={deferred:[],listeners:[]};bv.zaraz.q=[];bv.zaraz._f=function(bz){return function(){var bA=Array.prototype.slice.call(arguments);bv.zaraz.q.push({m:bz,a:bA})}};for(const bB of["track","set","debug"])bv.zaraz[bB]=bv.zaraz._f(bB);bv.zaraz.init=()=>{var bC=bw.getElementsByTagName(by)[0],bD=bw.createElement(by),bE=bw.getElementsByTagName("title")[0];bE&&(bv[bx].t=bw.getElementsByTagName("title")[0].text);bv[bx].x=Math.random();bv[bx].w=bv.screen.width;bv[bx].h=bv.screen.height;bv[bx].j=bv.innerHeight;bv[bx].e=bv.innerWidth;bv[bx].l=bv.location.href;bv[bx].r=bw.referrer;bv[bx].k=bv.screen.colorDepth;bv[bx].n=bw.characterSet;bv[bx].o=(new Date).getTimezoneOffset();if(bv.dataLayer)for(const bI of Object.entries(Object.entries(dataLayer).reduce(((bJ,bK)=>({...bJ[1],...bK[1]})))))zaraz.set(bI[0],bI[1],{scope:"page"});bv[bx].q=[];for(;bv.zaraz.q.length;){const bL=bv.zaraz.q.shift();bv[bx].q.push(bL)}bD.defer=!0;for(const bM of[localStorage,sessionStorage])Object.keys(bM||{}).filter((bO=>bO.startsWith("_zaraz_"))).forEach((bN=>{try{bv[bx]["z_"+bN.slice(7)]=JSON.parse(bM.getItem(bN))}catch{bv[bx]["z_"+bN.slice(7)]=bM.getItem(bN)}}));bD.referrerPolicy="origin";bD.src="../../cdn-cgi/zaraz/sd0d9.js?z="+btoa(encodeURIComponent(JSON.stringify(bv[bx])));bC.parentNode.insertBefore(bD,bC)};["complete","interactive"].includes(bw.readyState)?zaraz.init():bv.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);</script>
+
+<style>
+    fieldset,
+    label {
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        margin: 10px;
+    }
+
+    /** Style Star Rating Widget ***/
+
+    .rating {
+        border: none;
+        float: left;
+    }
+
+    .rating>input {
+        display: none;
+    }
+
+    .rating>label:before {
+        margin: 5px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+    }
+
+    .rating>.half:before {
+        content: "\f089";
+        position: absolute;
+    }
+
+    .rating>label {
+        color: #ddd;
+        float: right;
+    }
+
+    /** CSS Magic to Highlight Stars on Hover **/
+
+    .rating>input:checked~label,
+    /* show gold star when clicked */
+    .rating:not(:checked)>label:hover,
+    /* hover current star */
+    .rating:not(:checked)>label:hover~label {
+        color: #FFD700;
+    }
+
+    /* hover previous stars in list */
+
+    .rating>input:checked+label:hover,
+    /* hover current star when changing rating */
+    .rating>input:checked~label:hover,
+    .rating>label:hover~input:checked~label,
+    /* lighten current selection */
+    .rating>input:checked~label:hover~label {
+        color: #FFED85;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 95%;
+        margin-left: 3%;
+        border: #000000;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+</head>
+
+<body class="full-wrapper">
+
+<div id="preloader-active">
+<div class="preloader d-flex align-items-center justify-content-center">
+<div class="preloader-inner position-relative">
+<div class="preloader-circle"></div>
+<div class="preloader-img pere-text">
+<img src="../static/cusdash/assets/img/logo/loder.png" alt="">
+</div>
+</div>
+</div>
+</div>
+
+<header>
+
+<div class="header-area">
+<div class="main-header header-sticky">
+<div class="container-fluid">
+<div class="row menu-wrapper align-items-center justify-content-between">
+<div class="header-left d-flex align-items-center">
+
+<div class="logo">
+<a href="index-2.html"><img src="../static/cusdash/assets/img/logo/logo.png" alt=""></a>
+</div>
+
+<div class="logo2">
+<a href="index-2.html"><img src="../static/cusdash/assets/img/logo/logo2.png" alt=""></a>
+</div>
+
+<div class="main-menu  d-none d-lg-block">
+<nav>
+<ul id="navigation">
+<li><a href="/customerhome">Home</a></li>
+<li><a href="/usrhommenu">Product</a></li>
+
+
+<li><a href="/Recommendedproduct">Recommendedproduct</a>
+
+</li>
+
+</ul>
+</nav>
+</div>
+</div>
+<div class="header-right1 d-flex align-items-center">
+<div class="search">
+<ul class="d-flex align-items-center">
+<li>
+
+<form action="#" class="form-box f-right ">
+<input type="text" name="Search" placeholder="Search products">
+<div class="search-icon">
+<i class="ti-search"></i>
+</div>
+</form>
+</li>
+<li>
+<a href="login.html" class="account-btn" target="_blank">Welcome!&nbsp;<b>{{uname}}</b></a>
+</li>
+<li>
+  <div class="card-stor">
+  <li><a href="/viewcart"><img src="../static/cusdash/assets/img/icon/card.svg" alt=""></a></li>
+<span>0</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="col-12">
+<div class="mobile_menu d-block d-lg-none"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</header>
+
+<main>
+
+<div class="slider-area ">
+<div class="slider-active">
+<div class="single-slider hero-overly2  slider-height2 d-flex align-items-center slider-bg2">
+<div class="container">
+<div class="row">
+<div class="col-xl-6 col-lg-8 col-md-8">
+<div class="hero__caption hero__caption2">
+<h1 data-animation="fadeInUp" data-delay=".4s">Product details</h1>
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+<li class="breadcrumb-item"><a href="#">Invoice</a></li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <section id="main-content">
     <div class="container">
     <div class="main">
@@ -84,6 +304,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div id="printableArea">
             <table class="table">
                 <tr>
+                    
                     <td colspan="2"><h1>Invoice</h1></td>
                 </tr>
                 <tr>
@@ -96,10 +317,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                {% for d in data %}
                <tr>
                    <td>{{d.0}}</td>
-                   <td>{{d.2}}</td>
                    <td>{{d.3}}</td>
                    <td>{{d.4}}</td>
-                   
+                   <td>{{d.5}}</td>
                </tr>
                {% endfor %}
                <tr>
@@ -131,4 +351,241 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 }
  </script>
  </section>
-{% endblock %}
+ <div class="categories-area section-padding40 gray-bg">
+<div class="container">
+<div class="row">
+<div class="col-lg-3 col-md-6 col-sm-6">
+<div class="single-cat mb-50 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
+<div class="cat-icon">
+<img src="../static/cusdash/assets/img/icon/services1.svg" alt="">
+</div>
+<div class="cat-cap">
+<h5>Fast & Free Delivery</h5>
+<p>Free delivery on all orders</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-sm-6">
+<div class="single-cat mb-50 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
+<div class="cat-icon">
+<img src="../static/cusdash/assets/img/icon/services2.svg" alt="">
+</div>
+<div class="cat-cap">
+<h5>Secure Payment</h5>
+<p>Free delivery on all orders</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-sm-6">
+<div class="single-cat mb-50 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
+<div class="cat-icon">
+<img src="../static/cusdash/assets/img/icon/services3.svg" alt="">
+</div>
+<div class="cat-cap">
+<h5>Money Back Guarantee</h5>
+<p>Free delivery on all orders</p>
+</div>
+</div>
+</div>
+ <div class="col-lg-3 col-md-6 col-sm-6">
+<div class="single-cat mb-50 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+<div class="cat-icon">
+<img src="../static/cusdash/assets/img/icon/services4.svg" alt="">
+</div>
+<div class="cat-cap">
+<h5>Online Support</h5>
+<p>Free delivery on all orders</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</main>
+<footer>
+<div class="footer-wrapper">
+
+<div class="footer-area footer-padding">
+<div class="container ">
+<div class="row justify-content-between">
+<div class="col-xl-4 col-lg-3 col-md-8 col-sm-8">
+<div class="single-footer-caption mb-50">
+<div class="single-footer-caption mb-30">
+
+<div class="footer-logo mb-35">
+<a href="index-2.html"><img src="../static/cusdash/assets/img/logo/logo2_footer.png" alt=""></a>
+</div>
+<div class="footer-tittle">
+<div class="footer-pera">
+<p>Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</p>
+</div>
+</div>
+
+<div class="footer-social">
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-pinterest-p"></i></a>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
+<div class="single-footer-caption mb-50">
+<div class="footer-tittle">
+<h4>Quick links</h4>
+<ul>
+<li><a href="#">Image Licensin</a></li>
+<li><a href="#">Style Guide</a></li>
+<li><a href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
+<div class="single-footer-caption mb-50">
+<div class="footer-tittle">
+<h4>Shop Category</h4>
+<ul>
+<li><a href="#">Image Licensin</a></li>
+<li><a href="#">Style Guide</a></li>
+<li><a href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
+<div class="single-footer-caption mb-50">
+<div class="footer-tittle">
+<h4>Pertners</h4>
+<ul>
+<li><a href="#">Image Licensin</a></li>
+<li><a href="#">Style Guide</a></li>
+<li><a href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-bottom-area">
+<div class="container">
+<div class="footer-border">
+<div class="row d-flex align-items-center">
+<div class="col-xl-12 ">
+<div class="footer-copy-right text-center">
+<p>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | WoodCraft</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</footer>
+
+<div id="back-top">
+<a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+
+
+<!-- Js files -->
+<!-- JavaScript -->
+<script src="../static/js/jquery-3.4.1.min.js"></script>
+<!-- Default-JavaScript-File -->
+<script src="../static/js/bootstrap.js"></script>
+<!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+<!-- password-script -->
+<script>
+    window.onload = function () {
+        document.getElementById("password1").onchange = validatePassword;
+        document.getElementById("password2").onchange = validatePassword;
+    }
+
+    function validatePassword() {
+        var pass2 = document.getElementById("password2").value;
+        var pass1 = document.getElementById("password1").value;
+        if (pass1 != pass2)
+            document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+        else
+            document.getElementById("password2").setCustomValidity('');
+        //empty string means no validation error
+    }
+</script>
+<!-- //password-script -->
+
+<!-- smooth scrolling -->
+<script src="../static/rat/js/SmoothScroll.min.js"></script>
+<!-- //smooth scrolling -->
+
+<!-- move-top -->
+<script src="../static/rat/js/move-top.js"></script>
+<!-- easing -->
+<script src="../static/rat/js/easing.js"></script>
+<!--  necessary snippets for few javascript files -->
+<script src="../static/rat/js/district.js"></script>
+
+<script src="../static/rat/js/bootstrap.js"></script>
+<!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+<!-- jQuery-Photo-filter-lightbox-Gallery-plugin -->
+<script src="../static/rat/js/jquery-1.7.2.js"></script>
+<script src="../static/rat/js/jquery.quicksand.js"></script>
+<script src="../static/rat/js/script.js"></script>
+<script src="../static/rat/js//jquery.prettyPhoto.js"></script>
+<!-- //jQuery-Photo-filter-lightbox-Gallery-plugin -->
+<!-- //Js files -->
+
+<script src="../static/cusdash/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="../static/cusdash/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="../static/cusdash/assets/js/popper.min.js"></script>
+<script src="../static/cusdash/assets/js/bootstrap.min.js"></script>
+
+<script src="../static/cusdash/assets/js/owl.carousel.min.js"></script>
+<script src="../static/cusdash/assets/js/slick.min.js"></script>
+<script src="../static/cusdash/assets/js/jquery.slicknav.min.js"></script>
+
+<script src="../static/cusdash/assets/js/wow.min.js"></script>
+<script src="../static/cusdash/assets/js/animated.headline.js"></script>
+<script src="../static/cusdash/assets/js/jquery.magnific-popup.js"></script>
+<script src="../static/cusdash/assets/js/gijgo.min.js"></script>
+<script src="../static/cusdash/assets/js/lightslider.min.js"></script>
+
+<script src="../static/cusdash/assets/js/jquery.nice-select.min.js"></script>
+<script src="../static/cusdash/assets/js/jquery.sticky.js"></script>
+<script src="../static/cusdash/assets/js/jquery.barfiller.js"></script>
+
+<script src="../static/cusdash/assets/js/jquery.counterup.min.js"></script>
+<script src="../static/cusdash/assets/js/waypoints.min.js"></script>
+<script src="../static/cusdash/assets/js/jquery.countdown.min.js"></script>
+<script src="../static/cusdash/assets/js/hover-direction-snake.min.js"></script>
+
+<script src="../static/cusdash/assets/js/contact.js"></script>
+<script src="../static/cusdash/assets/js/jquery.form.js"></script>
+<script src="../static/cusdash/assets/js/jquery.validate.min.js"></script>
+<script src="../static/cusdash/assets/js/mail-script.js"></script>
+<script src="../static/cusdash/assets/js/jquery.ajaxchimp.min.js"></script>
+
+<script src="../static/cusdash/assets/js/plugins.js"></script>
+<script src="../static/cusdash/assets/js/main.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'UA-23581568-13');
+            </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"7a485583e98c8571","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.2.0","si":100}' crossorigin="anonymous"></script>
+
+</body>
+
+<!-- Mirrored from preview.colorlib.com/theme/furn/product_details.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Mar 2023 04:29:40 GMT -->
+</html>

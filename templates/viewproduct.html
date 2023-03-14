@@ -20,9 +20,9 @@
         </table>
     </td>
     </tr>
-   <tr>
+   <!-- <tr>
        <td>ID</td><td><input type="text" readonly value="{{data.0.0}}" name="t1" id=""></td>
-   </tr>
+   </tr> -->
    <tr>
     <td>Name</td><td><input type="text" value="{{data.0.1}}" name="t2" id=""></td>
 </tr>
@@ -35,7 +35,78 @@
 <tr>
     <td>Description</td><td><input type="text" value="{{data.0.5}}" name="t5" id=""></td>
 </tr>
-<tr><td><input type="submit" value="Update" name="b1"> </td><td><a href="/deleteproduct?id={{data.0.0}}">DELETE</a></td></tr>
+<tr>
+    <td>Material</td><td><input type="text" value="{{data.0.14}}" name="t5" id=""></td>
+</tr>
+<!-- <tr><td><input type="submit" value="Update" name="b1"> </td><td><a href="/deleteproduct?id={{data.0.0}}">DELETE</a></td></tr> -->
 </table>
 </form>
 {% endblock %}
+
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="admin_index.php?dashboard">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">House</li>
+    </ol>
+</nav>
+
+<div class="col-lg-9">
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">User Data</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td>Name</td><td><input type="text" value="{{data.0.1}}" name="t2" id=""></td>
+                        </tr>
+                        <tr>
+                            <td>Price Not</td><td><input type="text" value="{{data.0.4}}" name="t3" id=""></td>
+                        </tr>
+                        <tr>
+                            <td>Price</td><td><input type="text" value="{{data.0.3}}" name="t4" id=""></td>
+                        </tr>
+                        <tr>
+                            <td>Description</td><td><input type="text" value="{{data.0.5}}" name="t5" id=""></td>
+                        </tr>
+                        <tr>
+                            <td>Material</td><td><input type="text" value="{{data.0.14}}" name="t5" id=""></td>
+                        </tr>
+                    </thead>
+                    <!-- <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot> -->
+                    <tbody>
+                       
+                                   
+                        <tr>
+                            <td><img width="100px" src="static{{data.0.7}}"></td>
+                            <td><img width="100px" src="static{{data.0.8}}"></td>
+                        </tr>
+                        <tr>
+                            <td><img width="100px" src="static{{data.0.9}}"></td>
+                            <td><img width="100px" src="static{{data.0.10}}"></td>
+                        </tr>
+                        <tr>
+                            <td><img width="100px" src="static{{data.0.11}}"></td>
+                            <!-- <td><img width="100px" src="static{{data.0.9}}"></td> -->
+                        </tr>
+                      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

@@ -54,7 +54,7 @@ body {
   margin-top: 5px;
 }
 .profile p{
-  color: rgb(139, 82, 82);;
+  color: rgb(250, 248, 248);;
   font-weight: 500;
   margin-left: 55px;
   margin-top: 10px;
@@ -160,15 +160,15 @@ body {
 }
 
 .card:first-child {
-  background-color: #f65f28aa ;
+  background-color: #faf6f5aa ;
 }
 
 .card:nth-child(2) {
-  background-color:  #f65f28aa ;
+  background-color:  #fcfaf9aa ;
 }
 
 .card:nth-child(3) {
-  background-color:  #f65f28aa ;
+  background-color:  #fdf9f7aa ;
 }
 
 
