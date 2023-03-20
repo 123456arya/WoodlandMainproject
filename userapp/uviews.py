@@ -21,18 +21,18 @@ import razorpay
 con=MySQLdb.connect("localhost","root","","woodland")
 c=con.cursor()
 def usrhome(request):
-  s = "select * from  products "
-  c.execute(s)
+  c.execute("select * from products join rateview on(products.ProductID=rateview.ProductID) order by rateview.`sum(rate)/count(rate)` desc")
   data = c.fetchall()
   if request.POST:
     name=request.POST["attribute"]
-    s = "select * from  products where Pname like '%"+str(name)+"%'" 
+    s = "select * from products join rateview on(products.ProductID=rateview.ProductID) order by rateview.`sum(rate)/count(rate)` desc where products.Pname like '%"+str(name)+"%'" 
     c.execute(s)
     data = c.fetchall()
     return HttpResponseRedirect('/usrhomemenu?name='+name)
   uname=request.session["uname"]
   print("#######################################################3")
   print(uname)
+  
   return render(request,"usrhome.html",{"uname":uname})
 def cusviewmore(request):
   uname=request.session["uname"]
@@ -219,44 +219,44 @@ def payments(request):
 def vieworder(request):
     uname=request.session["uname"]
     cid=request.session["cid"]
-    c.execute("select p.Pname,c.Fname,cr.count,p.price*cr.count,o.date,o.status,o.CustomerID from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'")
+    c.execute("select p.Pname,c.Fname,cr.count,p.price*cr.count,o.date,o.status,o.CustomerID ,o.OrderID from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'")
     data=c.fetchall()
     return render(request,"vieworder.html",{"data":data,"uname":uname})
 def Invoice(request):
     cid=request.session["cid"]
     id=request.GET.get("id")
     uname=request.session["uname"]
-    c.execute("select p.Pname,c.Fname,cr.count,p.price,p.price*cr.count, o.date,o.status,o.CustomerID from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"' and p.Pname='"+str(id)+"' ")
+    oid=request.GET.get('oid')
+    date=datetime.datetime.today()
+    c.execute("SELECT o.OrderID, p.Pname, o.p_price, o.qty,o.qty*o.p_price as total FROM orders o JOIN products p ON ( o.ProductID = p.ProductID ) where o.OrderID ='"+str(oid)+"'")
     data=c.fetchall()
-    print("select p.Pname,c.Fname,cr.count,p.price,p.price*cr.count, o.date,o.status,o.CustomerID from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'")
+    print("select p.Pname,c.Fname,cr.count,p.price,p.price*cr.count, o.date,o.status,o.qty,o.CustomerID from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'and o.OrderID='"+str(oid)+"' and c.Fname='"+str(id)+"' ")
     if data:
-     dat=data[0][5]
+     dat=data[0][4]
     else:
       dat=0
     c.execute("select sum(p.price*cr.count) from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"' and p.Pname='"+str(id)+"' ")
     data1=c.fetchall()
-    return render(request,"Invoice.html",{"data":data,"uname":uname,"dat":dat,"total":data1[0][0]})
+    return render(request,"Invoice.html",{"data":data,"uname":uname,"dat":dat,"total":data1[0][0],"date":date})
 
-""" def Invoice(request):
-    cid=request.session["cid"]
-    id=request.GET.get("id")
-    uname=request.session["uname"]
-    c.execute("select p.Pname,c.Fname,cr.count,p.price,p.price*cr.count, o.date,o.status,o.CustomerID from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'")
-    data=c.fetchall()
-    print("select p.Pname,c.Fname,cr.count,p.price,p.price*cr.count, o.date,o.status,o.CustomerID from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'")
-    if data:
-      
-      dat=data[0][5]
-    else:
-      dat=0
-    c.execute("select sum(p.price*cr.count) from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"' and p.Pname='"+str(id)+"' ")
-    data1=c.fetchall()
-    print("select sum(p.price*cr.count) from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"' and p.Pname='"+str(id)+"'" )
-    return render(request,"Invoice.html",{"data":data,"uname":uname,"dat":dat,"total":data1[0][0]})
- """
 def Recommendedproduct(request):
    uname=request.session["uname"]
-   c.execute("select * from products join rateview on(products.ProductID=rateview.ProductID) order by rateview.`sum(rate)/count(rate)` desc")
+   c.execute("select products.*,rateview.*,ROUND(rateview.`sum(rate)/count(rate)`,1) from products join rateview on(products.ProductID=rateview.ProductID) order by rateview.`sum(rate)/count(rate)` desc")
    data1=c.fetchall()
    return render(request,"Recommendedproduct.html",{"data":data1,"uname":uname})
    
+
+def productrating(request):
+  uname=request.session["uname"]
+  c.execute("select * from products join rateview on(products.ProductID=rateview.ProductID)  group by rateview.ProductID")
+  data1=c.fetchall()
+  x=[1,2]
+  y=[3,4]
+  for d in data1:
+    x.append(d[1])
+    y.append(int(d[17]))
+  print(y)
+  import matplotlib.pyplot as pp
+  pp.plot(x,y)
+  pp.show()
+  return HttpResponseRedirect("/AdminPage")

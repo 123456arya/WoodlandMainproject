@@ -310,7 +310,7 @@ def Viewemploye(request):
     cucnt=c.fetchone()
     c.execute("select * from products")
     data=c.fetchall()   
-    return render(request,"viewemploye.html",{"data":data,"pcnt":pcnt[0],"ccnt":ccnt[0],"cucnt":cucnt[0]})
+   
     c.execute("select * from employee where EmpId='"+str(id)+"'")
     data1=c.fetchone()
     c.execute("select * from education where EmpID='"+str(id)+"'")
@@ -650,9 +650,16 @@ def AdminSellerReport(request):
     print(data)
     return render (request,"AdminSellerReport.html",{"data":data})
 
+def AdminviewreviewReport(request):
+    data = ""
+    c.execute("select p.Pname from products p join rate r on(p.SubcategoryID=r.message)  group by r.ProductID")
+    data=c.fetchall() 
+    print(data)
+    return render (request,"AdminviewreviewReport.html",{"data":data})
+
 def AdminCategoryReport(request):
     data = ""
-    c.execute("select c.category,sum(co.qty),sum(co.p_price) as totalprice from orders co inner join products p on co.ProductID=p.ProductID inner join category c on p.SubcategoryID=c.categoryID group by co.ProductID")
+    c.execute("select c.category,sum(co.qty),sum(co.p_price) as totalprice from orders co inner join products p on co.ProductID=p.ProductID inner join category c on p.SubcategoryID=c.categoryID group by r.ProductID")
     data=c.fetchall() 
     print(data)
     return render (request,"AdminCategoryReport.html",{"data":data})

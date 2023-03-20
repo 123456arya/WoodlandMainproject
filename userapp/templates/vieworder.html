@@ -170,8 +170,8 @@
 <div class="main-menu  d-none d-lg-block">
 <nav>
 <ul id="navigation">
-<li><a href="/usrhommenu">Home</a></li>
-<li><a href="product.html">Product</a></li>
+<li><a href="/customerhome">Home</a></li>
+<li><a href="/usrhommenu">Product</a></li>
 
 <li><a href="/Recommendedproduct">Recommendedproduct</a>
 
@@ -201,6 +201,8 @@
 <span>0</span>
 </div>
 </li>
+<li>
+    <a href="/" class="account-btn" target="_blank">Logout</a></li>
 </ul>
 </div>
 </div>
@@ -335,7 +337,7 @@
                    <td>{{d.3}}</td>
                    <td>{{d.4}}</td>
                    <td>{{d.5}}</td>
-                   <td><a href="/Invoice?id={{d.1}}">INVOICE</a></td>
+                   <td><a href="/Invoice?id={{d.1}}&oid={{d.7}}">INVOICE</a></td>
                </tr>
                {% endfor %}
             </tbody>
