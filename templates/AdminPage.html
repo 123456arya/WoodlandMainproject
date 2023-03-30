@@ -130,7 +130,7 @@ input::-webkit-inner-spin-button {
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background:#e3f2fd;">
     <a class="navbar-header btn" href="../index.php">
-        <h2 style="font-family: 'Brush Script MT', cursive;"><i class='fas fa-home' style='font-size:36px;color:orange'></i> <span class="text-success">Wood</span> <span class="text-info">Craft</span></h2>
+        <h2 style="font-family: 'Brush Script MT', cursive;"><i class='fas fa-home' style='font-size:36px;color:orange'></i> <span class="text-success">WoodCraft</span></h2>
     </a>
     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
         <li class="nav-item dropdown">
@@ -165,7 +165,7 @@ input::-webkit-inner-spin-button {
                         </a>
                     </li>
                      <li class="nav-item">
-                        <a href="{% url 'Adminviewcustomer' %}" class="nav-link align-middle px-0">
+                        <a href="{% url 'Adminviewcustomer' %}"  name="cus"class="nav-link align-middle px-0">
                           <i class="bi bi-file-image"></i><span class="ms-1 d-none d-sm-inline">Customers</span>
                         </a>
                     </li>
@@ -179,7 +179,7 @@ input::-webkit-inner-spin-button {
                           <i class="bi bi-file-earmark-text"></i><span class="ms-1 d-none d-sm-inline">ViewSeller</span></a>
                     </li>
                     <li>
-                        <a href="{% url 'Adminviewproducts' %}" class="nav-link px-0 align-middle">
+                        <a href="{% url 'Adminviewproducts' %}"  name="pro" class="nav-link px-0 align-middle">
                           <i class="bi bi-file-earmark-plus"></i><span class="ms-1 d-none d-sm-inline">Products</span></a>
                     </li>
                     <li>
@@ -204,18 +204,22 @@ input::-webkit-inner-spin-button {
               </li> 
                     
               <li>
-                <a href="{% url 'visual' %}" class="nav-link px-0 align-middle">
-                  <i class="bi bi-diamond-half"></i> <span class="ms-1 d-none d-sm-inline">Visualization</span></a>
+                <a href="/orderrating" class="nav-link px-0 align-middle">
+                  <i class="bi bi-diamond-half"></i> <span class="ms-1 d-none d-sm-inline">OrderRating</span></a>
             </li>
+            <li>
+              <a href="/predict" class="nav-link px-0 align-middle">
+                <i class="bi bi-diamond-half"></i> <span class="ms-1 d-none d-sm-inline">Prediction</span></a>
+          </li>
                 <div class="dropdown">
                   <button class="nav-link px-0 align-middle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-clipboard-minus"></i>
                     Sales Details
                   </button>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{% url 'AdminCategoryReport' %}">CategoryReport</a></li>
-                    <li><a class="dropdown-item" href="{% url 'AdminSellerReport' %}">AdminSellerReport</a></li>
+                    <li><a class="dropdown-item" name="seller" href="{% url 'AdminSellerReport' %}">AdminSellerReport</a></li>
                     <li><a class="dropdown-item" href="{% url 'Adminviewproductreport' %}">Adminviewproductreport</a></li>
-                    
+                    <li><a class="dropdown-item" href="{% url 'datewisereport' %}">Datewise Product Report</a></li>
                   </ul>
                 </div>
               </ul>
@@ -249,7 +253,9 @@ input::-webkit-inner-spin-button {
 
         
         <div class="mt-5" id="mainpage">
-             {% block content %}     
+             {% block content %}  
+             
+             
              {% endblock %}
         </div>
     </div>

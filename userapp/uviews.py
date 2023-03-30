@@ -227,8 +227,10 @@ def Invoice(request):
     id=request.GET.get("id")
     uname=request.session["uname"]
     oid=request.GET.get('oid')
+    
     date=datetime.datetime.today()
-    c.execute("SELECT o.OrderID, p.Pname, o.p_price, o.qty,o.qty*o.p_price as total FROM orders o JOIN products p ON ( o.ProductID = p.ProductID ) where o.OrderID ='"+str(oid)+"'")
+    
+    c.execute("SELECT o.OrderID, p.Pname, o.p_price, o.qty,o.qty*o.p_price as total,date FROM orders o JOIN products p ON ( o.ProductID = p.ProductID ) where o.OrderID ='"+str(oid)+"'")
     data=c.fetchall()
     print("select p.Pname,c.Fname,cr.count,p.price,p.price*cr.count, o.date,o.status,o.qty,o.CustomerID from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'and o.OrderID='"+str(oid)+"' and c.Fname='"+str(id)+"' ")
     if data:
@@ -255,6 +257,22 @@ def productrating(request):
   for d in data1:
     x.append(d[1])
     y.append(int(d[17]))
+  print(y)
+  import matplotlib.pyplot as pp
+  pp.plot(x,y)
+  pp.show()
+  return HttpResponseRedirect("/AdminPage")
+
+
+def orderrating(request):
+  uname=request.session["uname"]
+  c.execute("select * from orders join products on(orders.OrderID=products.ProductID)  group by orders.ProductID")
+  data1=c.fetchall()
+  x=[1,2]
+  y=[3,4]
+  for d in data1:
+    x.append(d[1])
+    y.append((d[22]))
   print(y)
   import matplotlib.pyplot as pp
   pp.plot(x,y)

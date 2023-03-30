@@ -1,0 +1,40 @@
+{% extends 'AdminPage.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Predict Sales</title>
+</head>
+<body>
+	<h1>Predict Sales</h1>
+	<form action="{% url 'predict_sales' %}" method="POST">
+		{% csrf_token %}
+		<label for="month">Month:</label>
+		<select name="month" id="month">
+			<option value="January">January</option>
+			<option value="February">February</option>
+			<option value="March">March</option>
+			<option value="April">April</option>
+			<option value="May">May</option>
+			<option value="June">June</option>
+			<option value="July">July</option>
+			<option value="August">August</option>
+			<option value="September">September</option>
+			<option value="October">October</option>
+			<option value="November">November</option>
+			<option value="December">December</option>
+		</select>
+		<br><br>
+		<label for="product">Product:</label>
+		<select name="product" id="product">
+			<option value="Chair">Chair</option>
+			<option value="Table">Table</option>
+			<option value="Product C">Product C</option>
+		</select>
+		<br><br>
+		<input type="submit" value="Predict">
+	</form>
+</body>
+</html>
+{% endblock %}

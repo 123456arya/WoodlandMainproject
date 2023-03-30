@@ -1,5 +1,12 @@
 {% extends 'Adminpage.Html' %}
 {% block content %}
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
 <div class="container">
    
        
@@ -10,14 +17,22 @@
                     <div class="card shadow mb-4">
                 
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Customer</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Sellers</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                 <div style="display:flex; width:100vh;padding: 40px;" >
                     <div class="row" style=" display: flex;width: 100%;" >
        
-        
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sellers
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                {% for d in data1 %}
+                                    <li><a href="/AdminSellerReport?sid={{d.0}}">{{d.1}}</a></li>
+                                {% endfor %}
+                            </ul>
+                          </div>
 
         <div id="printableArea">
             <table id="example" class="table table-bordered" >
@@ -80,5 +95,5 @@
 <input type="button" onclick="printDiv('printableArea')" value="  print Doc  " />
     
 </p>
-
+</html>
 {% endblock %}

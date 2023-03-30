@@ -82,15 +82,15 @@
  <form method="POST" class="form-box f-right " id="search-form">
    {% csrf_token %}
       
-       <input style=" border: none;padding: 10px; border-radius: 20px;" type="search" id="search-text" name="attribute"class="search-icon" placeholder="Search">
+       <input style=" border: none;padding: 10px; border-radius: 20px;" type="search" id="search-text" name="attribute" class="search-icon" placeholder="Search">
        <button style="padding: 9.7px 13px; border-radius: 20px;" class="btn btn-primary submit-search text-center" id="normalsearch" type="submit"><i class="ti-search"></i></button>
        <button style="padding: 9.7px 13px; border-radius: 20px;" class="btn btn-primary  id="search_button" type="submit"><i class="ti-microphone"></i></button>
      
   </form>
 </li>
 <li>
-<a href="/MyProfile" class="account-btn" target="_blank">Account</b></a>
-<a href="#" class="account-btn" target="_blank">Welcome!&nbsp;<b>{{uname}}</b></a>
+
+<a href="#" class="account-btn" target="_blank">Welcome<b>{{uname}}</b></a>
 </li>
 <li>
 <div class="card-stor">
@@ -145,7 +145,7 @@
 <div class="col-xl-7 col-lg-8 col-md-10">
 <div class="section-tittle mb-50">
 <h2>Shop with us</h2>
-<p>Browse from 230 latest items</p>
+<p></p>
 </div>
 </div>
 </div>
@@ -169,17 +169,15 @@
 <div class="row">
 <div class="col-12">
 
-<div class="select-categories">
-<select name="select1">
-<option value="">Type</option>
-<option value="">Sofa</option>
-<option value="">Table</option>
-<option value="">Chair</option>
-<option value="">Bead</option>
-<option value="">Lightning</option>
-<option value="">Decore</option>
-</select>
-</div>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sellers
+      <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                {% for d in subcat %}
+                                <li><a class="dropdown-item"  href="/usrhome?sid={{d.0}}">{{d.2}}</a></li>
+                                {% endfor %}
+                            </ul>
+                          </div>
 
 </div>
 

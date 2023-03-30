@@ -1,4 +1,5 @@
 import email
+import pickle
 from re import S
 import re
 import MySQLdb
@@ -8,8 +9,9 @@ from datetime import date
 
 from datetime import datetime
 import datetime
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 import MySQLdb
+import numpy as np
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import nltk
 import re
@@ -100,6 +102,8 @@ def AdminPage(request):
     data=c.fetchall()   
     return render(request,"Adminpage.html",{"data":data,"pcnt":pcnt[0],"ccnt":ccnt[0],"cucnt":cucnt[0]})
 
+
+
 def AdminAddCategory(request):
     msg=""
     c.execute("select count(*) from products ")
@@ -130,12 +134,46 @@ def AdminAddCategory(request):
     st="Active"
     return render(request,"AdminAddcategory.html",{"msg":msg,"data":data,"pcnt":pcnt[0],"ccnt":ccnt[0],"cucnt":cucnt[0],"st":st})
 def EmployeeViewOrder(request):
-    cid=request.session["cid"]
+    # cid=request.session["cid"]
     sid=request.session["empid"]
     c.execute("select o.OrderID,p.Pname,c.Fname,p.image1,o.status from orders o join products p on(p.ProductID=o.ProductID) join customer c on(c.CustomerID=o.CustomerID) where p.sid='"+str(sid)+"'")
     data=c.fetchall()
 
     return render(request,"EmployeeViewOrder.html",{"data":data})
+import csv
+
+# def EmployeeViewOrder(request):
+#     sid=request.session["empid"]
+#     c.execute("select o.OrderID,p.Pname,c.Fname,p.image1,o.status from orders o join products p on(p.ProductID=o.ProductID) join customer c on(c.CustomerID=o.CustomerID) where p.sid='"+str(sid)+"'")
+#     data=c.fetchall()
+#     return render(request, 'EmployeeViewOrder.html', {'data': data})
+
+import csv
+from datetime import datetime
+
+def ExportEmployeeOrdersToCSV(request):
+    sid=request.session["empid"]
+    c.execute("select p.Pname,o.qty,o.p_price,o.date from orders o join products p on(p.ProductID=o.ProductID) join customer c on(c.CustomerID=o.CustomerID) where p.sid='"+str(sid)+"'")
+    data=c.fetchall()
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="employee_orders.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow([ 'Product Name', 'qty', 'month','price'])
+
+    for row in data:
+        order_date_str = row[3].strftime('%Y-%m-%d')
+        order_date = datetime.strptime(order_date_str, '%Y-%m-%d')
+        month_name = order_date.strftime('%B')
+        writer.writerow([row[0], row[1], month_name, row[2]])
+
+    return response
+
+
+
+
+
 def acceptorder(request):
     oid=request.GET.get("id")
     c.execute("update orders set status='Accepted' where OrderID='"+str(oid)+"'")
@@ -267,7 +305,7 @@ def viewproduct(request):
     cucnt=c.fetchone()
     c.execute("select * from products")
     data=c.fetchall()   
-    return render(request,"viewproduct.html",{"data":data,"pcnt":pcnt[0],"ccnt":ccnt[0],"cucnt":cucnt[0]})
+    # return render(request,"viewproduct.html",{"data":data,"pcnt":pcnt[0],"ccnt":ccnt[0],"cucnt":cucnt[0]})
     id=request.GET.get("id")
     c.execute("select * from products where ProductID='"+str(id)+"'")
     data=c.fetchall()  
@@ -279,7 +317,8 @@ def viewproduct(request):
           desc=request.POST.get("t5")
           mat=request.POST.get("t16")
           brand=request.POST.get("t17")
-          c.execute("update products set Pname='"+str(name)+"',Pricenot='"+str(pnot)+"',Price='"+str(price)+"',Description='"+str(desc)+"',Material='"+str(mat)+"',Brand='"+str(brand)+"' where ProductID='"+str(id)+"'")
+          dimension=request.POST.get("t18")
+          c.execute("update products set Pname='"+str(name)+"',Pricenot='"+str(pnot)+"',Price='"+str(price)+"',Description='"+str(desc)+"',Material='"+str(mat)+"',Brand='"+str(brand)+"',dimension='"+str(dimension)+"' where ProductID='"+str(id)+"'")
           con.commit()
           c.execute("select * from products where ProductID='"+str(id)+"'")
 
@@ -580,75 +619,97 @@ def Adminviewproductreport(request):
 
     return render(request,"Adminviewproductreport.html")
 
-def my_form(request):
-    engine = pyttsx3.init()
-    engine.say('Hello, Welcome to the feedback section.')
-    engine.runAndWait()
-    return render(request,'form.html')
+
+
+
+
+def datewisereport(request):
+
+    if request.POST:
+        da1=request.POST["d1"]
+       
+        c.execute("select p.Pname,p.Description,sum(o.qty) as qty,sum(o.p_price) as total from orders o join products p on(o.ProductID=p.ProductID) where o.date='"+str(da1)+"' group by p.ProductID order by sum(o.p_price) desc")
+        print("select p.Pname,p.Description,sum(o.qty) as qty,sum(o.p_price) as total from orders o join products p on(o.ProductID=p.ProductID) where o.date='"+str(da1)+"'  group by p.ProductID order by sum(o.p_price) desc")
+        data=c.fetchall()
+        return render(request,"datewisereport.html",{"data":data,"da1":da1})
+
+    return render(request,"datewisereport.html")
+
+# def my_form(request):
+#     engine = pyttsx3.init()
+#     engine.say('Hello, Welcome to the feedback section.')
+#     engine.runAndWait()
+#     return render(request,'form.html')
  
-def my_post(request):
-        if request.method == 'POST':
-                stop_words = stopwords.words('english')
-                # my contribution
-                stop_words.remove('very')
-                stop_words.remove('not')
+# def my_post(request):
+#         if request.method == 'POST':
+#                 stop_words = stopwords.words('english')
+#                 # my contribution
+#                 stop_words.remove('very')
+#                 stop_words.remove('not')
                 
-                #convert to lowercase
-                text1 = request.POST['text1'].lower()
+#                 #convert to lowercase
+#                 text1 = request.POST['text1'].lower()
                 
-                # my contribution
-                text_final = ''.join(i for i in text1 if not i.isdigit())
-                net_txt=re.sub('[^a-zA-Z0-9\n]', ' ',text_final)
+#                 # my contribution
+#                 text_final = ''.join(i for i in text1 if not i.isdigit())
+#                 net_txt=re.sub('[^a-zA-Z0-9\n]', ' ',text_final)
                 
                 #remove stopwords    
-                processed_doc1 = ' '.join([i for i in net_txt.split() if i not in stop_words])
+                # processed_doc1 = ' '.join([i for i in net_txt.split() if i not in stop_words])
 
-                sa = SentimentIntensityAnalyzer()
-                dd = sa.polarity_scores(text=processed_doc1)
-                compound = round((1 + dd['compound'])/2, 2)
-                final=compound*100
+                # sa = SentimentIntensityAnalyzer()
+                # dd = sa.polarity_scores(text=processed_doc1)
+                # compound = round((1 + dd['compound'])/2, 2)
+                # final=compound*100
                 
-                if "enough" in text1 or "sufficient" in text1 or "ample" in text1 or "abudant" in text1:
-                   engine = pyttsx3.init()
-                   engine.say('You liked us by'+str(final)+'% Thank you for your valuable response')
-                   engine.runAndWait()
+                # if "enough" in text1 or "sufficient" in text1 or "ample" in text1 or "abudant" in text1:
+                #    engine = pyttsx3.init()
+                #    engine.say('You liked us by'+str(final)+'% Thank you for your valuable response')
+                #    engine.runAndWait()
                 #    feeds = feedback(feedback=text1)
                 #    feeds.save()
-                   return render(request,'form.html',{'final': final,'text1':net_txt})
+                #    return render(request,'form.html',{'final': final,'text1':net_txt})
                    
-                elif final == 50:
-                   engine = pyttsx3.init()
-                   engine.say('Please enter an adequate resposnse, Thank You')
-                   engine.runAndWait()
-                   return render(request,'form.html',{'final': final,'text1':net_txt})
-                else:
-                   engine = pyttsx3.init()
-                   engine.say('You liked us by'+str(final)+'% Thank you for your valuable response')
-                   engine.runAndWait()
-                   if final > 50:
+                # elif final == 50:
+                #    engine = pyttsx3.init()
+                #    engine.say('Please enter an adequate resposnse, Thank You')
+                #    engine.runAndWait()
+                #    return render(request,'form.html',{'final': final,'text1':net_txt})
+                # else:
+                #    engine = pyttsx3.init()
+                #    engine.say('You liked us by'+str(final)+'% Thank you for your valuable response')
+                #    engine.runAndWait()
+                #    if final > 50:
                     #   feeds = feedback(feedback=text1)
                     #   feeds.save()
-                      return render(request,'form.html',{'final': final,'text1':net_txt})
-                   elif final < 50:
+                #       return render(request,'form.html',{'final': final,'text1':net_txt})
+                #    elif final < 50:
                       #feeds = feedback(feedback=text1)
                     #   feeds.save()
-                      return render(request,'form.html',{'final': final,'text1':net_txt})
-                   else:
+                #       return render(request,'form.html',{'final': final,'text1':net_txt})
+                #    else:
                     #    feeds = feedback(feedback=text1)
                     #    feeds.save()
-                       return render(request,'form.html',{'final': final,'text1':net_txt})
-        else:
-           return redirect('my_form')
+        #                return render(request,'form.html',{'final': final,'text1':net_txt})
+        # else:
+        #    return redirect('my_form')
             
 def RateProduct(request):
      return render(request,"rating.html")
 
 def AdminSellerReport(request):
-    data = ""
+    c.execute("SELECT * FROM `employee`")
+    data1=c.fetchall() 
     c.execute("select p.Pname,sum(co.p_price)as totalprice,sum(co.qty),ct.category,sc.subcategory,sr.Fname from products p join category ct on(p.SubcategoryID=ct.categoryID) join subcategory sc on(ct.categoryID=sc.categoryID) join employee sr on(sr.EmpID =p.sid) join orders co on(co.ProductID=p.ProductID) group by co.ProductID")
     data=c.fetchall() 
-    print(data)
-    return render (request,"AdminSellerReport.html",{"data":data})
+    if request.GET:
+        sid=request.GET["sid"]
+        c.execute("SELECT p.Pname, SUM(co.p_price) AS totalprice, SUM(co.qty), ct.category, sc.subcategory, sr.Fname FROM products p JOIN category ct ON p.SubcategoryID = ct.categoryID JOIN subcategory sc ON ct.categoryID = sc.categoryID JOIN employee sr ON sr.EmpID = p.sid JOIN orders co ON co.ProductID = p.ProductID WHERE p.sid = '"+str(sid)+"' GROUP BY co.ProductID")
+
+        data=c.fetchall() 
+        print(data)
+    return render (request,"AdminSellerReport.html",{"data1":data1,"data":data})
 
 def AdminviewreviewReport(request):
     data = ""
@@ -657,9 +718,23 @@ def AdminviewreviewReport(request):
     print(data)
     return render (request,"AdminviewreviewReport.html",{"data":data})
 
+
+
+def SellerproductReport(request):
+
+    if request.POST:
+        da1=request.POST["d1"]
+        da2=request.POST["d2"]
+        c.execute("select p.Pname,p.Description,sum(o.qty) as qty,sum(o.p_price) as total from orders o join products p on(o.ProductID=p.ProductID) where o.date between '"+str(da1)+"' and '"+str(da2)+"'  group by p.ProductID order by sum(o.p_price) desc")
+        print("select p.Pname,p.Description,sum(o.qty) as qty,sum(o.p_price) as total from orders o join products p on(o.ProductID=p.ProductID) where o.date between '"+str(da1)+"' and '"+str(da2)+"'  group by p.ProductID order by sum(o.p_price) desc")
+        data=c.fetchall()
+        return render(request,"SellerproductReport.html",{"data":data,"da1":da1,"da2":da2})
+
+    return render(request,"SellerproductReport.html")
+
 def AdminCategoryReport(request):
     data = ""
-    c.execute("select c.category,sum(co.qty),sum(co.p_price) as totalprice from orders co inner join products p on co.ProductID=p.ProductID inner join category c on p.SubcategoryID=c.categoryID group by r.ProductID")
+    c.execute("select c.category,sum(co.qty),sum(co.p_price) as totalprice from orders co inner join products p on co.ProductID=p.ProductID inner join category c on p.SubcategoryID=c.categoryID group by p.ProductID")
     data=c.fetchall() 
     print(data)
     return render (request,"AdminCategoryReport.html",{"data":data})
@@ -697,17 +772,78 @@ def MyProfile(request):
     c.execute(qry)
     data=c.fetchone()
     return render(request,'MyProfile.html',{"data":data})
+def ar(request):
+    return render (request,"ar.html")
 
 
-def visual(request):
-    data = ""
-    c.execute("select date,p_price from orders" )
-    data=c.fetchall() 
-    print(data)
-    return render (request,"visual.html",{"data":data})
+# import pandas as pd
+# from django.shortcuts import render
+# from sklearn.linear_model import LinearRegression
+# from sklearn.metrics import mean_squared_error, r2_score
+# from sklearn.model_selection import train_test_split
+# from django.shortcuts import render
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+# def encode_product_name(product):
+    
+#     if product not in product_map:
+#         return None
+def predict_sales(request):
+    if request.method == 'POST':
+        month = request.POST.get('month')
+        product = request.POST.get('product')
+        with open('sale.pkl','rb') as f:
+            model= pickle.load(f)
+        if month == 'January':
+            month_int = 1
+        elif month == 'February':
+            month_int = 2
+        elif month == 'March':
+            month_int = 3
+        elif month == 'April':
+            month_int = 4
+        elif month == 'May':
+            month_int = 5
+        elif month == 'June':
+            month_int = 6
+        elif month == 'July':
+            month_int = 7
+        elif month == 'August':
+            month_int = 8   
+        elif month == 'September':
+            month_int = 9 
+        elif month == 'October':
+            month_int = 10 
+        elif month == 'November':
+            month_int = 11 
+        elif month == 'December':
+            month_int = 12                                  
+        # continue for other months
+        else:
+            return HttpResponse('Invalid month name')
+        if product == 'Chair':
+            product_int = 1
+        elif product == 'Table':
+            product_int = 2
+        elif product == 'Product C':
+            product_int = 3
+        else:
+            valid_products = ['Chair', 'Table', 'Product C']
+            return HttpResponse(f'Invalid product name. Valid products: {", ".join(valid_products)}')
+        input_data = np.zeros(22)  # create an array of zeros with 22 elements
+        input_data[month_int - 1] = 1  # set the value at the month index to 1
+        input_data[product_int + 11] = 1  # set the value at the product index to 1
+        prediction = model.predict(input_data.reshape(1, -1))
+        return HttpResponse(prediction)
+    return render(request, 'index.html')
 
 
 
-def viewer(request):
-   
-    return render (request,"viewer.html")
+
+
+def predict(request):
+    return render(request,'predict.html')
+
+
