@@ -221,25 +221,82 @@
 		font-weight: normal;
 	}	
 </style>
-</head>
+<link rel="manifest" href="site.html">
+<link rel="stylesheet" href="../static/cusdash/assets/css/style.css">
+<link rel="shortcut icon" type="image/x-icon" href="../static/cusdash/assets/img/favicon.ico">
+
+<link rel="stylesheet" href="../static/cusdash/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/slicknav.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/flaticon.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/progressbar_barfiller.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/lightslider.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/price_rangs.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/gijgo.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/animate.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/animated-headline.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/magnific-popup.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/themify-icons.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/slick.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/nice-select.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/style.css">
+<script nonce="afab6cbf-4993-4029-a282-87d804710270">(function(w,d){!function(bv,bw,bx,by){bv[bx]=bv[bx]||{};bv[bx].executed=[];bv.zaraz={deferred:[],listeners:[]};bv.zaraz.q=[];bv.zaraz._f=function(bz){return function(){var bA=Array.prototype.slice.call(arguments);bv.zaraz.q.push({m:bz,a:bA})}};for(const bB of["track","set","debug"])bv.zaraz[bB]=bv.zaraz._f(bB);bv.zaraz.init=()=>{var bC=bw.getElementsByTagName(by)[0],bD=bw.createElement(by),bE=bw.getElementsByTagName("title")[0];bE&&(bv[bx].t=bw.getElementsByTagName("title")[0].text);bv[bx].x=Math.random();bv[bx].w=bv.screen.width;bv[bx].h=bv.screen.height;bv[bx].j=bv.innerHeight;bv[bx].e=bv.innerWidth;bv[bx].l=bv.location.href;bv[bx].r=bw.referrer;bv[bx].k=bv.screen.colorDepth;bv[bx].n=bw.characterSet;bv[bx].o=(new Date).getTimezoneOffset();if(bv.dataLayer)for(const bI of Object.entries(Object.entries(dataLayer).reduce(((bJ,bK)=>({...bJ[1],...bK[1]})))))zaraz.set(bI[0],bI[1],{scope:"page"});bv[bx].q=[];for(;bv.zaraz.q.length;){const bL=bv.zaraz.q.shift();bv[bx].q.push(bL)}bD.defer=!0;for(const bM of[localStorage,sessionStorage])Object.keys(bM||{}).filter((bO=>bO.startsWith("_zaraz_"))).forEach((bN=>{try{bv[bx]["z_"+bN.slice(7)]=JSON.parse(bM.getItem(bN))}catch{bv[bx]["z_"+bN.slice(7)]=bM.getItem(bN)}}));bD.referrerPolicy="origin";bD.src="../../cdn-cgi/zaraz/sd0d9.js?z="+btoa(encodeURIComponent(JSON.stringify(bv[bx])));bC.parentNode.insertBefore(bD,bC)};["complete","interactive"].includes(bw.readyState)?zaraz.init():bv.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);</script></head>
+
+
   
 <body>
 
+	 <div id="preloader-active">
+		<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="preloader-inner position-relative">
+		<div class="preloader-circle"></div>
+		<div class="preloader-img pere-text">
+		<img src="../static/cusdash/assets/img/logo/loder.png" alt="">
+		</div>
+		</div>
+		</div>
+		</div> 
+		
+		<header>
+		
+		<div class="header-area">
+		<div class="main-header header-sticky">
+		<div class="container-fluid">
+		<div class="row menu-wrapper align-items-center justify-content-between">
+		<div class="header-left d-flex align-items-center">
+		
+		<div class="logo">
+		<a href="#"><img src="../static/cusdash/assets/img/logo/logo.png" alt=""></a>
+		</div>
+		
+		<div class="logo2">
+		<a href="#"><img src="../static/cusdash/assets/img/logo/logo2.png" alt=""></a>
+		</div>
+		
+		<div class="main-menu  d-none d-lg-block">
+		<nav>
+		<ul id="navigation">
+		<li><a href="/customerhome">Home</a></li>
+		<li><a href="/usrhommenu">Product</a></li>
+		
+		
+		<li><a href="/Recommendedproduct">Recommendedproduct</a>
+		  
+		
+		<li><a href="/vieworder">Order</a></li>
+		
+		</ul>
+		</nav>
+		
+		 
+		 
+	</header><br>
+
 <div class="container">
-  <div class="table-wrapper">
-    <div class="table-title">
-      <div class="row">
-        <div class="col-sm-6">
-          <h2>View <b>Orders</b></h2>
   
-        </div>
-        <div class="col-sm-6">
-             <h2><a href="/usrhommenu" class="btn btn-success"  style="color:rgb(251, 249, 249);font-size:20px;"  data-toggle="modal"> <span>Continue Shopping</span></a></h2>   
-        </div>
-      </div>
-    </div>
 	<center>
-		<input type="button" onclick="printDiv('printableArea')" value="print"></center>
+		<input type="button" class="btn" onclick="printDiv('printableArea')" value="print"></center>
 	<form action="" method="post">
         {% csrf_token %}
         {% if msg %}
@@ -256,7 +313,7 @@
 								<input type="checkbox" id="selectAll">
 								<label for="selectAll"></label>
 							</span> -->
-          </th>
+          </th><br>
         
           <th>ProductName</th>
           <th>Price<br>(IN INR)</th>
@@ -290,7 +347,92 @@
 
   </div>
 </div>
-
+<footer>
+	<div class="footer-wrapper">
+	
+	<div class="footer-area footer-padding">
+	<div class="container ">
+	<div class="row justify-content-between">
+	<div class="col-xl-4 col-lg-3 col-md-8 col-sm-8">
+	<div class="single-footer-caption mb-50">
+	<div class="single-footer-caption mb-30">
+	
+	<div class="footer-logo mb-35">
+	<a href="index-2.html"><img src="../static/cusdash/assets/img/logo/logo2_footer.png" alt=""></a>
+	</div>
+	<div class="footer-tittle">
+	<div class="footer-pera">
+	<p>Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</p>
+	</div>
+	</div>
+	
+	<div class="footer-social">
+	<a href="#"><i class="fab fa-twitter"></i></a>
+	<a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+	<a href="#"><i class="fab fa-pinterest-p"></i></a>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
+	<div class="single-footer-caption mb-50">
+	<div class="footer-tittle">
+	<h4>Quick links</h4>
+	<ul>
+	<li><a href="#">Image Licensin</a></li>
+	<li><a href="#">Style Guide</a></li>
+	<li><a href="#">Privacy Policy</a></li>
+	</ul>
+	</div>
+	</div>
+	</div>
+	<div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
+	<div class="single-footer-caption mb-50">
+	<div class="footer-tittle">
+	<h4>Shop Category</h4>
+	<ul>
+	<li><a href="#">Image Licensin</a></li>
+	<li><a href="#">Style Guide</a></li>
+	<li><a href="#">Privacy Policy</a></li>
+	</ul>
+	</div>
+	</div>
+	</div>
+	<div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
+	<div class="single-footer-caption mb-50">
+	<div class="footer-tittle">
+	<h4>Pertners</h4>
+	<ul>
+	<li><a href="#">Image Licensin</a></li>
+	<li><a href="#">Style Guide</a></li>
+	<li><a href="#">Privacy Policy</a></li>
+	</ul>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	<div class="footer-bottom-area">
+	<div class="container">
+	<div class="footer-border">
+	<div class="row d-flex align-items-center">
+	<div class="col-xl-12 ">
+	<div class="footer-copy-right text-center">
+	 <p>
+	Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | WoodCraft</a>
+	</p>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	</div>
+	</footer>
+	
 
 <script>
 	function printDiv(divName) {
@@ -332,4 +474,3 @@
 });
 </script>
 </body>
-</html>

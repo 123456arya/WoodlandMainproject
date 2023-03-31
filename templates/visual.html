@@ -1,0 +1,25 @@
+{% extends 'AdminPage.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monthly Sales Predictions</title>
+</head>
+<body>
+    <h1>Monthly Sales Predictions</h1>
+    {% if image is not None and image|length %}
+        <img src="data:image/png;base64,{{ image }}" alt="Monthly Sales Predictions">
+    {% else %}
+        <p>No predictions available</p>
+    {% endif %}
+    {% if future_sales|length %}
+        <p>Predicted sales for the next four months:</p>
+        <ul>
+            {% for sale in future_sales %}
+                <li>{{ sale }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

@@ -1,40 +1,58 @@
-{% extends 'AdminPage.html' %}
-{% block content %}
-<!DOCTYPE html>
+{% extends 'EmployeePage.html' %}
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>Predict Sales</title>
+	<head>
+		<link rel="stylesheet" href="style.css">
+		<style>
+	button[type="submit"] {
+	font-size: 24px;
+	padding: 12	
+	}
+	</style>
+		
 </head>
-<body>
-	<h1>Predict Sales</h1>
-	<form action="{% url 'predict_sales' %}" method="POST">
-		{% csrf_token %}
-		<label for="month">Month:</label>
-		<select name="month" id="month">
-			<option value="January">January</option>
-			<option value="February">February</option>
-			<option value="March">March</option>
-			<option value="April">April</option>
-			<option value="May">May</option>
-			<option value="June">June</option>
-			<option value="July">July</option>
-			<option value="August">August</option>
-			<option value="September">September</option>
-			<option value="October">October</option>
-			<option value="November">November</option>
-			<option value="December">December</option>
-		</select>
-		<br><br>
-		<label for="product">Product:</label>
-		<select name="product" id="product">
-			<option value="Chair">Chair</option>
-			<option value="Table">Table</option>
-			<option value="Product C">Product C</option>
-		</select>
-		<br><br>
-		<input type="submit" value="Predict">
-	</form>
-</body>
-</html>
+<div class="row">
+  {% block content %}
+    <div class="container">
+        <h1>Sales Prediction</h1>
+            <form method="POST" action="{% url 'predict_sales' %}">
+             {% csrf_token %}
+                 <label for="month">Choose a Month:</label>
+                <select name="month" id="month" required>
+                    <option value="" selected disabled>Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                  <br><br>
+                <label for="product">Product:</label>
+                <select name="product" id="product">
+                    <option value=""selected disabled>Product</option>
+                    <option value="Chair">Chair</option>
+                    <option value="Table">Table</option>
+                    <option value="sofa">Sofa</option>
+                </select>
+                <br><br>
+                <button type="submit" class="btn-primary">Predict</button>
+                 {% if prediction_percent %}
+                 <hr>
+                 <h2 style="color: rgba(6, 5, 6, 0.783);">Prediction Result</h2>
+                  <p style="color: rgb(12, 17, 11);">Predicted sales for {{ month }} is: {{ prediction_percent  }}% 
+				</p>
+                  {% else %}
+                    <p style="color: rgb(8, 8, 8);"></p>
+                   {% endif %}
+            </form>
+        </div>
+	</div>
 {% endblock %}
+
+

@@ -790,12 +790,17 @@ from sklearn.metrics import mean_squared_error, r2_score
     
 #     if product not in product_map:
 #         return None
+import numpy as np
+import pickle
+from django.http import HttpResponse
+from django.shortcuts import render
+
 def predict_sales(request):
     if request.method == 'POST':
         month = request.POST.get('month')
         product = request.POST.get('product')
-        with open('sale.pkl','rb') as f:
-            model= pickle.load(f)
+        with open('sale.pkl', 'rb') as f:
+            model = pickle.load(f)
         if month == 'January':
             month_int = 1
         elif month == 'February':
@@ -811,32 +816,36 @@ def predict_sales(request):
         elif month == 'July':
             month_int = 7
         elif month == 'August':
-            month_int = 8   
+            month_int = 8
         elif month == 'September':
-            month_int = 9 
+            month_int = 9
         elif month == 'October':
-            month_int = 10 
+            month_int = 10
         elif month == 'November':
-            month_int = 11 
+            month_int = 11
         elif month == 'December':
-            month_int = 12                                  
-        # continue for other months
+            month_int = 12
         else:
             return HttpResponse('Invalid month name')
         if product == 'Chair':
             product_int = 1
         elif product == 'Table':
             product_int = 2
-        elif product == 'Product C':
+        elif product == 'Sofa':
             product_int = 3
         else:
-            valid_products = ['Chair', 'Table', 'Product C']
+            valid_products = ['Chair', 'Table', 'Sofa']
             return HttpResponse(f'Invalid product name. Valid products: {", ".join(valid_products)}')
         input_data = np.zeros(22)  # create an array of zeros with 22 elements
         input_data[month_int - 1] = 1  # set the value at the month index to 1
         input_data[product_int + 11] = 1  # set the value at the product index to 1
-        prediction = model.predict(input_data.reshape(1, -1))
-        return HttpResponse(prediction)
+        prediction = model.predict(input_data.reshape(1, -1))[0]  # extract the prediction value
+        prediction_percent = round(prediction * 100)
+        context = {
+            'prediction_percent': prediction_percent
+        }
+        print(context)
+        return render(request,'predict.html',context)
     return render(request, 'index.html')
 
 
@@ -847,3 +856,63 @@ def predict(request):
     return render(request,'predict.html')
 
 
+
+from django.shortcuts import render
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
+import io
+import base64
+import matplotlib
+matplotlib.use('TkAgg')
+
+
+
+def visual(request):
+    # Load employee orders data
+    df = pd.read_csv('employee_orders .csv')
+
+    # Preprocess data
+    month_map = {'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6, 'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12}
+    df['month'] = df['month'].apply(lambda x: month_map[x])
+    grouped_data = df.groupby('month')[['qty', 'price']].sum()
+
+    # Split data into training and testing sets
+    train_size = int(0.8 * len(grouped_data))
+    train_data = grouped_data.iloc[:train_size]
+    test_data = grouped_data.iloc[train_size:]
+
+    # Train linear regression model on training data
+    model = LinearRegression()
+    model.fit(train_data.index.values.reshape(-1, 1), train_data['qty'])
+
+    # Make predictions on testing data and calculate mean squared error
+    test_preds = model.predict(test_data.index.values.reshape(-1, 1))
+    mse = mean_squared_error(test_data['qty'], test_preds)
+
+    # Generate predictions for next four months and plot bar chart
+    future_months = pd.DataFrame({'month': [9, 10, 11, 12]})
+    future_sales = model.predict(future_months)
+
+    plt.bar(future_months['month'], future_sales)
+    plt.xticks(future_months['month'], [month for month in month_map.keys() if month_map[month] in future_months['month']] + [''], rotation=45)
+
+    plt.xlabel('Month')
+    plt.ylabel('Sales')
+    plt.title('Monthly Sales Predictions')
+
+    # Convert plot to PNG image and return as HTTP response
+    fig = plt.gcf()
+    fig.set_size_inches(8, 6)
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png')
+    buf.seek(0)
+    image = base64.b64encode(buf.getvalue()).decode('utf-8').replace('\n', '')
+    return render(request, 'visual.html', {'image': image, 'future_sales': future_sales})
+
+
+
+import dateutil
+print(dateutil.__version__)
