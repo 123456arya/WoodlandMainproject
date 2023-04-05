@@ -1,47 +1,152 @@
-<form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-<table class="table" cellpadding="10px" cellspacing="10px" width="100%" border="2" style="width:100%;font-size: 150%;">
-    <tr>
-        <td colspan="2"><h1>Customize Product</h1></td>
-    </tr>
-    {% if msg %}
-        <script>alert('{{msg}}')</script>
-        
-    {% endif %}
-   
-    <tr><th> Name</th><td><input type="text"    > 
-		
-		<span class="error-msg" id="error"></span>
-	</td></tr>
-    <!--<tr><th>Category Name</th><td><select name="t2">
-        <option value="0">---select---</option>
-        {% for d in data %}
-        <option value="{{d.0}}">{{d.1}}</option>
-        {% endfor %}
-    </select></td></tr>-->
-    <!-- <tr><th>Sub Category Name</th><td>
-        <select name="t3">
-            <option value="0">SELECT</option>
-            {% for d in data1 %}
-            <option value="{{d.0}}">{{d.2}}</option>
-            {% endfor %}
-        </select>
-    </td></tr> -->
-    
-    
-    <tr><th>Quantity </th><td><input type="text" class="form-control"  >
-    </td></tr>
-    <tr><th> Description </th><td><input type="text" class="form-control" >
-    </td></tr>
-    <tr><th>Material </th><td><input type="text" class="form-control"  >
-    </td></tr>
-    <tr><th>Image1 </th><td><input type="file" >
-  
-        <td colspan="2"><input type="submit" name="b1" value="Add Product"></td>
-    </tr>
-    
-    </tr>
-  
 
-</table>
-</form>
+<!DOCTYPE html>
+<html>
+    <head runat="server">
+        <!-- Required meta tags -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+        <!---CSS--->
+        <link href="../staic/cust/css/style.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" > </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+            <title>WoodCraft</title>
+    
+            
+        </head>
+
+
+
+        <body>
+
+            <header><li>
+                <div class="card-stor">
+                <li><a href="/carts"><img src="../static/cusdash/assets/img/icon/card.svg" alt=""></a></li>
+              <span>0</span>
+              </div>
+              
+              </li>
+            <div class="text-center" id="add">Add A Tough Style To Your Home
+                             <!--FIRST NAV-->
+                          
+                        </div>
+                </div>
+            </header>
+
+                
+                
+                <div class="container"></div>
+        <form action="" method="post">    
+                <!--MAIN-->
+                <div id="custom" class="text-center">
+                        <label><b>FURNITURE</b></label>
+                        <br/>
+                    
+                        <input type="text" id="item" placeholder="Kind of Furniture"  class="form-control" required>
+                        <br/>
+                        <br/>
+                    
+
+                        <label><b>TYPE OF WOOD</b></label>
+                        <br/>
+                    
+                            <select name="woods" class="form-control" required>
+                                <option>Acacia</option>
+                                <option>Ash</option>
+                                <option>Kamagong/Ebony</option>
+                                <option>Mahogany</option>
+                                <option>Molave</option>
+                                <option>Narra</option>
+                                <option>Oak</option>
+                                <option>Tanguile</option>
+                                <option>Yakal</option>
+                            </select>
+                            <br/>
+                            <br/>
+                    
+
+                        <label><b>MEASUREMENTS <i>(ft.)</i></b></label>
+                            <br/>
+                    
+                            <input type="text" id="measurement" placeholder="Height" class="form-control" required>
+                            <br/>
+                            <input type="text" id="measurement" placeholder="Length" class="form-control" required>
+                            <br/>
+                            <input type="text" id="measurement" placeholder="Width" class="form-control" required>
+                            <br/>
+                            <br/>
+                    
+
+                        <label><b>FABRIC COLOR</b></label>
+                            <br/>
+                            {% csrf_token %}
+                            <div class="btn-toolbar-center" role="toolbar">
+                                <select name="fabric" class="form-control" required>
+                                    <option>Woodcolor</option>
+                                    <option>brown</option>
+                                    <option>black</option>
+                                    <option>grey</option>
+                                   
+                                </select>
+                            </div>
+                            <br/>
+                            <br/>
+                   
+
+                        <label><b>QUANTITY</b></label>
+                            <br/>
+                            
+                            <select name="quantity" class="form-control" required>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <br/>
+                            <br/>
+                        
+                        
+                    
+                        <label><b>UPLOAD YOUR IMAGE</b></label>
+                        
+                        <input type="file" accept="../staic/images/*" onchange="loadFile(event)" class="form-control" >
+                            <img id="output" style="max-width: 150px; max-height: 150px; margin-top: 10px;"/>
+                                <script>
+                                    var loadFile = function(event) {
+                                        var output = document.getElementById('output');
+                                        
+                                        output.src = URL.createObjectURL(event.target.files[0]);
+                                    };
+                                </script>
+                            
+                            <br/>
+                            <br/>
+                        
+
+                        <input type="submit" value="Submit" href="/carts" style="height: 44px; width: 179px;">
+
+                        <input type="reset" value="Reset" style="height: 44px; width: 179px; margin-left: 30px;">
+                  
+
+                </div>
+
+                <br/>
+                <br/>
+        </form>   
+                
+                <!--FOOTER-->
+           
+            
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="../staic/cust/https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+        <script src="../staic/cust/https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+    </body>
+</html>

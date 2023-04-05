@@ -1,0 +1,163 @@
+#add{
+    background-color: #2e3d50;
+    font-family: 'MV Boli'; 
+    height: 37px;
+    width: 100%; 
+    font-size: 19px;
+    color: white;
+    padding-top: 5px;
+    position: fixed;
+    z-index: 99999;
+    
+}
+
+.top-navi{
+    margin-top: 10px;
+    right: 0px;
+    font-family: 'Zona Pro'; 
+    font-size: 15px;
+    padding-right: 70px;
+    position: fixed;
+    z-index: 99999;
+}
+        .top-navi a:hover {
+            color: transparent;
+          }
+        .top-navi a.active{
+            
+            font-weight: bolder;
+        }
+        .top-navi a:after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #d4bd87;
+            visibility: hidden;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            -webkit-transition: all 0.3s ease-in-out 0s;
+            transition: all 0.3s ease-in-out 0s;
+          }
+    
+        .top-navi a:hover:after {
+            visibility: visible;
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            
+        }
+
+.logo {
+    z-index: 99999;
+    width: 300px;
+    height: 100%;
+    padding-top: 30px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.main-navi{
+    z-index: 99999;
+    font-family: 'Zona Pro Light'; 
+    height: 45px;
+    font-size: 18px;
+    position: relative;
+    zoom: 1;
+    margin-top: 0 30px;
+    
+    }
+        .main-navi a:hover {
+            color: transparent;
+        }
+
+        .main-navi a.active{
+            
+            font-weight: bolder;
+        }
+
+        .main-navi a:after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #d4bd87;
+            visibility: hidden;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            -webkit-transition: all 0.3s ease-in-out 0s;
+            transition: all 0.3s ease-in-out 0s;
+          }
+    
+        .main-navi a:hover:after {
+            visibility: visible;
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            
+        }
+     
+
+.cart{
+    height:25px;
+    width:25px;
+    z-index: 99999;
+}
+
+#custom {
+    top: 250px;
+    font-family: 'Lucida Fax';
+    font-size: 16px;
+    position: absolute;
+    left: 500px;
+}
+
+
+
+#signup{
+    top: 200px;
+    font-family: 'Lucida Fax';
+    font-size: 16px;
+    position: absolute;
+    left: 550px;
+}
+
+#in{
+    top: 200px;
+    font-family: 'Lucida Fax';
+    font-size: 16px;
+    position: absolute;
+    left: 550px;
+}
+
+#prod{
+   margin-top: 200px;
+    font-family: 'Zona Pro Light';
+    font-size: 25px;
+    position: relative;
+}
+
+#product{
+    margin-top: 50px;
+     font-family: 'Zona Pro';
+     /*border: 1px solid #333;
+     background-color: #f1f1f1;
+     border-radius: 5px;
+     padding: 16px;
+     margin-bottom: 20px;*/
+     position: relative;
+     
+ }
+
+ #prods{
+     font-family: 'Zona Pro';
+     
+ }
+
+ .shop{
+     margin-left: 70px;
+     margin-top: 190px;
+ }
+

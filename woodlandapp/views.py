@@ -916,3 +916,34 @@ def visual(request):
 
 import dateutil
 print(dateutil.__version__)
+
+def customization(request):
+    return render(request, 'customization.html', {})
+
+
+
+def deletecart(request):
+  cid=request.GET.get("cid")
+  c.execute("delete from cart where cusid='"+str(cid)+"'")
+  print("delete from cart where cusid='"+str(cid)+"'")
+  con.commit()
+  return HttpResponseRedirect("/cartcustom")
+
+
+
+# def wishlist(request):
+#     cid=request.session["cid"]
+#     quantity=request.POST.get("qty")
+#     tqty=data[0][6]
+#     c.execute("insert into wishlist(`CustomerID`,`ProductName`,`image`,`quantity`,`length`,`width`,`height`,`color`,date) values(%s,%s,%s,%s,%s,%s,%s,%s,%s)",[id,cid,qty,d])
+#     con.commit()
+    
+#     qty=int(tqty)-int(qty)
+#     # c.execute("update products set qty='"+str(qty)+"' where ProductID='"+str(id)+"' ")
+#     # con.commit()
+#     cn=0
+#     return render(request,"cusviewmore.html",{"data":data,"cn":cn,"ratdata":rating,"uname":uname})
+
+
+
+

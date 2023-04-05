@@ -51,9 +51,22 @@
                                             <td><img src="static{{d.3}}" width="100px"></td>
                                             <td>{{d.4}}</td>
                                             <!-- <td><a href="/acceptorder?id={{d.0}}">Accept</a></td>
-                                            <td><a href="/deleveredorder?id={{d.0}}">Delivered</a></td>
-                                             -->
+                                            <td><a href="/deleveredorder?id={{d.0}}">Delivered</a></td> -->
+                                             <td>
+                                                <div class="dropdown">
+                                                    <button class="nav-link px-0 align-middle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-clipboard-minus"></i>
+                                                      Action
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                      <li><a class="dropdown-item" href="/acceptorder?id={{d.0}}">Accept</a></li>
+                                                      <li><a class="dropdown-item" name="seller" href="/deleveredorder?id={{d.0}}">Delivered</a></li>
+                                                      
+                                                    </ul>
+                                                  </div>
+                                             </td>
                                         </tr>
+                                       
+                                        
                                         {% endfor %}
                                         
                                       <button class="btn"><a href="/ExportEmployeeOrdersToCSV">Export</a></button> 

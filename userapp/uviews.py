@@ -32,7 +32,6 @@ def usrhome(request):
   uname=request.session["uname"]
   print("#######################################################3")
   print(uname)
-  
   return render(request,"usrhome.html",{"uname":uname})
 def cusviewmore(request):
   uname=request.session["uname"]
