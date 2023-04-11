@@ -14,35 +14,48 @@
         <div class="card shadow mb-4">
     
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Customer</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Customization</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                                         <tr>
-                                            <th>ID</th>
+                                           
                                             <th>Productname</th>
-                                            <th>CustomerName</th>
                                             <th>Image</th>
+                                            <th>Quantity</th>
+                                            <th>Length</th>
+                                            <th>Width</th>
+                                            <th>Height</th>
+                                            <th>Color</th>
+                                            <th>Date</th>
+                                            <th>Wood</th>
+                                            <th>Customerid</th>
                                             <th>Status</th>
+                                       
                                             <th>Action</th>
-                                           <!--  <th>Action</th> -->
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                      
-                                    </tfoot>
+                                    
                                     <tbody>
                                         <tr>
                                      
                                         {% for d in data %}
                                         <tr>
+                                            
                                             <td>{{d.0}}</td>
-                                            <td>{{d.1}}</td>
+                                           
+                                            <td><img src="/static{{d.1}}" width="100px"></td>
                                             <td>{{d.2}}</td>
-                                            <td><img src="static{{d.3}}" width="100px"></td>
+                                            <td>{{d.3}}</td>
                                             <td>{{d.4}}</td>
+                                            <td>{{d.5}}</td>
+                                            <td>{{d.7}}</td>
+                                            <td>{{d.8}}</td>
+                                            <td>{{d.10}}</td>
+                                            <td>{{d.9}}</td>
+                                            <td>{{d.6}}</td>
                                             <!-- <td><a href="/acceptorder?id={{d.0}}">Accept</a></td>
                                             <td><a href="/deleveredorder?id={{d.0}}">Delivered</a></td> -->
                                              <td>
@@ -51,8 +64,8 @@
                                                       Action
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                      <li><a class="dropdown-item" href="/acceptorder?id={{d.0}}">Accept</a></li>
-                                                      <li><a class="dropdown-item" name="seller" href="/deleveredorder?id={{d.0}}">Delivered</a></li>
+                                                      <li><a class="dropdown-item" href="/customizeorders?id={{d.11}}">Accept</a></li>
+                                                      <li><a class="dropdown-item" href="/customizeorders?id={{d.11}}">Delivered</a></li>
                                                       
                                                     </ul>
                                                   </div>
@@ -62,7 +75,7 @@
                                         
                                         {% endfor %}
                                         
-                                      <button class="btn"><a href="/ExportEmployeeOrdersToCSV">Export</a></button> 
+                                     <!--  <button class="btn"><a href="/ExportEmployeeOrdersToCSV">Export</a></button>  -->
                                      
                                     </tr>
                             

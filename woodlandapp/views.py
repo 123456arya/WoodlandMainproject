@@ -931,19 +931,40 @@ def deletecart(request):
 
 
 
-# def wishlist(request):
-#     cid=request.session["cid"]
-#     quantity=request.POST.get("qty")
-#     tqty=data[0][6]
-#     c.execute("insert into wishlist(`CustomerID`,`ProductName`,`image`,`quantity`,`length`,`width`,`height`,`color`,date) values(%s,%s,%s,%s,%s,%s,%s,%s,%s)",[id,cid,qty,d])
-#     con.commit()
-    
-#     qty=int(tqty)-int(qty)
-#     # c.execute("update products set qty='"+str(qty)+"' where ProductID='"+str(id)+"' ")
-#     # con.commit()
-#     cn=0
-#     return render(request,"cusviewmore.html",{"data":data,"cn":cn,"ratdata":rating,"uname":uname})
 
 
+def customization(request):
+    msg=""
+    if request.POST:
+        productname=request.POST.get("c1")
+        image=request.POST.get("c2")
+        fs=FileSystemStorage()
+        myfile=request.FILES.get("c2")
+        filename=fs.save(myfile.name , myfile)
+        image = fs.url(filename)
+        quantity=request.POST.get("c3")
+        length=request.POST.get("c4")
+        width=request.POST.get("c5")
+        height=request.POST.get("c6")
+        color=request.POST.get("c7")
+        import datetime
+        date=datetime.datetime.today()
+        status="requested"
+        cid=request.session["cid"]
+        wood=request.POST.get("c10")
+        x=[productname,image,quantity,length,width,height,color,date,status,cid,wood]
+        print(x)
+        print("insert into customization (`productname`,`image`,`quantity`,`length`,`width`,`height`,`color`,`date`,`status`,`CustomerID`,`wood`) values('"+str(productname)+"','"+str(image)+"','"+str(quantity)+"','"+str(length)+"','"+str(width)+"','"+str(height)+"','"+str(color)+"','"+str(date)+"','"+str(status)+"','"+str(cid)+"','"+str(wood)+"')")
+        c.execute("insert into customization (`productname`,`image`,`quantity`,`length`,`width`,`height`,`color`,`date`,`status`,`CustomerID`,`wood`) values('"+str(productname)+"','"+str(image)+"','"+str(quantity)+"','"+str(length)+"','"+str(width)+"','"+str(height)+"','"+str(color)+"','"+str(date)+"','"+str(status)+"','"+str(cid)+"','"+str(wood)+"')")    
+        con.commit()
+    return render(request,"customization.html",{"msg":msg})
+def customizeorders(request):
+    if request.GET:
+        id=request.GET["id"]
+        c.execute("update customization set status='accept' where custid='"+str(id)+"'")
+        print("update customization set status='accept' where custid='"+str(id)+"'")
+    c.execute("select * from customization")
 
-
+    data=c.fetchall()
+    con.commit()
+    return render(request,"customizeorders.html",{"data":data})

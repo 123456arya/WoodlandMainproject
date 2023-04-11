@@ -120,8 +120,8 @@ def usrhommenu(request):
   dataa=c.fetchall()
   print("######################################################")
   print(dataa)
-  c.execute("update cart set status='Paid' where  CustomerID='"+str(cid)+"'")
-  con.commit()
+  # c.execute("update cart set status='Paid' where  CustomerID='"+str(cid)+"'")
+  # con.commit()
   qty=0
   for d in dataa:
       
@@ -136,8 +136,9 @@ def usrhommenu(request):
       print(u)
       c.execute(u)
       con.commit()
-      print("insert into orders (`ProductID`,`CustomerID`,`Status`,date) values('"+str(d[1])+"','"+str(cid)+"','"+str(paid)+"','"+str(dd)+"')")
-      c.execute("insert into orders (`ProductID`,`CustomerID`,`Status`,date) values('"+str(d[1])+"','"+str(cid)+"','"+str(paid)+"','"+str(dd)+"')")
+      tod=datetime.datetime.today()
+      print("insert into orders (`ProductID`,`CustomerID`,`Status`,date) values('"+str(d[1])+"','"+str(cid)+"','"+str(paid)+"','"+str(tod)+"')")
+      c.execute("insert into orders (`ProductID`,`CustomerID`,`Status`,date) values('"+str(d[1])+"','"+str(cid)+"','"+str(paid)+"','"+str(tod)+"')")
       # c.execute("update products set qty=qty-"+int(d[3])+" where ProductID='"+str(d[1])+"'")
       print("######################################")  
       con.commit()
@@ -186,7 +187,37 @@ def viewcart(request):
  
   if request.POST:
     amt=data2[0]
+    c.execute("select * from cart where CustomerID='"+str(cid)+"' and status<>'paid'")
+    
+    dataa=c.fetchall()
+    c.execute("update cart set status='Paid' where  CustomerID='"+str(cid)+"'")
+    con.commit()
+    paid="paid"
+    
+    print("######################################################")
+    print(dataa)
+    # c.execute("update cart set status='Paid' where  CustomerID='"+str(cid)+"'")
+    # con.commit()
+    qty=0
+    for d in dataa:
+        
+        print("######################################")
+        print(d[1])
+        ss="select qty from products where ProductID='"+str(d[1])+"'"
+        c.execute(ss)
+        dd=c.fetchall()
+        qty=int(dd[0][0])-int(d[3])
 
+        u="update products set qty='"+str(qty)+"' where ProductID='"+str(d[1])+"'"
+        print(u)
+        c.execute(u)
+        con.commit()
+        tod=datetime.datetime.today()
+        print("insert into orders (`ProductID`,`CustomerID`,`Status`,date) values('"+str(d[1])+"','"+str(cid)+"','"+str(paid)+"','"+str(tod)+"')")
+        c.execute("insert into orders (`ProductID`,`CustomerID`,`Status`,date,qty) values('"+str(d[1])+"','"+str(cid)+"','"+str(paid)+"','"+str(tod)+"','"+str(d[3])+"')")
+        # c.execute("update products set qty=qty-"+int(d[3])+" where ProductID='"+str(d[1])+"'")
+        print("######################################")  
+        con.commit()
     
     
     return HttpResponseRedirect("http://localhost/payment/pay.php?amount="+str(amt))
@@ -218,7 +249,7 @@ def payments(request):
 def vieworder(request):
     uname=request.session["uname"]
     cid=request.session["cid"]
-    c.execute("select p.Pname,c.Fname,cr.count,p.price*cr.count,o.date,o.status,o.CustomerID ,o.OrderID from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'")
+    c.execute("select p.Pname,c.Fname,cr.count,p.price*cr.count,o.date,o.status,o.CustomerID ,o.OrderID from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"' group by o.ProductID")
     data=c.fetchall()
     return render(request,"vieworder.html",{"data":data,"uname":uname})
 def Invoice(request):
@@ -229,16 +260,18 @@ def Invoice(request):
     
     date=datetime.datetime.today()
     
-    c.execute("SELECT o.OrderID, p.Pname, o.p_price, o.qty,o.qty*o.p_price as total,date FROM orders o JOIN products p ON ( o.ProductID = p.ProductID ) where o.OrderID ='"+str(oid)+"'")
+    c.execute("SELECT o.OrderID, p.Pname, p.price, o.qty,o.qty*p.price as total,date FROM orders o JOIN products p ON ( o.ProductID = p.ProductID ) where o.OrderID ='"+str(oid)+"'")
     data=c.fetchall()
     print("select p.Pname,c.Fname,cr.count,p.price,p.price*cr.count, o.date,o.status,o.qty,o.CustomerID from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'and o.OrderID='"+str(oid)+"' and c.Fname='"+str(id)+"' ")
+    c.execute("select c.Fname,c.Housename from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'and o.OrderID='"+str(oid)+"' and c.Fname='"+str(id)+"' ")
+    data2=c.fetchall()
     if data:
      dat=data[0][4]
     else:
       dat=0
     c.execute("select sum(p.price*cr.count) from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"' and p.Pname='"+str(id)+"' ")
     data1=c.fetchall()
-    return render(request,"Invoice.html",{"data":data,"uname":uname,"dat":dat,"total":data1[0][0],"date":date})
+    return render(request,"Invoice.html",{"data":data,"uname":uname,"dat":dat,"total":data1[0][0],"date":date,"data2":data2})
 
 def Recommendedproduct(request):
    uname=request.session["uname"]
