@@ -263,7 +263,7 @@ def Invoice(request):
     c.execute("SELECT o.OrderID, p.Pname, p.price, o.qty,o.qty*p.price as total,date FROM orders o JOIN products p ON ( o.ProductID = p.ProductID ) where o.OrderID ='"+str(oid)+"'")
     data=c.fetchall()
     print("select p.Pname,c.Fname,cr.count,p.price,p.price*cr.count, o.date,o.status,o.qty,o.CustomerID from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'and o.OrderID='"+str(oid)+"' and c.Fname='"+str(id)+"' ")
-    c.execute("select c.Fname,c.Housename from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'and o.OrderID='"+str(oid)+"' and c.Fname='"+str(id)+"' ")
+    c.execute("select c.Fname,c.Housename,c.Street,c.District,c.State,c.PinCode,c.Email,c.Mobno1 from products p join orders o on(o.ProductID=p.ProductID) join customer c on (c.CustomerID=o.CustomerID) join cart cr on(cr.CustomerID=c.CustomerID) where o.CustomerID='"+str(cid)+"'and o.OrderID='"+str(oid)+"' and c.Fname='"+str(id)+"' ")
     data2=c.fetchall()
     if data:
      dat=data[0][4]

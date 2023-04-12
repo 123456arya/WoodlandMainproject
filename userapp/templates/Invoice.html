@@ -43,7 +43,106 @@ h5 {
   color: #3d405c !important;
 }
         </style>
-    </head>
+
+<link rel="manifest" href="site.html">
+<link rel="shortcut icon" type="image/x-icon" href="../static/cusdash/assets/img/favicon.ico">
+
+<link rel="stylesheet" href="../static/cusdash/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/slicknav.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/flaticon.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/progressbar_barfiller.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/lightslider.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/price_rangs.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/gijgo.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/animate.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/animated-headline.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/magnific-popup.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/themify-icons.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/slick.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/nice-select.css">
+<link rel="stylesheet" href="../static/cusdash/assets/css/style.css">
+<script nonce="afab6cbf-4993-4029-a282-87d804710270">(function(w,d){!function(bv,bw,bx,by){bv[bx]=bv[bx]||{};bv[bx].executed=[];bv.zaraz={deferred:[],listeners:[]};bv.zaraz.q=[];bv.zaraz._f=function(bz){return function(){var bA=Array.prototype.slice.call(arguments);bv.zaraz.q.push({m:bz,a:bA})}};for(const bB of["track","set","debug"])bv.zaraz[bB]=bv.zaraz._f(bB);bv.zaraz.init=()=>{var bC=bw.getElementsByTagName(by)[0],bD=bw.createElement(by),bE=bw.getElementsByTagName("title")[0];bE&&(bv[bx].t=bw.getElementsByTagName("title")[0].text);bv[bx].x=Math.random();bv[bx].w=bv.screen.width;bv[bx].h=bv.screen.height;bv[bx].j=bv.innerHeight;bv[bx].e=bv.innerWidth;bv[bx].l=bv.location.href;bv[bx].r=bw.referrer;bv[bx].k=bv.screen.colorDepth;bv[bx].n=bw.characterSet;bv[bx].o=(new Date).getTimezoneOffset();if(bv.dataLayer)for(const bI of Object.entries(Object.entries(dataLayer).reduce(((bJ,bK)=>({...bJ[1],...bK[1]})))))zaraz.set(bI[0],bI[1],{scope:"page"});bv[bx].q=[];for(;bv.zaraz.q.length;){const bL=bv.zaraz.q.shift();bv[bx].q.push(bL)}bD.defer=!0;for(const bM of[localStorage,sessionStorage])Object.keys(bM||{}).filter((bO=>bO.startsWith("_zaraz_"))).forEach((bN=>{try{bv[bx]["z_"+bN.slice(7)]=JSON.parse(bM.getItem(bN))}catch{bv[bx]["z_"+bN.slice(7)]=bM.getItem(bN)}}));bD.referrerPolicy="origin";bD.src="../../cdn-cgi/zaraz/sd0d9.js?z="+btoa(encodeURIComponent(JSON.stringify(bv[bx])));bC.parentNode.insertBefore(bD,bC)};["complete","interactive"].includes(bw.readyState)?zaraz.init():bv.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);</script></head>
+<body class="full-wrapper">
+
+
+
+
+
+
+
+
+   
+
+  
+
+<header>
+
+<div class="header-area">
+<div class="main-header header-sticky">
+<div class="container-fluid">
+<div class="row menu-wrapper align-items-center justify-content-between">
+<div class="header-left d-flex align-items-center">
+
+<div class="logo">
+<a href="#"><img src="../static/cusdash/assets/img/logo/logo.png" alt=""></a>
+</div>
+
+<div class="logo2">
+<a href="#"><img src="../static/cusdash/assets/img/logo/logo2.png" alt=""></a>
+</div>
+
+<div class="main-menu  d-none d-lg-block">
+<nav>
+<ul id="navigation">
+<li><a href="/customerhome">Home</a></li>
+<li><a href="/usrhommenu">Product</a></li>
+
+
+<li><a href="/Recommendedproduct">Recommendedproduct</a>
+  
+
+<li><a href="/vieworder">Order</a></li>
+
+</ul>
+</nav>
+</div>
+</div>
+<div class="header-right1 d-flex align-items-center">
+<div class="search">
+<ul class="d-flex align-items-center">
+
+<li>
+
+<a href="#" class="account-btn" target="_blank">Welcome<b>{{uname}}</b></a>
+</li>
+<li>
+<div class="card-stor">
+  <li><a href="/viewcart"><img src="../static/cusdash/assets/img/icon/card.svg" alt=""></a></li>
+  
+
+</div>
+</li>
+<li>
+    <a href="/" class="account-btn" target="_blank">Logout</a></li>
+</ul>
+</div>
+</div>
+
+<div class="col-12">
+<div class="mobile_menu d-block d-lg-none"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</header>
+
     <form action="" method="post">
         {% csrf_token %}
         {% if msg %}
@@ -73,8 +172,14 @@ h5 {
     </div>
     <div class="col-sm-6 ">
     <h5 class="mb-3">To:</h5>
-    <h3 class="text-dark mb-1">{{uname}}</h3>
-    <h3 class="text-dark mb-1">{{data2.0.1}}</h3>
+    <h5 class="text-dark mb-1">{{uname}}</h5>
+    <h5 class="text-dark mb-1">{{data2.0.1}}</h5>
+    <h5 class="text-dark mb-1">{{data2.0.2}}</h5>
+    <h5 class="text-dark mb-1">{{data2.0.3}}</h5>
+    <h5 class="text-dark mb-1">{{data2.0.4}}</h5>
+    <h5 class="text-dark mb-1">{{data2.0.5}}</h5>
+    <h5 class="text-dark mb-1">Email:{{data2.0.6}}</h5>
+    <h5 class="text-dark mb-1">Phone:+91 {{data2.0.7}}</h5>
    <!--  <div>{{date}}</div> -->
 
     </div>
@@ -170,5 +275,5 @@ window.print();
 document.body.innerHTML = originalContents;
 }
 </script>
-
+</body>
     </html>

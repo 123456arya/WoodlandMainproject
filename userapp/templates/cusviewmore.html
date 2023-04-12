@@ -284,8 +284,8 @@
         <div class="product-quantity" >
             <span>Quantity:</span>
          <input id="product-quantity" name="qty" type="number"  value="1" min="0" max="{{data.0.6}}">
-         {% if data.0.6 == cn %}
-          <p>Out Of stock </p>
+         {% if data.0.6 == 0 %}
+         <h2 class="text-danger">Out Of stock </h2> 
          {% endif %}
         </div>
         <p>

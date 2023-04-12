@@ -934,6 +934,7 @@ def deletecart(request):
 
 
 def customization(request):
+    uname=request.session["uname"]
     msg=""
     if request.POST:
         productname=request.POST.get("c1")
@@ -957,8 +958,9 @@ def customization(request):
         print("insert into customization (`productname`,`image`,`quantity`,`length`,`width`,`height`,`color`,`date`,`status`,`CustomerID`,`wood`) values('"+str(productname)+"','"+str(image)+"','"+str(quantity)+"','"+str(length)+"','"+str(width)+"','"+str(height)+"','"+str(color)+"','"+str(date)+"','"+str(status)+"','"+str(cid)+"','"+str(wood)+"')")
         c.execute("insert into customization (`productname`,`image`,`quantity`,`length`,`width`,`height`,`color`,`date`,`status`,`CustomerID`,`wood`) values('"+str(productname)+"','"+str(image)+"','"+str(quantity)+"','"+str(length)+"','"+str(width)+"','"+str(height)+"','"+str(color)+"','"+str(date)+"','"+str(status)+"','"+str(cid)+"','"+str(wood)+"')")    
         con.commit()
-    return render(request,"customization.html",{"msg":msg})
+    return render(request,"customization.html",{"msg":msg,"uname":uname})
 def customizeorders(request):
+  
     if request.GET:
         id=request.GET["id"]
         c.execute("update customization set status='accept' where custid='"+str(id)+"'")

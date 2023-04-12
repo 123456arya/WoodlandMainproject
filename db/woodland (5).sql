@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 31, 2023 at 11:01 AM
+-- Generation Time: Apr 12, 2023 at 09:45 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -22,6 +22,28 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `address`
+--
+
+CREATE TABLE IF NOT EXISTS `address` (
+  `uname` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `mob` varchar(100) NOT NULL,
+  `landmark` varchar(100) NOT NULL,
+  `town` varchar(100) NOT NULL,
+  `adtype` varchar(100) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `address`
+--
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cart`
 --
 
@@ -32,78 +54,96 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `count` int(11) NOT NULL,
   `date` date NOT NULL,
   `status` varchar(100) NOT NULL DEFAULT 'notpaid',
-  `razor_pay_order_id` varchar(100) NOT NULL,
-  `razor_pay_payment_id` varchar(100) NOT NULL,
-  `razor_pay_payment_signature` varchar(100) NOT NULL,
   PRIMARY KEY (`cartID`),
   KEY `CustomerID` (`CustomerID`),
   KEY `ProductID` (`ProductID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=191 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=213 ;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`cartID`, `ProductID`, `CustomerID`, `count`, `date`, `status`, `razor_pay_order_id`, `razor_pay_payment_id`, `razor_pay_payment_signature`) VALUES
-(113, 34, 2, 1, '2023-02-15', 'Paid', '0', '', ''),
-(116, 26, 2, 10, '2023-02-15', 'Paid', '0', '', ''),
-(117, 34, 2, 1, '2023-02-15', 'Paid', '0', '', ''),
-(118, 34, 2, 1, '2023-02-16', 'Paid', '0', '', ''),
-(129, 35, 2, 2, '2023-02-28', 'Paid', '', '', ''),
-(130, 30, 2, 2, '2023-02-28', 'Paid', '', '', ''),
-(131, 26, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(132, 26, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(133, 26, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(134, 30, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(135, 30, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(136, 30, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(137, 33, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(138, 33, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(139, 33, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(140, 33, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(141, 33, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(142, 33, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(143, 33, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(144, 33, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(145, 33, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(146, 33, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(147, 33, 2, 1, '2023-03-04', 'Paid', '', '', ''),
-(149, 30, 2, 2, '2023-03-05', 'Paid', '', '', ''),
-(150, 26, 2, 1, '2023-03-07', 'Paid', '', '', ''),
-(151, 30, 2, 1, '2023-03-07', 'Paid', '', '', ''),
-(152, 30, 2, 1, '2023-03-07', 'Paid', '', '', ''),
-(153, 30, 2, 1, '2023-03-07', 'Paid', '', '', ''),
-(154, 30, 2, 1, '2023-03-07', 'Paid', '', '', ''),
-(155, 26, 2, 1, '2023-03-07', 'Paid', '', '', ''),
-(156, 26, 2, 1, '2023-03-07', 'Paid', '', '', ''),
-(157, 26, 2, 1, '2023-03-07', 'Paid', '', '', ''),
-(158, 26, 2, 3, '2023-03-07', 'Paid', '', '', ''),
-(159, 35, 2, 1, '2023-03-07', 'Paid', '', '', ''),
-(160, 35, 2, 2, '2023-03-07', 'Paid', '', '', ''),
-(161, 35, 2, 2, '2023-03-08', 'Paid', '', '', ''),
-(162, 39, 2, 2, '2023-03-08', 'Paid', '', '', ''),
-(163, 35, 2, 1, '2023-03-08', 'Paid', '', '', ''),
-(165, 35, 2, 1, '2023-03-08', 'Paid', '', '', ''),
-(166, 35, 2, 1, '2023-03-09', 'Paid', '', '', ''),
-(167, 38, 2, 1, '2023-03-13', 'Paid', '', '', ''),
-(168, 26, 2, 2, '2023-03-13', 'Paid', '', '', ''),
-(169, 36, 2, 2, '2023-03-13', 'Paid', '', '', ''),
-(170, 36, 2, 1, '2023-03-14', 'Paid', '', '', ''),
-(171, 36, 2, 1, '2023-03-14', 'Paid', '', '', ''),
-(172, 42, 2, 1, '2023-03-15', 'Paid', '', '', ''),
-(173, 26, 2, 1, '2023-03-15', 'Paid', '', '', ''),
-(174, 26, 2, 7, '2023-03-15', 'Paid', '', '', ''),
-(175, 35, 2, 2, '2023-03-15', 'Paid', '', '', ''),
-(176, 35, 2, 2, '2023-03-15', 'Paid', '', '', ''),
-(177, 38, 2, 1, '2023-03-28', 'Paid', '', '', ''),
-(179, 39, 2, 1, '2023-03-29', 'Paid', '', '', ''),
-(180, 39, 2, 1, '2023-03-30', 'Paid', '', '', ''),
-(181, 38, 2, 2, '2023-03-30', 'Paid', '', '', ''),
-(182, 38, 2, 2, '2023-03-30', 'Paid', '', '', ''),
-(187, 38, 2, 4, '2023-03-30', 'Paid', '', '', ''),
-(188, 35, 2, 1, '2023-03-30', 'Paid', '', '', ''),
-(189, 36, 2, 1, '2023-03-31', 'Paid', '', '', ''),
-(190, 44, 2, 2, '2023-03-31', 'Paid', '', '', '');
+INSERT INTO `cart` (`cartID`, `ProductID`, `CustomerID`, `count`, `date`, `status`) VALUES
+(113, 34, 2, 1, '2023-02-15', 'Paid'),
+(116, 26, 2, 10, '2023-02-15', 'Paid'),
+(117, 34, 2, 1, '2023-02-15', 'Paid'),
+(118, 34, 2, 1, '2023-02-16', 'Paid'),
+(129, 35, 2, 2, '2023-02-28', 'Paid'),
+(130, 30, 2, 2, '2023-02-28', 'Paid'),
+(131, 26, 2, 1, '2023-03-04', 'Paid'),
+(132, 26, 2, 1, '2023-03-04', 'Paid'),
+(133, 26, 2, 1, '2023-03-04', 'Paid'),
+(134, 30, 2, 1, '2023-03-04', 'Paid'),
+(135, 30, 2, 1, '2023-03-04', 'Paid'),
+(136, 30, 2, 1, '2023-03-04', 'Paid'),
+(137, 33, 2, 1, '2023-03-04', 'Paid'),
+(138, 33, 2, 1, '2023-03-04', 'Paid'),
+(139, 33, 2, 1, '2023-03-04', 'Paid'),
+(140, 33, 2, 1, '2023-03-04', 'Paid'),
+(141, 33, 2, 1, '2023-03-04', 'Paid'),
+(142, 33, 2, 1, '2023-03-04', 'Paid'),
+(143, 33, 2, 1, '2023-03-04', 'Paid'),
+(144, 33, 2, 1, '2023-03-04', 'Paid'),
+(145, 33, 2, 1, '2023-03-04', 'Paid'),
+(146, 33, 2, 1, '2023-03-04', 'Paid'),
+(147, 33, 2, 1, '2023-03-04', 'Paid'),
+(149, 30, 2, 2, '2023-03-05', 'Paid'),
+(150, 26, 2, 1, '2023-03-07', 'Paid'),
+(151, 30, 2, 1, '2023-03-07', 'Paid'),
+(152, 30, 2, 1, '2023-03-07', 'Paid'),
+(153, 30, 2, 1, '2023-03-07', 'Paid'),
+(154, 30, 2, 1, '2023-03-07', 'Paid'),
+(155, 26, 2, 1, '2023-03-07', 'Paid'),
+(156, 26, 2, 1, '2023-03-07', 'Paid'),
+(157, 26, 2, 1, '2023-03-07', 'Paid'),
+(158, 26, 2, 3, '2023-03-07', 'Paid'),
+(159, 35, 2, 1, '2023-03-07', 'Paid'),
+(160, 35, 2, 2, '2023-03-07', 'Paid'),
+(161, 35, 2, 2, '2023-03-08', 'Paid'),
+(162, 39, 2, 2, '2023-03-08', 'Paid'),
+(163, 35, 2, 1, '2023-03-08', 'Paid'),
+(165, 35, 2, 1, '2023-03-08', 'Paid'),
+(166, 35, 2, 1, '2023-03-09', 'Paid'),
+(167, 38, 2, 1, '2023-03-13', 'Paid'),
+(168, 26, 2, 2, '2023-03-13', 'Paid'),
+(169, 36, 2, 2, '2023-03-13', 'Paid'),
+(170, 36, 2, 1, '2023-03-14', 'Paid'),
+(171, 36, 2, 1, '2023-03-14', 'Paid'),
+(172, 42, 2, 1, '2023-03-15', 'Paid'),
+(173, 26, 2, 1, '2023-03-15', 'Paid'),
+(174, 26, 2, 7, '2023-03-15', 'Paid'),
+(175, 35, 2, 2, '2023-03-15', 'Paid'),
+(176, 35, 2, 2, '2023-03-15', 'Paid'),
+(177, 38, 2, 1, '2023-03-28', 'Paid'),
+(179, 39, 2, 1, '2023-03-29', 'Paid'),
+(180, 39, 2, 1, '2023-03-30', 'Paid'),
+(181, 38, 2, 2, '2023-03-30', 'Paid'),
+(182, 38, 2, 2, '2023-03-30', 'Paid'),
+(187, 38, 2, 4, '2023-03-30', 'Paid'),
+(188, 35, 2, 1, '2023-03-30', 'Paid'),
+(189, 36, 2, 1, '2023-03-31', 'Paid'),
+(190, 44, 2, 2, '2023-03-31', 'Paid'),
+(191, 26, 2, 1, '2023-04-10', 'Paid'),
+(192, 34, 2, 1, '2023-04-10', 'Paid'),
+(193, 34, 2, 1, '2023-04-10', 'Paid'),
+(194, 34, 2, 1, '2023-04-10', 'Paid'),
+(195, 39, 2, 1, '2023-04-10', 'Paid'),
+(197, 34, 2, 1, '2023-04-10', 'Paid'),
+(198, 41, 2, 1, '2023-04-10', 'Paid'),
+(199, 35, 2, 1, '2023-04-10', 'Paid'),
+(200, 41, 2, 1, '2023-04-10', 'Paid'),
+(201, 26, 2, 1, '2023-04-10', 'Paid'),
+(202, 32, 2, 1, '2023-04-10', 'Paid'),
+(203, 43, 2, 0, '2023-04-10', 'Paid'),
+(204, 41, 2, 1, '2023-04-10', 'Paid'),
+(205, 40, 2, 2, '2023-04-10', 'Paid'),
+(206, 44, 2, 2, '2023-04-10', 'Paid'),
+(207, 41, 2, 2, '2023-04-12', 'Paid'),
+(208, 41, 2, 2, '2023-04-12', 'Paid'),
+(209, 45, 2, 1, '2023-04-12', 'Paid'),
+(210, 44, 2, 1, '2023-04-12', 'Paid'),
+(211, 42, 2, 2, '2023-04-12', 'Paid'),
+(212, 36, 2, 1, '2023-04-12', 'notpaid');
 
 -- --------------------------------------------------------
 
@@ -176,6 +216,36 @@ INSERT INTO `customer` (`CustomerID`, `Fname`, `Lname`, `Housename`, `Street`, `
 (2, 'ramu', 'ram', 'kripa', 'TVR', 'kply', 'Kerala', 682308, 'ramu@gmail.com', 'ramu', 'ramu123', 9978458758, 9887768589),
 (4, 'Jyothis', 'K J', 'Jyothis Home', 'Vallikkadu', 'Kottayam', 'Kerala', 686631, 'jyo@gmail.com', 'jyothis', 'Jyothis2', 8590594041, 9847422078),
 (7, 'Aleena', 'RajuB', 'Happy Home', 'Kannimala', 'Erumely', 'Kerala', 686631, 'aleena@gmail.com', 'aleena', 'Aleena@33', 9578965411, 9234556782);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customization`
+--
+
+CREATE TABLE IF NOT EXISTS `customization` (
+  `productname` varchar(100) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `height` int(11) NOT NULL,
+  `length` int(11) NOT NULL,
+  `width` int(11) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `color` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  `CustomerID` int(11) NOT NULL,
+  `wood` varchar(100) NOT NULL,
+  `custid` int(100) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`custid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `customization`
+--
+
+INSERT INTO `customization` (`productname`, `image`, `quantity`, `height`, `length`, `width`, `status`, `color`, `date`, `CustomerID`, `wood`, `custid`) VALUES
+('chair', '/media/1956_Lounge___Ottoman_Replica_Black_03_5LYnWXb.jpg', 2, 20, 20, 20, 'accept', 'black', '2023-04-10', 2, 'Kamagong/Ebony', 1),
+('sofa', '/media/3664-sofa.png', 2, 10, 10, 10, 'accept', 'black', '2023-04-11', 2, 'Kamagong/Ebony', 2);
 
 -- --------------------------------------------------------
 
@@ -331,38 +401,28 @@ CREATE TABLE IF NOT EXISTS `orders` (
   PRIMARY KEY (`OrderID`),
   KEY `CustomerID` (`CustomerID`),
   KEY `ProductID` (`ProductID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=90 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`OrderID`, `ProductID`, `CustomerID`, `Status`, `date`, `qty`, `p_price`) VALUES
-(1, 35, 2, 'paid', '2023-01-11', 2, 100000),
-(2, 30, 2, 'paid', '2023-01-27', 5, 5000),
-(3, 26, 2, 'paid', '2023-03-25', 1, 150000),
-(4, 26, 2, 'paid', '2013-03-15', 4, 42000),
-(5, 26, 2, 'paid', '2017-02-07', 1, 70000),
-(6, 30, 2, 'paid', '2020-04-10', 1, 5600),
-(7, 30, 2, 'paid', '2023-03-24', 2, 1000),
-(30, 26, 2, 'paid', '2023-02-24', 1, 55000),
-(63, 30, 2, 'paid', '2023-03-10', 2, 50000),
-(64, 30, 2, 'paid', '2023-03-10', 8, 7000),
-(65, 30, 2, 'paid', '2023-03-10', 2, 40000),
-(67, 26, 2, 'paid', '2023-03-10', 2, 12000),
-(68, 26, 2, 'paid', '2023-03-10', 1, 8000),
-(69, 26, 2, 'paid', '2023-03-10', 2, 10000),
-(70, 26, 2, 'paid', '2021-03-25', 1, 20000),
-(71, 35, 2, 'paid', '2023-03-10', 1, 25000),
-(72, 35, 2, 'paid', '2023-03-10', 1, 75000),
-(73, 35, 2, 'paid', '2023-03-10', 1, 10000),
-(78, 38, 2, 'paid', '2021-03-12', 1, 2000),
-(79, 26, 2, 'paid', '2021-03-08', 1, 7900),
-(80, 36, 2, 'paid', '2021-04-14', 10, 5000),
-(86, 38, 2, 'paid', '0000-00-00', 0, 0),
-(87, 35, 2, 'paid', '0000-00-00', 0, 0),
-(88, 36, 2, 'paid', '0000-00-00', 0, 0),
-(89, 44, 2, 'paid', '0000-00-00', 0, 0);
+(1, 43, 2, 'paid', '2023-04-10', 0, 0),
+(2, 41, 2, 'paid', '2023-04-10', 0, 0),
+(3, 40, 2, 'paid', '2023-04-10', 2, 0),
+(4, 44, 2, 'paid', '2023-04-10', 2, 0),
+(5, 41, 2, 'paid', '2023-04-12', 2, 0),
+(6, 41, 2, 'paid', '2023-04-12', 0, 0),
+(7, 41, 2, 'paid', '2023-04-12', 0, 0),
+(8, 41, 2, 'paid', '2023-04-12', 0, 0),
+(9, 41, 2, 'paid', '2023-04-12', 2, 0),
+(10, 45, 2, 'paid', '2023-04-12', 1, 0),
+(11, 44, 2, 'paid', '2023-04-12', 1, 0),
+(12, 42, 2, 'paid', '2023-04-12', 2, 0),
+(13, 36, 2, 'paid', '2023-04-12', 0, 0),
+(14, 36, 2, 'paid', '2023-04-12', 0, 0),
+(15, 36, 2, 'paid', '2023-04-12', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -390,28 +450,28 @@ CREATE TABLE IF NOT EXISTS `products` (
   `dimension` varchar(100) NOT NULL,
   PRIMARY KEY (`ProductID`),
   KEY `SubcategoryID` (`SubcategoryID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=47 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=46 ;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`ProductID`, `Pname`, `SubcategoryID`, `Price`, `Pricenot`, `Description`, `qty`, `image1`, `image2`, `image3`, `image4`, `image5`, `sid`, `status`, `material`, `brand`, `dimension`) VALUES
-(26, 'Novo 2 Seater Dining', 11, 150000, 200000, 'Bohemiana is a new range of furniture inspired by the spirit of freedom and adventure. The design philosophy explores the use of a combination of materials, colours, patterns and textures to create unique handcrafted furniture, of the finest quality.', 10, '/media/71ObDm7X9pL._SL1500_.jpg', '/media/a746dc18f299bba6ce17b67a66a910b7.jpg', '/media/a746dc18f299bba6ce17b67a66a910b7_nm59Shb.jpg', '/media/images%20(1).jpeg', '/media/solid-wood-dining-table.jpg', 2, 'deactivate', '	Bamboo', 'Duroflex', 'H 85.09 x W 203 x D 90.17 ( All Dimension are in cm)'),
-(30, 'TENCY 9 PIECE DINING', 1, 75000, 80000, 'Dine finely with this exquisite dining set that makes those intimate moments with your loved ones so memorable.', 10, '/media/download%20(1).jpeg', '/media/OIP%20(5).jpeg', '/media/OIP%20(6).jpeg', '/media/OIP%20(7).jpeg', '/media/OIP%20(4).jpeg', 3, 'deactivate', 'Sheesam', 'Vittoria', 'H 86 x W 61 x D 66'),
+(26, 'Novo 2 Seater Dining', 11, 150000, 200000, 'Bohemiana is a new range of furniture inspired by the spirit of freedom and adventure. The design philosophy explores the use of a combination of materials, colours, patterns and textures to create unique handcrafted furniture, of the finest quality.', 0, '/media/71ObDm7X9pL._SL1500_.jpg', '/media/a746dc18f299bba6ce17b67a66a910b7.jpg', '/media/a746dc18f299bba6ce17b67a66a910b7_nm59Shb.jpg', '/media/images%20(1).jpeg', '/media/solid-wood-dining-table.jpg', 2, 'deactivate', '	Bamboo', 'Duroflex', 'H 85.09 x W 203 x D 90.17 ( All Dimension are in cm)'),
+(30, 'TENCY 9 PIECE DINING', 1, 75000, 80000, 'Dine finely with this exquisite dining set that makes those intimate moments with your loved ones so memorable.', 0, '/media/download%20(1).jpeg', '/media/OIP%20(5).jpeg', '/media/OIP%20(6).jpeg', '/media/OIP%20(7).jpeg', '/media/OIP%20(4).jpeg', 3, 'deactivate', 'Sheesam', 'Vittoria', 'H 86 x W 61 x D 66'),
 (32, 'ALICIA RECLINER SOFA', 12, 990000, 117000, 'Durable Structure, Premium fabric and Ergonomical Design, Recliner Feature, High Comfort level', 15, '/media/alicia02_1_1.jpg', '/media/alicia_3rr_1r_1r_nz_02_detail_page_8__1.jpg', '/media/alicia_3rr_1r_1r_nz_02_detail_page_6__2_1.jpg', '/media/alicia_3rr_1r_1r_nz_02_detail_page_6__2_1_8XRcSp4.jpg', '', 2, 'deactivate', 'Rattan', 'Vittoria', 'H 85.09 x W 203 x D 90.17 ( All Dimension are in cm)'),
-(33, 'MIDLAND CORNER SOFA ', 9, 99000, 100000, 'Durable structure, Adjustable Head Rest, Premium Fabric and Ergonomical Design, High Comfort Level', 0, '/media/f0ce120d4316c66384682dd9b09e9920.png', '/media/5197IVybjjL.jpg', '/media/303883cf89aa6d79b9e69af7bd2e625f.jpg', '/media/dae39bdfed393ffd71f8f74929bbfb2a.jpg', '/media/img1_A08V5Su.jpg', 3, 'deactivate', 'Solid Wood', 'DHEP Furniture', 'H 85.09 x W 203 x D 90.17 ( All Dimension are in cm)'),
-(34, 'OLIVIA DRESSING TABL', 16, 70000, 100000, 'Dresser Unit with Two Tone Design (New Color Board-M24 High Gloss, Melamine Board).Storage Top Provided with Safety Ledges at Side & Back.', 50, '/media/64dee9e3434f8c1327bb9bb19edd7ce7.jpg', '/media/07ad371447f528a0c3daf089586c1486.jpg', '/media/OIP%20(9).jpeg', '/media/OIP%20(10).jpeg', '/media/OIP%20(11).jpeg', 2, 'deactivate', 'Rattan', 'Sleepyhead', 'H 86 x W 61 x D 66'),
-(35, 'LISBON SOFA', 12, 2000, 20000, 'This elegant sofa with a leatherette finish is perfect for your living area. It comes with a three-seater sofa along with two single sofas. The compact design of this sofa can easily fit any room space and comes with premium fabric which provides you with the ultimate comfort. The colour of this sofa can seamlessly blend with any interior space. So go ahead and buy it with confidence.', 5, '/media/OIP%20(15).jpeg', '/media/d69c7f9ca04b443e0a8083c27b31069a.jpg', '/media/OIP%20(16).jpeg', '/media/OIP%20(14).jpeg', '/media/OIP%20(13).jpeg', 3, 'deactivate', 'Solid Wood', 'Duroflex', 'H 85.09 x W 203 x D 90.17 ( All Dimension are in cm)'),
-(36, 'Table', 10, 5000, 10000, 'UTKARSH FURNITURE Furniture -Made In India Sheesham Wood Products | Factory Price - Direct To Your Home', 10, '/media/62e62299ca421e1bf2236b21c40834e6.jpg', '/media/71ObDm7X9pL._SL1500__jYIAfxg.jpg', '/media/solid-wood-dining-table_eh3P8LA.jpg', '/media/images%20(1)_DAy2uwQ.jpeg', '/media/62e62299ca421e1bf2236b21c40834e6_y0ZnJvz.jpg', 2, 'deactivate', 'Rattan', 'Victoria', 'H 85.09 x W 203 x D 90.17 ( All Dimension are in cm)'),
-(38, 'Chair', 8, 5000, 10000, 'Patented SmartGRID Technology - Stylux seat is designed with Patented SmartGRID Technology that provides no pressure support to your tushy and cradles your tailbone thus helping you improve your natural sitting posture. Whether you’re sitting upright in focus mode or reclining to take a nap, the SmartGRID seat distributes your weight evenly, promoting healthy spinal alignment for all-day comfort.', 0, '/media/41BEtLA-nHL._SX522_%20(1).jpg', '/media/41BEtLA-nHL._SX522_%20(2).jpg', '/media/41BEtLA-nHL._SX522_.jpg', '/media/41raid3nnGL._SY679_%20(1).jpg', '/media/41raid3nnGL._SY679_.jpg', 0, 'deactivate', 'Alloy Steel', 'Victoria', 'H 86 x W 61 x D 66'),
-(39, 'BELINDA Sofa', 12, 75000, 800000, 'Duroflex is India''s leading sleep solutions brand backed by more than 5 decades of expertise. The brand is known for offering innovative researched-backed sleep solutions.Trusted for offering sleep solutions of unparalleled quality, Duroflex now brings the same promise of quality with its range of furniture. They bring to you a wide range of furniture for all your AM to PM needs. Choose from Contemporary Beds, Plush Sofas, Cozy Recliners, and Adaptive Work-from-home furniture.', 6, '/media/3188e939c3456cad5b4d4ab5320d6aff.jpg', '/media/blog-6_GSIDKUy.jpg', '/media/download_lVe2EpZ.jpeg', '/media/OIP_RF3rlBd.jpeg', '/media/d69c7f9ca04b443e0a8083c27b31069a_MyVChKk.jpg', 0, 'deactivate', 'wood', 'Sleepyhead', 'H 102 x W 213 x D 76'),
-(40, 'Farina Half Leather ', 12, 90000, 100000, 'This sofa is designed to combat sagging. The multi-density foam in the seat cushions reduces sagging due to prolonged use. A grid of polyfill pockets in the back cushions prevents the cushions from weighing down because of gravity.', 20, '/media/FNSF52FACA3L_-_main_1.png', '/media/FNSF52FACA3L_-_main_2.jpg', '/media/FNSF52FACA3L_-_main_3.jpg', '/media/FNSF52FACA3L_-_main_4.jpg', '/media/FNSF52FACA3L_-_main_5.jpg', 0, 'deactivate', 'Leather', 'Victoria', 'H 102 x W 213 x D 76'),
-(41, 'Emila Fabric Three S', 14, 17200, 80000, 'Next-level cosy. The Emila motorised recliner sofa takes comfort to a whole new dimension, with extra-plush armrests, headrests, and seats. The cleverly designed backrest reclines without taking up any extra space. Sink in, kick back, and cool your heels at the push of a button! Fabric upholstery', 10, '/media/Emila_Recliner_3_Seter_Color_Cream_1%20(1).jpg', '/media/Emila_Recliner_3_Seter_Color_Cream_1.jpg', '/media/Emila_Recliner_3_Seter_Color_Cream_5.jpg', '/media/Emila_Recliner_3_Seter_Color_Cream_8.png', '/media/Emila_Recliner_3_Seter_Color_Cream_3.jpg', 0, 'deactivate', 'Fabric', 'ARRA', 'H 102 x W 213 x D 76'),
-(42, 'Brick  Pull Out Sofa', 12, 65000, 80000, 'Avoid keeping very hot or very cold materials on the wood directly, always use coasters or mats. Any spillage should be wiped dry with a soft cloth immediately as there is a chance of staining. Colour/polish can fade due to prolonged exposure to sunlight.', 49, '/media/Ditmas_Sofa_cum_Bed_Beige_and_Bro_1.jpg', '/media/Ditmas_Sofa_cum_Bed_Beige_and_Bro_2.jpg', '/media/Ditmas_Sofa_cum_Bed_Beige_and_Bro_3.jpg', '/media/Ditmas_Sofa_cum_Bed_Beige_and_Bro_4.jpg', '/media/Ditmas_Sofa_cum_Bed_Beige_and_Bro_5.jpg', 0, 'deactivate', 'Brick', 'Woodsworth', 'H 102 x W 213 x D 76'),
+(33, 'MIDLAND CORNER SOFA ', 9, 99000, 100000, 'Durable structure, Adjustable Head Rest, Premium Fabric and Ergonomical Design, High Comfort Level', -11, '/media/f0ce120d4316c66384682dd9b09e9920.png', '/media/5197IVybjjL.jpg', '/media/303883cf89aa6d79b9e69af7bd2e625f.jpg', '/media/dae39bdfed393ffd71f8f74929bbfb2a.jpg', '/media/img1_A08V5Su.jpg', 3, 'deactivate', 'Solid Wood', 'DHEP Furniture', 'H 85.09 x W 203 x D 90.17 ( All Dimension are in cm)'),
+(34, 'OLIVIA DRESSING TABL', 16, 70000, 100000, 'Dresser Unit with Two Tone Design (New Color Board-M24 High Gloss, Melamine Board).Storage Top Provided with Safety Ledges at Side & Back.', 39, '/media/64dee9e3434f8c1327bb9bb19edd7ce7.jpg', '/media/07ad371447f528a0c3daf089586c1486.jpg', '/media/OIP%20(9).jpeg', '/media/OIP%20(10).jpeg', '/media/OIP%20(11).jpeg', 2, 'deactivate', 'Rattan', 'Sleepyhead', 'H 86 x W 61 x D 66'),
+(35, 'LISBON SOFA', 12, 2000, 20000, 'This elegant sofa with a leatherette finish is perfect for your living area. It comes with a three-seater sofa along with two single sofas. The compact design of this sofa can easily fit any room space and comes with premium fabric which provides you with the ultimate comfort. The colour of this sofa can seamlessly blend with any interior space. So go ahead and buy it with confidence.', -11, '/media/OIP%20(15).jpeg', '/media/d69c7f9ca04b443e0a8083c27b31069a.jpg', '/media/OIP%20(16).jpeg', '/media/OIP%20(14).jpeg', '/media/OIP%20(13).jpeg', 3, 'deactivate', 'Solid Wood', 'Duroflex', 'H 85.09 x W 203 x D 90.17 ( All Dimension are in cm)'),
+(36, 'Table', 10, 5000, 10000, 'UTKARSH FURNITURE Furniture -Made In India Sheesham Wood Products | Factory Price - Direct To Your Home', 2, '/media/62e62299ca421e1bf2236b21c40834e6.jpg', '/media/71ObDm7X9pL._SL1500__jYIAfxg.jpg', '/media/solid-wood-dining-table_eh3P8LA.jpg', '/media/images%20(1)_DAy2uwQ.jpeg', '/media/62e62299ca421e1bf2236b21c40834e6_y0ZnJvz.jpg', 2, 'deactivate', 'Rattan', 'Victoria', 'H 85.09 x W 203 x D 90.17 ( All Dimension are in cm)'),
+(38, 'Chair', 8, 5000, 10000, 'Patented SmartGRID Technology - Stylux seat is designed with Patented SmartGRID Technology that provides no pressure support to your tushy and cradles your tailbone thus helping you improve your natural sitting posture. Whether you’re sitting upright in focus mode or reclining to take a nap, the SmartGRID seat distributes your weight evenly, promoting healthy spinal alignment for all-day comfort.', -10, '/media/41BEtLA-nHL._SX522_%20(1).jpg', '/media/41BEtLA-nHL._SX522_%20(2).jpg', '/media/41BEtLA-nHL._SX522_.jpg', '/media/41raid3nnGL._SY679_%20(1).jpg', '/media/41raid3nnGL._SY679_.jpg', 0, 'deactivate', 'Alloy Steel', 'Victoria', 'H 86 x W 61 x D 66'),
+(39, 'BELINDA Sofa', 12, 75000, 800000, 'Duroflex is India''s leading sleep solutions brand backed by more than 5 decades of expertise. The brand is known for offering innovative researched-backed sleep solutions.Trusted for offering sleep solutions of unparalleled quality, Duroflex now brings the same promise of quality with its range of furniture. They bring to you a wide range of furniture for all your AM to PM needs. Choose from Contemporary Beds, Plush Sofas, Cozy Recliners, and Adaptive Work-from-home furniture.', -6, '/media/3188e939c3456cad5b4d4ab5320d6aff.jpg', '/media/blog-6_GSIDKUy.jpg', '/media/download_lVe2EpZ.jpeg', '/media/OIP_RF3rlBd.jpeg', '/media/d69c7f9ca04b443e0a8083c27b31069a_MyVChKk.jpg', 0, 'deactivate', 'wood', 'Sleepyhead', 'H 102 x W 213 x D 76'),
+(40, 'Farina Half Leather ', 12, 90000, 100000, 'This sofa is designed to combat sagging. The multi-density foam in the seat cushions reduces sagging due to prolonged use. A grid of polyfill pockets in the back cushions prevents the cushions from weighing down because of gravity.', 18, '/media/FNSF52FACA3L_-_main_1.png', '/media/FNSF52FACA3L_-_main_2.jpg', '/media/FNSF52FACA3L_-_main_3.jpg', '/media/FNSF52FACA3L_-_main_4.jpg', '/media/FNSF52FACA3L_-_main_5.jpg', 0, 'deactivate', 'Leather', 'Victoria', 'H 102 x W 213 x D 76'),
+(41, 'Emila Fabric Three S', 14, 17200, 80000, 'Next-level cosy. The Emila motorised recliner sofa takes comfort to a whole new dimension, with extra-plush armrests, headrests, and seats. The cleverly designed backrest reclines without taking up any extra space. Sink in, kick back, and cool your heels at the push of a button! Fabric upholstery', -3, '/media/Emila_Recliner_3_Seter_Color_Cream_1%20(1).jpg', '/media/Emila_Recliner_3_Seter_Color_Cream_1.jpg', '/media/Emila_Recliner_3_Seter_Color_Cream_5.jpg', '/media/Emila_Recliner_3_Seter_Color_Cream_8.png', '/media/Emila_Recliner_3_Seter_Color_Cream_3.jpg', 0, 'deactivate', 'Fabric', 'ARRA', 'H 102 x W 213 x D 76'),
+(42, 'Brick  Pull Out Sofa', 12, 65000, 80000, 'Avoid keeping very hot or very cold materials on the wood directly, always use coasters or mats. Any spillage should be wiped dry with a soft cloth immediately as there is a chance of staining. Colour/polish can fade due to prolonged exposure to sunlight.', 46, '/media/Ditmas_Sofa_cum_Bed_Beige_and_Bro_1.jpg', '/media/Ditmas_Sofa_cum_Bed_Beige_and_Bro_2.jpg', '/media/Ditmas_Sofa_cum_Bed_Beige_and_Bro_3.jpg', '/media/Ditmas_Sofa_cum_Bed_Beige_and_Bro_4.jpg', '/media/Ditmas_Sofa_cum_Bed_Beige_and_Bro_5.jpg', 0, 'deactivate', 'Brick', 'Woodsworth', 'H 102 x W 213 x D 76'),
 (43, 'Hamilton Solid Wood ', 17, 7500, 8000, 'Perfect to optimise space in the house, keep them folded into 1 and when you need 3 stools, voila! Extremely versatile, can be used as stool(s), centre table(s) , side table(s), small study table + stool for children Refer to the images for details of dimensions Medium-weight, thick structure Made of high-grade Sheesham wood Each of the stools can support a weight of starting from 35 kgs No assembly required', 10, '/media/Hamilton_Nested_Stools_Mahogany_02_3.jpg', '/media/Hamilton_Nested_Stools_Mahogany_03_4.jpg', '/media/Hamilton_Nested_Stools_Mahogany_09_10.jpg', '/media/Hamilton_Nested_Stools_Mahogany_06_7.jpg', '/media/Hamilton_Nested_Stools_Mahogany_07_8.jpg', 0, 'deactivate', 'Solid wood', 'Adorn Homez', 'H 102 x W 213 x D 76'),
-(44, 'Twain Engineered Woo', 1, 7500, 10000, 'Full marks. A classic desk with pared down trestle legs, the Twain study table is elegant in its simplicity. The generous table has room for you to spread out, and the two deep drawers help keep a check on overflowing papers, files, and more. There’s plenty of space below for legs to stretch comfortably.   MDF table top with cherry melamine finish, and lacquered legs Refer to the images for dimension details Indoor use only', 8, '/media/Twain_Study_Table_1.jpg', '/media/Twain_Study_Table_2.jpg', '/media/Twain_Study_Table_NEW_dim2.png', '/media/Twain_Study_Table_9.jpg', '/media/Twain_Study_Table_NEW_Dim.png', 0, 'deactivate', 'Wood', 'Furnitech', 'H 102 x W 213 x D 76'),
-(45, 'Leather Lounge Chair', 8, 6000, 8000, 'An icon in every sense of the word. The Lounge Chair & Ottoman (1956) designed by Charles E. and Ray E., is considered to be one of the most significant designs of the 20th century This high quality replica pairs sleek moulded plywood with soft artificial leather to create an inviting form that''s both beautiful and supremely comfortable The chair and ottoman are both mounted on swivelling metal bases Refer to the images for details of dimensions For indoor use only', 10, '/media/1956_Lounge_Ottoman_Replica_Black_15_16.jpg', '/media/1956_Lounge___Ottoman_Replica_Black_04.jpg', '/media/1956_Lounge___Ottoman_Replica_Black_New_Dim_2.png', '/media/1956_Lounge___Ottoman_Replica_Black_03.jpg', '/media/1956_Lounge___Ottoman_Replica_Black_09.jpg', 0, 'deactivate', 'Leather', 'Dreamzz Furniture', 'H 86 x W 61 x D 66');
+(44, 'Twain Engineered Woo', 1, 7500, 10000, 'Full marks. A classic desk with pared down trestle legs, the Twain study table is elegant in its simplicity. The generous table has room for you to spread out, and the two deep drawers help keep a check on overflowing papers, files, and more. There’s plenty of space below for legs to stretch comfortably.   MDF table top with cherry melamine finish, and lacquered legs Refer to the images for dimension details Indoor use only', 3, '/media/Twain_Study_Table_1.jpg', '/media/Twain_Study_Table_2.jpg', '/media/Twain_Study_Table_NEW_dim2.png', '/media/Twain_Study_Table_9.jpg', '/media/Twain_Study_Table_NEW_Dim.png', 0, 'deactivate', 'Wood', 'Furnitech', 'H 102 x W 213 x D 76'),
+(45, 'Leather Lounge Chair', 8, 6000, 8000, 'An icon in every sense of the word. The Lounge Chair & Ottoman (1956) designed by Charles E. and Ray E., is considered to be one of the most significant designs of the 20th century This high quality replica pairs sleek moulded plywood with soft artificial leather to create an inviting form that''s both beautiful and supremely comfortable The chair and ottoman are both mounted on swivelling metal bases Refer to the images for details of dimensions For indoor use only', 9, '/media/1956_Lounge_Ottoman_Replica_Black_15_16.jpg', '/media/1956_Lounge___Ottoman_Replica_Black_04.jpg', '/media/1956_Lounge___Ottoman_Replica_Black_New_Dim_2.png', '/media/1956_Lounge___Ottoman_Replica_Black_03.jpg', '/media/1956_Lounge___Ottoman_Replica_Black_09.jpg', 0, 'deactivate', 'Leather', 'Dreamzz Furniture', 'H 86 x W 61 x D 66');
 
 -- --------------------------------------------------------
 
@@ -497,24 +557,6 @@ INSERT INTO `subcategory` (`SubID`, `categoryID`, `subcategory`, `status`) VALUE
 (16, 18, 'DressingTable', 'Active'),
 (17, 4, 'Side Table', 'Active'),
 (18, 4, 'Side Table', 'Active');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `wishlist`
---
-
-CREATE TABLE IF NOT EXISTS `wishlist` (
-  `wishid` int(100) NOT NULL AUTO_INCREMENT,
-  `ProductID` int(100) NOT NULL,
-  `status` varchar(100) NOT NULL,
-  PRIMARY KEY (`wishid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `wishlist`
---
-
 
 -- --------------------------------------------------------
 
